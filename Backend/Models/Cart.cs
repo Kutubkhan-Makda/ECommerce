@@ -9,6 +9,5 @@ namespace EMedicine.Models
         public Decimal Discount {get;set;}
         public int Quantity {get;set;}
         public Decimal TotalPrice {get;set;}
-
     }
 }
