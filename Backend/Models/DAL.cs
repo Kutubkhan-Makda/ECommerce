@@ -74,6 +74,7 @@ namespace EMedicine.Models
 
         public Response viewUser(Users users)
         {
+            Response response = new Response();
             SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
             DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_State_SelectAll");
             sqlDB.AddInParameter(dbCMD, "@UserId", SqlDbType.VarChar, users.UserId);
@@ -83,7 +84,28 @@ namespace EMedicine.Models
                 dt.Load(dr);
             }
 
-            return dt;
+            Users user = new Users();
+
+            if(dt.Rows.Count>0)
+            {
+                user.UserId = Convert.ToInt32(dt.Rows[0]["UserId"]);
+                user.Name = Convert.ToString(dt.Rows[0]["Name"]);
+                user.Email = Convert.ToString(dt.Rows[0]["Email"]);
+                user.Address = Convert.ToString(dt.Rows[0]["Address"]);
+                user.Type = Convert.ToString(dt.Rows[0]["Type"]);
+                user.CreatedON = Convert.ToDateTime(dt.Rows[0]["CreatedON"]);
+
+                response.StatusCode = 200;
+                response.StatusMessage ="User Login Successfull";
+                response.user = user;
+            }
+            else
+            {
+                response.StatusCode = 100;
+                response.StatusMessage ="User Not Found";
+                response.user = null;
+            }
+            return response;
         }
     }
 }

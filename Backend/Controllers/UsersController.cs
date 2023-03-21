@@ -36,10 +36,13 @@ namespace EMedicine.Controllers
             return response;
         }
 
-        public Response Login(Users users)
+        [HttpPost]
+        [Route("viewUser")]
+        public Response viewUser(Users users)
         {
-            DataTable dt = dalLOC.PR_LOC_Country_SelectAll();
-            return View("LOC_CountryList", dt);
+            DAL dALCon = new DAL();
+            Response response = dALCon.viewUser(users);
+            return response;
         } 
     }
 }
