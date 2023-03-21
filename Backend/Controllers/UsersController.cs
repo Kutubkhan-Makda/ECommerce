@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using EMedicine.Models;
 
 namespace EMedicine.Controllers
 {
@@ -13,6 +14,17 @@ namespace EMedicine.Controllers
         public UsersController(IConfiguration configuration)
         {
             _configuration = configuration;
+        }
+
+        [HttpPost]
+        [Route("registration")]
+        public Response register(Users users)
+        {
+            DAL dALCon = new DAL();
+            Response response = new Response();
+
+            response = dALCon.register(users);
+            return response;
         }
     }
 }
