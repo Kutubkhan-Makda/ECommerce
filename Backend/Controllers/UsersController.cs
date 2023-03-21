@@ -18,12 +18,21 @@ namespace EMedicine.Controllers
 
         [HttpPost]
         [Route("registration")]
-        public Response register(Users users)
+        public Response Register(Users users)
         {
             DAL dALCon = new DAL();
-            Response response = new Response();
 
-            response = dALCon.register(users);
+            Response response = dALCon.register(users);
+            return response;
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public Response Login(Users users)
+        {
+            DAL dALCon = new DAL();
+
+            Response response = dALCon.Login(users);
             return response;
         }
     }
