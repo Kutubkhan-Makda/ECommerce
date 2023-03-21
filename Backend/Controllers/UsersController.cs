@@ -35,5 +35,11 @@ namespace EMedicine.Controllers
             Response response = dALCon.Login(users);
             return response;
         }
+
+        public Response Login(Users users)
+        {
+            DataTable dt = dalLOC.PR_LOC_Country_SelectAll();
+            return View("LOC_CountryList", dt);
+        } 
     }
 }
