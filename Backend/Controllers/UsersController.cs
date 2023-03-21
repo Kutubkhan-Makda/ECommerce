@@ -43,6 +43,15 @@ namespace EMedicine.Controllers
             DAL dALCon = new DAL();
             Response response = dALCon.viewUser(users);
             return response;
-        } 
+        }
+
+        [HttpPost]
+        [Route("updateProfile")]
+        public Response updateProfile(Users users)
+        {
+            DAL dALCon = new DAL();
+            Response response = dALCon.updateProfile(users);
+            return response;
+        }
     }
 }
