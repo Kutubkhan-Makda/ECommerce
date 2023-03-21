@@ -96,7 +96,7 @@ namespace EMedicine.Models
                 user.CreatedON = Convert.ToDateTime(dt.Rows[0]["CreatedON"]);
 
                 response.StatusCode = 200;
-                response.StatusMessage ="User Login Successfull";
+                response.StatusMessage ="User Exist";
                 response.user = user;
             }
             else
@@ -105,6 +105,32 @@ namespace EMedicine.Models
                 response.StatusMessage ="User Not Found";
                 response.user = null;
             }
+            return response;
+        }
+
+        public Response updateProfile(Users users)
+        {
+            Response response = new Response();
+            SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_State_SelectAll");
+            sqlDB.AddInParameter(dbCMD, "@UserId", SqlDbType.VarChar, users.UserId);
+            sqlDB.AddInParameter(dbCMD, "@Name", SqlDbType.VarChar, users.Name);
+            sqlDB.AddInParameter(dbCMD, "@Email", SqlDbType.VarChar, users.Email);
+            sqlDB.AddInParameter(dbCMD, "@Password", SqlDbType.VarChar, users.Password);
+            sqlDB.AddInParameter(dbCMD, "@Address", SqlDbType.VarChar, users.Address);
+
+            int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+            if(vReturnValue>0)
+            {
+                response.StatusCode = 200;
+                response.StatusMessage ="Profile Update Successfull";
+            }
+            else
+            {
+                response.StatusCode = 200;
+                response.StatusMessage ="Profile Update Failed";
+            }
+
             return response;
         }
     }
