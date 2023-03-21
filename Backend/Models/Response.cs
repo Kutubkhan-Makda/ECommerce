@@ -7,6 +7,6 @@
         public List<Users> listUsers {get;set;}
         public Users user {get;set;}
         public List<Products> listProducts {get;set;}
-        public Products product {get;set}
+        public Products product {get;set;}
     }
 }
