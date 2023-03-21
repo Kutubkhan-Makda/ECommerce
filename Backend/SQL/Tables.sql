@@ -56,3 +56,10 @@ CREATE TABLE OrderItems (
     FOREIGN KEY (OrderId) REFERENCES Orders (OrderId),
     FOREIGN KEY (ProductId) REFERENCES Products (ProductId)
 );
+
+
+SELECT * FROM Users
+SELECT * FROM Products
+SELECT * FROM Orders
+SELECT * FROM OrderItems
+SELECT * FROM Cart
