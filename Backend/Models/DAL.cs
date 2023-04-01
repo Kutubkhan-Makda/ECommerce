@@ -76,8 +76,8 @@ namespace EMedicine.Models
         {
             Response response = new Response();
             SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_State_SelectAll");
-            sqlDB.AddInParameter(dbCMD, "@UserId", SqlDbType.VarChar, users.UserId);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_SelectbyPK");
+            sqlDB.AddInParameter(dbCMD, "@UserId", SqlDbType.VarChar, 1);
             DataTable dt = new DataTable();
             using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
             {
@@ -93,7 +93,6 @@ namespace EMedicine.Models
                 user.Email = Convert.ToString(dt.Rows[0]["Email"]);
                 user.Address = Convert.ToString(dt.Rows[0]["Address"]);
                 user.Type = Convert.ToString(dt.Rows[0]["Type"]);
-                user.CreatedON = Convert.ToDateTime(dt.Rows[0]["CreatedON"]);
 
                 response.StatusCode = 200;
                 response.StatusMessage ="User Exist";
