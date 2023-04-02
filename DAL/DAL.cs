@@ -3,12 +3,39 @@ using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
 using ECommerce.Models;
+using ECommerce.Areas.Users.Models;
 
 namespace ECommerce.DAL
 {
     public class DAL : DALConnection
     {
-        public Response register(Users users)
+        public class LOC_DALBase : DALConnection
+        {
+
+            #region PR_User_SelectbyPK
+            public DataTable PR_User_SelectbyPK(int UserId)
+            {
+                try
+                {
+                    SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                    DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_SelectbyPK");
+                    sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, UserId);
+
+                    DataTable dt = new DataTable();
+                    using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
+                    {
+                        dt.Load(dr);
+                    }
+                    return dt;
+
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+            public Response register(Users users)
         {
             Response response = new Response();
             SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
