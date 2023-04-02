@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ECommerce.DAL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace ECommerce.Areas.Products.Controllers
 {
     public class ProductsController : Controller
     {
+        ProductsDAL ProductsDAL = new ProductsDAL();
         // GET: ProductsController
         public ActionResult Index()
         {
-            return View();
+            DataTable dtProduct = ProductsDAL.PR_Product_SelectAll();
+            return View("ProductsList",dtProduct);
         }
 
         // GET: ProductsController/Details/5
