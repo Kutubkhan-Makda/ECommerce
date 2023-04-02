@@ -65,7 +65,7 @@
                     <th>Category Name</th>
                     <th>Name</th>
                     <th>ManufacturerName</th>
-                    <th class="text-center">Created</th>
+                    <th class="text-center">Description</th>
                     <th class="text-center">Modified</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -77,16 +77,15 @@
                         @*<td>@dr["CountryID"]</td>*@
                         <td>@dr["CategoryName"]</td>
                         <td>@dr["Name"]</td>
-                        <td>@dr["StateCode"]</td>
-                        <td class="text-center">@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy hh:mm:ss")</td>
-                        <td class="text-center">@Convert.ToDateTime(dr["ModificationDate"]).ToString("dd-MM-yyyy hh:mm:ss")</td>
+                        <td>@dr["Description"]</td>
+                        @*<td class="text-center">@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy hh:mm:ss")</td>
                         <td class="text-center">
                             <form method="post" asp-controller="LOC_State" asp-action="Delete">
                                 <input type="hidden" name="StateID" value="@Convert.ToInt32(dr["StateID"])">
                                 <button type="submit" class="btn btn-danger btn-xs" onclick="return DeleteConf();"><i class="fa fa-close"></i></button>
                                 <a class="btn btn-info btn-xs" asp-controller="LOC_State" asp-action="Add" asp-route-stateid="@Convert.ToInt32(dr["StateID"])"><i class="fa fa-pencil"></i></a>
                             </form>
-                        </td>
+                        </td>*@
                     </tr>
                 }
             </tbody>

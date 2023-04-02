@@ -5,6 +5,8 @@ using System.Data;
 
 namespace ECommerce.Areas.Products.Controllers
 {
+    [Area("Products")]
+    [Route("Products/[Controller]/[action]")]
     public class ProductsController : Controller
     {
         ProductsDAL ProductsDAL = new ProductsDAL();
