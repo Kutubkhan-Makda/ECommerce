@@ -100,7 +100,26 @@ WHERE   [dbo].[Users].Email = @Email and
 
 ---------------------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_Product_SelectbyPK]
+CREATE PROCEDURE [dbo].[PR_Product_SelectAll]
+AS
+SELECT 
+		[dbo].[Products].[ProductId],
+		[dbo].[Category].[CategoryName],
+		[dbo].[Products].[Name],
+		[dbo].[Products].[ManufacturerId],
+		[dbo].[Products].[Description],
+		[dbo].[Products].[Price],
+		[dbo].[Products].[Discount],
+		[dbo].[Products].[Quantity],
+		[dbo].[Products].[ImageUrl]
+
+FROM	[dbo].[Products]
+INNER JOIN [dbo].[Category]
+ON [dbo].[Category].[CategoryId] = [dbo].[Products].[CategoryId]
+
+-----------------------------------------------------------------------------------------------
+
+ALTER PROCEDURE [dbo].[PR_Product_SelectbyPK]
 
 @ProductId		int
 
@@ -118,8 +137,9 @@ SELECT
 FROM	[dbo].[Products]
 INNER JOIN [dbo].[Category]
 ON [dbo].[Category].[CategoryId] = [dbo].[Products].[CategoryId]
+WHERE	[dbo].[Products].ProductId=@ProductId
 
---[dbo].[PR_Product_SelectbyPK]  @ProductId=1
+--[dbo].[PR_Product_SelectbyPK]  @ProductId=3
 
 ----------------------------------------------------------------------------------------------------
 

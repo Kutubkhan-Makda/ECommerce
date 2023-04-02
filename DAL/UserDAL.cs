@@ -75,13 +75,13 @@ namespace ECommerce.DAL
             }
         }
 
-        public DataTable PR_User_SelectByIDPass(String? UserName, String? Password)
+        public DataTable PR_User_SelectByIDPass(String? Email, String? Password)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_SelectByIDPass");
-                sqlDB.AddInParameter(dbCMD, "UserName", SqlDbType.NVarChar, UserName);
+                sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, Email);
                 sqlDB.AddInParameter(dbCMD, "Password", SqlDbType.NVarChar, Password);
 
                 DataTable dt = new DataTable();
