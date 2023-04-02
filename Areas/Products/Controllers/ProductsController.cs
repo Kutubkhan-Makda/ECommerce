@@ -66,9 +66,11 @@ namespace ECommerce.Areas.Products.Controllers
         }
 
         // GET: ProductsController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int ProductId)
         {
-            return View();
+            if (Convert.ToBoolean(ProductsDAL.PR_Product_Delete(ProductId)))
+                return RedirectToAction("Index");
+            return View("Index");
         }
 
         // POST: ProductsController/Delete/5

@@ -1,4 +1,5 @@
-﻿namespace ECommerce.Areas.Products.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace ECommerce.Areas.Products.Models
 {
     public class Products
     {
