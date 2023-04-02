@@ -100,13 +100,13 @@ WHERE   [dbo].[Users].Email = @Email and
 
 ---------------------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_Product_SelectAll]
+Alter PROCEDURE [dbo].[PR_Product_SelectAll]
 AS
 SELECT 
 		[dbo].[Products].[ProductId],
 		[dbo].[Category].[CategoryName],
 		[dbo].[Products].[Name],
-		[dbo].[Products].[ManufacturerId],
+		[dbo].[Manufacturer].[ManufacturerName],
 		[dbo].[Products].[Description],
 		[dbo].[Products].[Price],
 		[dbo].[Products].[Discount],
@@ -116,6 +116,8 @@ SELECT
 FROM	[dbo].[Products]
 INNER JOIN [dbo].[Category]
 ON [dbo].[Category].[CategoryId] = [dbo].[Products].[CategoryId]
+INNER JOIN [dbo].[Manufacturer]
+ON [dbo].[Manufacturer].[ManufacturerId] = [dbo].[Products].[ManufacturerId]
 
 --[dbo].[PR_Product_SelectAll]
 

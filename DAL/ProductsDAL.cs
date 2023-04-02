@@ -44,6 +44,28 @@ namespace ECommerce.DAL
             }
         }
 
+        public DataTable PR_Product_SelectbyPK(int? ProductId)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Product_SelectbyPK");
+                sqlDB.AddInParameter(dbCMD, "ProductId", SqlDbType.Int, ProductId);
+
+                DataTable dt = new DataTable();
+                using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dt.Load(dr);
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public bool? PR_Product_Save(int? ProductId,int? CategoryId,string? Name,int? ManufacturerId,string? Description,decimal? Price,decimal? Discount,int? Quantity,string? ImageUrl)
         {
             try
