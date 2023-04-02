@@ -6,4 +6,38 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Cart\Data\" />
+    <Folder Include="Areas\Cart\Views\" />
+    <Folder Include="Areas\Category\Controllers\" />
+    <Folder Include="Areas\Category\Data\" />
+    <Folder Include="Areas\Category\Models\" />
+    <Folder Include="Areas\Category\Views\" />
+    <Folder Include="Areas\Manufacturer\Controllers\" />
+    <Folder Include="Areas\Manufacturer\Data\" />
+    <Folder Include="Areas\Manufacturer\Models\" />
+    <Folder Include="Areas\Manufacturer\Views\" />
+    <Folder Include="Areas\OrderItems\Controllers\" />
+    <Folder Include="Areas\OrderItems\Data\" />
+    <Folder Include="Areas\OrderItems\Models\" />
+    <Folder Include="Areas\OrderItems\Views\" />
+    <Folder Include="Areas\Orders\Controllers\" />
+    <Folder Include="Areas\Orders\Data\" />
+    <Folder Include="Areas\Orders\Models\" />
+    <Folder Include="Areas\Orders\Views\" />
+    <Folder Include="Areas\Products\Controllers\" />
+    <Folder Include="Areas\Products\Data\" />
+    <Folder Include="Areas\Products\Models\" />
+    <Folder Include="Areas\Products\Views\" />
+    <Folder Include="Areas\Users\Controllers\" />
+    <Folder Include="Areas\Users\Data\" />
+    <Folder Include="Areas\Users\Models\" />
+    <Folder Include="Areas\Users\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EnterpriseLibrary.Data.NetCore" Version="6.3.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.5" />
+  </ItemGroup>
+
 </Project>
