@@ -37,6 +37,22 @@ namespace ECommerce.DAL
 
             }
 
+            public bool? PR_User_DeleteByPK(int? UserId)
+            {
+                try
+                {
+                    SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                    DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_DeleteByPK");
+                    sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, UserId);
+                    int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                    return (vReturnValue == -1 ? false : true);
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+
             public bool? PR_User_Save(int? UserId, string? Name, string? Email, string? Password, string? Address)
             {
                 try
