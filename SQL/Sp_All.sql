@@ -117,6 +117,8 @@ FROM	[dbo].[Products]
 INNER JOIN [dbo].[Category]
 ON [dbo].[Category].[CategoryId] = [dbo].[Products].[CategoryId]
 
+--[dbo].[PR_Product_SelectAll]
+
 -----------------------------------------------------------------------------------------------
 
 ALTER PROCEDURE [dbo].[PR_Product_SelectbyPK]
