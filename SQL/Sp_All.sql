@@ -79,6 +79,25 @@ DELETE
 FROM   [dbo].[Users]
 WHERE  [dbo].[Users].UserId=@UserId
 
+------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[PR_User_SelectByIDPass]
+
+@Email			nvarchar(50),
+@Password		nvarchar(10)
+AS
+
+SELECT
+		[dbo].[Users].[UserId],
+		[dbo].[Users].[Name],
+		[dbo].[Users].[Email],
+		[dbo].[Users].[Password]
+
+FROM	[dbo].[Users]
+
+WHERE   [dbo].[Users].Email = @Email and
+		[dbo].[Users].Password = @Password
+
 ---------------------------------------------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[PR_Product_SelectbyPK]
