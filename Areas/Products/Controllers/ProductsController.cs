@@ -1,8 +1,7 @@
 ﻿using ECommerce.DAL;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
-
+using ECommerce.Areas.Products.Models;
 namespace ECommerce.Areas.Products.Controllers
 {
     [Area("Products")]
@@ -44,15 +43,17 @@ namespace ECommerce.Areas.Products.Controllers
                 //dt.Load(objSDR);
                 if(dt.Rows.Count > 0)
                 {
-                    Products productsModel = new Products();
+                    ECommerce.Areas.Products.Models.Products productsModel = new ECommerce.Areas.Products.Models.Products();
                     foreach (DataRow dr in dt.Rows)
                     {
-                        productsModel.StateID = (Convert.ToInt32(dr["StateID"]));
-                        productsModel.StateName = (Convert.ToString(dr["StateName"]));
-                        productsModel.StateCode = (Convert.ToString(dr["StateCode"]));
-                        productsModel.CreationDate = (Convert.ToDateTime(dr["CreationDate"]));
-                        productsModel.ModificationDate = (Convert.ToDateTime(dr["ModificationDate"]));
-                        productsModel.CountryID = (Convert.ToInt32(dr["CountryID"]));
+                        productsModel.ProductId = (Convert.ToInt32(dr["ProductId"]));
+                        productsModel.Name = (Convert.ToString(dr["Name"]));
+                        productsModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
+                        productsModel.Description = (Convert.ToString(dr["Description"]));
+                        productsModel.Price = (Convert.ToDecimal(dr["Price"]));
+                        productsModel.Discount = (Convert.ToDecimal(dr["Discount"]));
+                        productsModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
+                        productsModel.ImageUrl = (Convert.ToString(dr["ImageUrl"]));
                     }
 
                     return View("ProductsAddEdit", productsModel);
