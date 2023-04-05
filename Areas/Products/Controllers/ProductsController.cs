@@ -9,6 +9,7 @@ namespace ECommerce.Areas.Products.Controllers
     public class ProductsController : Controller
     {
         ProductsDAL ProductsDAL = new ProductsDAL();
+        CategoryDAL categoryDAL = new CategoryDAL();
         // GET: ProductsController
         public ActionResult Index()
         {
@@ -18,32 +19,24 @@ namespace ECommerce.Areas.Products.Controllers
 
         public IActionResult Add(int? ProductId)
          {
-            //DataTable dt1 = ProductsDAL.PR_LOC_Country_SelectByDropdownList();
-            //
-            //List<Areas.Models.LOC_CountryDropDownModel> list=new List<Areas.Models.LOC_CountryDropDownModel>();
-            //foreach(DataRow dr in dt1.Rows)
-            //{
-            //    Areas.Models.LOC_CountryDropDownModel modelLOC_CountryDropDown = new Areas.Models.LOC_CountryDropDownModel();
-            //    modelLOC_CountryDropDown.CountryID = (Convert.ToInt32(dr["CountryID"]));
-            //    modelLOC_CountryDropDown.CountryName = (Convert.ToString(dr["CountryName"]));
-            //    list.Add(modelLOC_CountryDropDown);
-            //}
-            //ViewBag.CountryList=list;
+            DataTable dtDropdownCategory = categoryDAL.PR_Category_SelectAll();
+
+            List<Areas.Category.Models.CategoryDropdown> listCategory = new List<Areas.Category.Models.CategoryDropdown>();
+            foreach (DataRow dr in dtDropdownCategory.Rows)
+            {
+                Areas.Category.Models.CategoryDropdown vl = new Areas.Category.Models.CategoryDropdown();
+                vl.CategoryId = (Convert.ToInt32(dr["CategoryId"]));
+                vl.CategoryName = (Convert.ToString(dr["CategoryName"]));
+                listCategory.Add(vl);
+            }
+            ViewBag.CategoryList = listCategory;
+
             if (ProductId != null)
             {
-                //String str = this.Configuration.GetConnectionString("SQL_AddressBook");
-                //SqlConnection conn = new SqlConnection(str);
-                //conn.Open();
-                //SqlCommand cmd = conn.CreateCommand();
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.CommandText = "PR_LOC_State_SelectByPK";
-                //cmd.Parameters.Add("@StateID", SqlDbType.Int).Value = StateID;
                 DataTable dt = ProductsDAL.PR_Product_SelectbyPK(ProductId);
-                //SqlDataReader objSDR = cmd.ExecuteReader();
-                //dt.Load(objSDR);
                 if(dt.Rows.Count > 0)
                 {
-                    ECommerce.Areas.Products.Models.Products productsModel = new ECommerce.Areas.Products.Models.Products();
+                    Areas.Products.Models.Products productsModel = new Areas.Products.Models.Products();
                     foreach (DataRow dr in dt.Rows)
                     {
                         productsModel.ProductId = (Convert.ToInt32(dr["ProductId"]));

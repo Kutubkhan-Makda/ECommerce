@@ -34,26 +34,35 @@
                         @Html.HiddenFor(x=>x.ProductId)
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Country Name</label>
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Category Name</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList,"CountryID","CountryName"))">
-                                        <option value="">Select Country</option>
+                                    <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryId","CategoryName"))">
+                                        <option value="">Select Category</option>
                                     </select>
-                                    <span asp-validation-for="CountryID" class="text-danger"></span>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><span class="text-danger">*</span>State Name</label>
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Product Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" asp-for="StateName" placeholder="Enter State Name" />
-                                    <span asp-validation-for="StateName" class="text-danger"></span>
+                                    <input type="text" class="form-control" asp-for="Name" placeholder="Enter Product Name" />
+                                    <!--span asp-validation-for="StateName" class="text-danger"--><!--/span-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Manufacturer Name</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryId","CategoryName"))">
+                                        <option value="">Select Category</option>
+                                    </select>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>State Code</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" asp-for="StateCode" placeholder="Enter State Code" />
-                                    <span asp-validation-for="StateCode" class="text-danger"></span>
+                                    <!--input type="text" class="form-control" asp-for="StateCode" placeholder="Enter State Code" /-->
+                                    <!--span asp-validation-for="StateCode" class="text-danger"--><!--/span-->
                                 </div>
                             </div>
                         </div>

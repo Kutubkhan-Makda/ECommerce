@@ -380,7 +380,6 @@ VALUES
 --------------------------------------------------------------------------------------------------------------
 
 
-
 CREATE PROCEDURE [dbo].[PR_Cart_SelectbyPK]
 
 @UserId		int
@@ -399,3 +398,60 @@ WHERE	[dbo].[Cart].UserId=@UserId
 --[dbo].[PR_Cart_SelectbyPK]   @UserId=1
 
 
+---------------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[PR_Manufacturer_SelectAll]
+
+AS
+SELECT 
+		[dbo].[Manufacturer].[ManufacturerId],
+		[dbo].[Manufacturer].[ManufacturerName]
+
+FROM	[dbo].[Manufacturer]
+
+
+--------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[PR_Manufacturer_Insert]
+
+@ManufacturerName		nvarchar(50)
+
+AS
+
+INSERT INTO	[dbo].[Manufacturer]
+(
+		ManufacturerName
+)
+VALUES
+(
+		@ManufacturerName
+)
+
+-------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[PR_Manufacturer_UpdateByPK]
+
+@ManufacturerId			int,
+@ManufacturerName		nvarchar(50)
+
+AS
+
+UPDATE	[dbo].[Manufacturer]
+SET
+		[dbo].[Manufacturer].[ManufacturerName]	=	@ManufacturerName
+
+WHERE	[dbo].[Manufacturer].ManufacturerId=@ManufacturerId
+
+----------------------------------------------------------------------------------------------------
+
+CREATE Procedure [dbo].[PR_Manufacturer_DeleteByPK]
+
+@ManufacturerId		int
+
+AS 
+
+DELETE
+FROM   [dbo].[Manufacturer]
+WHERE  [dbo].[Manufacturer].ManufacturerId=@ManufacturerId
+
+--------------------------------------------------------------------------------------------------------
