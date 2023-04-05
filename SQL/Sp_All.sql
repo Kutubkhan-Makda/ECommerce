@@ -129,7 +129,7 @@ ALTER PROCEDURE [dbo].[PR_Product_SelectbyPK]
 
 AS
 SELECT 
-		[dbo].[Category].[CategoryName],
+		[dbo].[Products].[CategoryId],
 		[dbo].[Products].[Name],
 		[dbo].[Products].[ManufacturerId],
 		[dbo].[Products].[Description],

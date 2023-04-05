@@ -52,7 +52,7 @@ namespace ECommerce.Areas.Products.Controllers
                     Areas.Products.Models.Products productsModel = new Areas.Products.Models.Products();
                     foreach (DataRow dr in dt.Rows)
                     {
-                        productsModel.ProductId = (Convert.ToInt32(dr["ProductId"]));
+                        productsModel.CategoryId = (Convert.ToInt32(dr["CategoryId"]));
                         productsModel.Name = (Convert.ToString(dr["Name"]));
                         productsModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
                         productsModel.Description = (Convert.ToString(dr["Description"]));

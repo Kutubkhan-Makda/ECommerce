@@ -34,19 +34,26 @@
                         @Html.HiddenFor(x=>x.ProductId)
                         <div class="form-body">
                             <div class="form-group">
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Product Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" asp-for="Name" placeholder="Enter Product Name" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Description</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" asp-for="Description" placeholder="Enter Product Description" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Category Name</label>
                                 <div class="col-md-9">
                                     <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryId","CategoryName"))">
                                         <option value="">Select Category</option>
                                     </select>
                                     <span asp-validation-for="CategoryId" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Product Name</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" asp-for="Name" placeholder="Enter Product Name" />
-                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -59,10 +66,24 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><span class="text-danger">*</span>State Code</label>
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Price</label>
                                 <div class="col-md-9">
-                                    <!--input type="text" class="form-control" asp-for="StateCode" placeholder="Enter State Code" /-->
-                                    <!--span asp-validation-for="StateCode" class="text-danger"--><!--/span-->
+                                    <input type="text" class="form-control" asp-for="Price" placeholder="Enter Price" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Discount</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" asp-for="Discount" placeholder="Enter Discount" />
+                                    <span asp-validation-for="Discount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Quantity</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" asp-for="Quantity" placeholder="Enter Quantity" />
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
