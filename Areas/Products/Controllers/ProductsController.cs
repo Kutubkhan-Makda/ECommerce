@@ -10,6 +10,7 @@ namespace ECommerce.Areas.Products.Controllers
     {
         ProductsDAL ProductsDAL = new ProductsDAL();
         CategoryDAL categoryDAL = new CategoryDAL();
+        ManufacturerDAL manufacturerDAL = new ManufacturerDAL();
         // GET: ProductsController
         public ActionResult Index()
         {
@@ -30,6 +31,18 @@ namespace ECommerce.Areas.Products.Controllers
                 listCategory.Add(vl);
             }
             ViewBag.CategoryList = listCategory;
+
+            DataTable dtDropdownManufacturer = manufacturerDAL.PR_Manufacturer_SelectAll();
+
+            List<Areas.Manufacturer.Models.ManufacturerDropdown> listManufacturer = new List<Areas.Manufacturer.Models.ManufacturerDropdown>();
+            foreach (DataRow dr in dtDropdownManufacturer.Rows)
+            {
+                Areas.Manufacturer.Models.ManufacturerDropdown vl = new Areas.Manufacturer.Models.ManufacturerDropdown();
+                vl.ManufacturerId= (Convert.ToInt32(dr["ManufacturerId"]));
+                vl.ManufacturerName = (Convert.ToString(dr["ManufacturerName"]));
+                listManufacturer.Add(vl);
+            }
+            ViewBag.ManufacturerList = listManufacturer;
 
             if (ProductId != null)
             {

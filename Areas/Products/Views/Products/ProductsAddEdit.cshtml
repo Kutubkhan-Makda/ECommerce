@@ -46,16 +46,16 @@
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Product Name</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" asp-for="Name" placeholder="Enter Product Name" />
-                                    <!--span asp-validation-for="StateName" class="text-danger"--><!--/span-->
+                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Manufacturer Name</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryId","CategoryName"))">
-                                        <option value="">Select Category</option>
+                                    <select class="form-control" asp-for="ManufacturerId" asp-items="@(new SelectList(ViewBag.ManufacturerList,"ManufacturerId","ManufacturerName"))">
+                                        <option value="">Select Manufacturer</option>
                                     </select>
-                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                    <span asp-validation-for="ManufacturerId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
