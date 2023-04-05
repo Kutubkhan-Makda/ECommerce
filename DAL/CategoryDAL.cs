@@ -82,6 +82,7 @@ namespace ECommerce.DAL
                     sqlDB.AddInParameter(dbCMD, "@CategoryId",SqlDbType.Int, CategoryId);
                 }
                 sqlDB.AddInParameter(dbCMD, "@CategoryName",SqlDbType.VarChar, CategoryName);
+                sqlDB.AddInParameter(dbCMD, "@CreatedON",SqlDbType.Date, DBNull.Value);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);

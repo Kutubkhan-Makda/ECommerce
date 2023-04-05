@@ -45,7 +45,7 @@ namespace ECommerce.DAL
             }
         }
 
-        public bool? PR_User_Save(int? UserId, string? Name, string? Email, string? Password, string? Address)
+        public bool? PR_User_Save(int? UserId, string? Name, string? Email, string? Password, string? Address, string? ImageUrl)
         {
             try
             {
@@ -65,6 +65,7 @@ namespace ECommerce.DAL
                 sqlDB.AddInParameter(dbCMD, "@Email", SqlDbType.VarChar, Email);
                 sqlDB.AddInParameter(dbCMD, "@Password", SqlDbType.VarChar, Password);
                 sqlDB.AddInParameter(dbCMD, "@Address", SqlDbType.VarChar, Address);
+                sqlDB.AddInParameter(dbCMD, "@ImageUrl", SqlDbType.VarChar, ImageUrl);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);

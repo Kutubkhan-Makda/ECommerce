@@ -8,7 +8,8 @@ SELECT
 		[dbo].[Role].[RoleType],
 		[dbo].[Users].[Email],
 		[dbo].[Users].[Address],
-		[dbo].[Users].[Password]
+		[dbo].[Users].[Password],
+		[dbo].[Users].[ImageUrl]
 
 FROM	[dbo].[Users]
 INNER JOIN [dbo].[Role]
@@ -19,13 +20,14 @@ WHERE	[dbo].[Users].UserId=@UserId
 --[dbo].[PR_User_SelectbyPK] @UserId=1
 ---------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_User_Insert]
+ALTER PROCEDURE [dbo].[PR_User_Insert]
 
 @Name			varchar(50),
 @Email			varchar(50),
 @Password		varchar(10),
 @Address		varchar(200),
-@CreatedON		Datetime
+@CreatedON		Datetime,
+@ImageUrl		varchar(200)
 
 AS
 
@@ -35,7 +37,8 @@ INSERT INTO	[dbo].[Users]
 		Email,
 		Password,
 		Address,
-		CreatedON
+		CreatedON,
+		ImageUrl
 )
 VALUES
 (
@@ -43,7 +46,8 @@ VALUES
 	@Email,		
 	@Password,	
 	@Address,		
-	ISNULL(@CreatedON,GETDATE())
+	ISNULL(@CreatedON,GETDATE()),
+	@ImageUrl
 )
 
 ------------------------------------------------------------------------------------
@@ -54,7 +58,8 @@ CREATE PROCEDURE [dbo].[PR_User_UpdateByPK]
 @Name			varchar(50),
 @Email			varchar(50),
 @Password		varchar(10),
-@Address		varchar(200)
+@Address		varchar(200),
+@ImageUrl		varchar(200)
 
 AS
 
@@ -63,7 +68,8 @@ SET
 		[dbo].[Users].[Name]		=	@Name,	
 		[dbo].[Users].[Email]		=	@Email,
 		[dbo].[Users].[Address]		=	@Address,
-		[dbo].[Users].[Password]	=	@Password
+		[dbo].[Users].[Password]	=	@Password,
+		[dbo].[Users].ImageUrl		=	@ImageUrl
 
 WHERE	[dbo].[Users].UserId=@UserId
 
