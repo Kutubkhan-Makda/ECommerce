@@ -52,7 +52,7 @@ VALUES
 
 ------------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_User_UpdateByPK]
+ALTER PROCEDURE [dbo].[PR_User_UpdateByPK]
 
 @UserId			int,
 @Name			varchar(50),
