@@ -409,6 +409,18 @@ SELECT
 
 FROM	[dbo].[Manufacturer]
 
+-------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE [dbo].[PR_Manufacturer_SelectByPK]
+
+@ManufacturerId		int
+
+AS
+SELECT 
+		[dbo].[Manufacturer].[ManufacturerName]
+
+FROM   [dbo].[Manufacturer]
+WHERE  [dbo].[Manufacturer].ManufacturerId=@ManufacturerId
 
 --------------------------------------------------------------------------------------------------------
 
