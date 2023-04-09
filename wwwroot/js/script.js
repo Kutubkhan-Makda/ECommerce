@@ -116,16 +116,16 @@ spans.map((span) => {
 
 Array.from(inputs).map((input) => {
   icons.map((icon) => {
-    icon.innerHTML = `<img src="./images/eye.svg" alt="" />`;
+    icon.innerHTML = `<img src="~/images/eye.svg" alt="" />`;
 
     icon.addEventListener("click", () => {
       const type = input.getAttribute("type");
       if (type === "password") {
         input.setAttribute("type", "text");
-        icon.innerHTML = `<img src="./images/hide.svg" alt="" />`;
+        icon.innerHTML = `<img src="~/images/hide.svg" alt="" />`;
       } else if (type === "text") {
         input.setAttribute("type", "password");
-        icon.innerHTML = `<img src="./images/eye.svg" alt="" />`;
+        icon.innerHTML = `<img src="~/images/eye.svg" alt="" />`;
       }
     });
   });
