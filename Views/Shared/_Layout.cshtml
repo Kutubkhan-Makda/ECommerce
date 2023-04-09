@@ -16,10 +16,9 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ECommerce.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/style-prefix.css">
+    <!--link rel="stylesheet" href="~/ECommerce.styles.css" asp-append-version="true" /-->
+    
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
@@ -77,12 +76,12 @@
                     </button>
                 </div>
                 <div class="header-user-actions">
-                    <a class="user-link">Login</a>
-                    <a class="user-form">
-                        <div class="action-btn">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </div>
-                    </a>
+                    <div class="icon user-icon d-flex">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <button class="action-btn icon user-icon d-flex">
+                        <i name="person-outline" class="bx bx-user"></i>
+                    </button>
                     <button class="action-btn">
                         <ion-icon name="heart-outline"></ion-icon>
                         <span class="count">0</span>
