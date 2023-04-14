@@ -362,11 +362,11 @@
           </div>
         </nav>
       </aside>
-      <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-      </div>
+      <main role="main" class="main-content">
+        <div class="container-fluid">
+            @RenderBody()  
+        </div>
+      </main>
       @*<main role="main" class="main-content">
         <div class="container-fluid">
           <div class="row justify-content-center">
@@ -1082,7 +1082,7 @@
         });
       }
     </script>
-    <script src="js/apps.js"></script>
+    <script src="~/Admin/js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
