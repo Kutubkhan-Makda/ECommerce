@@ -20,6 +20,12 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsList",dtProduct);
         }
 
+        public ActionResult Admin()
+        {
+            DataTable dtProduct = ProductsDAL.PR_Product_SelectAll();
+            return View("ProductsListAdmin",dtProduct);
+        }
+
         public IActionResult Add(int? ProductId)
          {
             DataTable dtDropdownCategory = categoryDAL.PR_Category_SelectAll();
