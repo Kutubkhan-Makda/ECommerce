@@ -10,7 +10,7 @@ namespace ECommerce.Areas.Users.Controllers
         // GET: UsersController
         public ActionResult Index()
         {
-            return RedirectToAction("~/Admin/Home");
+            return RedirectToAction("Home","Admin");
         }
 
         [HttpPost]
@@ -18,9 +18,9 @@ namespace ECommerce.Areas.Users.Controllers
         {
             String error = null;
 
-            if(modelUser.Name == null )
+            if(modelUser.Email == null )
             {
-                error  += "User Name is Required";
+                error  += "User Email is Required";
             }
             if(modelUser.Password == null )
             {
@@ -34,13 +34,13 @@ namespace ECommerce.Areas.Users.Controllers
             }
             else{
                 UserDAL userDAL = new UserDAL();
-                DataTable dt = userDAL.PR_User_SelectByIDPass(modelUser.Name,modelUser.Password);
+                DataTable dt = userDAL.PR_User_SelectByIDPass(modelUser.Email,modelUser.Password);
                 if(dt.Rows.Count > 0)
                 {
                     foreach(DataRow dr in dt.Rows)
                     {
-                        HttpContext.Session.SetInt32("UserID",Convert.ToInt32(dr["UserID"]));
-                        HttpContext.Session.SetString("UserName",dr["UserName"].ToString());
+                        HttpContext.Session.SetInt32("UserId",Convert.ToInt32(dr["UserId"]));
+                        HttpContext.Session.SetString("Email",dr["Email"].ToString());
                         HttpContext.Session.SetString("Password",dr["Password"].ToString());
                         HttpContext.Session.SetString("RoleType",dr["RoleType"].ToString());
                         break;
@@ -51,9 +51,9 @@ namespace ECommerce.Areas.Users.Controllers
                     TempData["Error"] = "User Name and Password is Incorect";
                     return RedirectToAction("Index");
                 }
-                if(HttpContext.Session.GetString("UserName") != null && HttpContext.Session.GetString("Password") != null)
+                if(HttpContext.Session.GetString("Email") != null && HttpContext.Session.GetString("Password") != null)
                 {
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Home","Admin");
                 }
             }
             return RedirectToAction("Index");
