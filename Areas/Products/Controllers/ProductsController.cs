@@ -7,7 +7,7 @@ namespace ECommerce.Areas.Products.Controllers
 {
     [Area("Products")]
     [Route("Products/[Controller]/[action]")]
-    [CheckAdminAccess]
+    //[CheckAdminAccess]
     public class ProductsController : Controller
     {
         ProductsDAL ProductsDAL = new ProductsDAL();
