@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.DAL;
+using System.Data;
 
 namespace ECommerce.Areas.Users.Controllers
 {
@@ -8,76 +10,59 @@ namespace ECommerce.Areas.Users.Controllers
         // GET: UsersController
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("~/Admin/Home");
         }
 
-        // GET: UsersController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: UsersController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UsersController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Login(Areas.Users.Models.Users modelUser)
         {
-            try
+            String error = null;
+
+            if(modelUser.Name == null )
             {
-                return RedirectToAction(nameof(Index));
+                error  += "User Name is Required";
             }
-            catch
+            if(modelUser.Password == null )
             {
-                return View();
+                error  += "<br/>Password is Required";
             }
+
+            if(error != null)
+            {
+                TempData["Error"] = error;
+                return RedirectToAction("Index");
+            }
+            else{
+                UserDAL userDAL = new UserDAL();
+                DataTable dt = userDAL.PR_User_SelectByIDPass(modelUser.Name,modelUser.Password);
+                if(dt.Rows.Count > 0)
+                {
+                    foreach(DataRow dr in dt.Rows)
+                    {
+                        HttpContext.Session.SetInt32("UserID",Convert.ToInt32(dr["UserID"]));
+                        HttpContext.Session.SetString("UserName",dr["UserName"].ToString());
+                        HttpContext.Session.SetString("Password",dr["Password"].ToString());
+                        HttpContext.Session.SetString("RoleType",dr["RoleType"].ToString());
+                        break;
+                    }
+                }
+                else
+                {
+                    TempData["Error"] = "User Name and Password is Incorect";
+                    return RedirectToAction("Index");
+                }
+                if(HttpContext.Session.GetString("UserName") != null && HttpContext.Session.GetString("Password") != null)
+                {
+                    return RedirectToAction("Index","Home");
+                }
+            }
+            return RedirectToAction("Index");
         }
 
-        // GET: UsersController/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Logout()
         {
-            return View();
-        }
-
-        // POST: UsersController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsersController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UsersController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Admin");
         }
     }
 }

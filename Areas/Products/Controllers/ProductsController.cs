@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using ECommerce.Areas.Products.Models;
+using ECommerce.Auth;
 namespace ECommerce.Areas.Products.Controllers
 {
     [Area("Products")]
     [Route("Products/[Controller]/[action]")]
+    [CheckAdminAccess]
     public class ProductsController : Controller
     {
         ProductsDAL ProductsDAL = new ProductsDAL();

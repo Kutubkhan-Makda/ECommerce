@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Auth
 {
-    public class CheckAdminAccesscs : ActionFilterAttribute, IAuthorizationFilter
+    public class CheckAdminAccess : ActionFilterAttribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationFilterContext filterContext)
         {
             if (filterContext.HttpContext.Session.GetString("UserID") == null && filterContext.HttpContext.Session.GetString("RoleType") != "Admin")
             {
-                filterContext.Result = new RedirectResult("~/Login");
+                filterContext.Result = new RedirectResult("~/Admin");
             }
 
             var rd = filterContext.RouteData;
