@@ -87,7 +87,7 @@ WHERE  [dbo].[Users].UserId=@UserId
 
 ------------------------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_User_SelectByIDPass]
+ALTER PROCEDURE [dbo].[PR_User_SelectByIDPass]
 
 @Email			nvarchar(50),
 @Password		nvarchar(10)
@@ -97,9 +97,12 @@ SELECT
 		[dbo].[Users].[UserId],
 		[dbo].[Users].[Name],
 		[dbo].[Users].[Email],
-		[dbo].[Users].[Password]
+		[dbo].[Users].[Password],
+		[dbo].[Role].[RoleType]
 
 FROM	[dbo].[Users]
+INNER JOIN [dbo].[Role]
+ON [dbo].[Role].[RoleId] = [dbo].[Users].[RoleId]
 
 WHERE   [dbo].[Users].Email = @Email and
 		[dbo].[Users].Password = @Password
