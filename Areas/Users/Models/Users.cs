@@ -9,6 +9,7 @@
         public String Email { get; set; }
         public String Password { get; set; }
         public String Address { get; set; }
+        public IFormFile File { get; set; }
         public String ImageUrl { get; set; }
         public DateTime CreatedON { get; set; }
     }
