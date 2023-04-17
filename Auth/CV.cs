@@ -11,15 +11,26 @@ namespace ECommerce.Auth
             _HttpContextAccessor = new HttpContextAccessor();
         }
 
-        public static string? UserName()
+        public static string? Name()
         {
-            string? UserName = null;
+            string? Name = null;
 
-            if(_HttpContextAccessor.HttpContext.Session.GetString("UserName") != null)
+            if(_HttpContextAccessor.HttpContext.Session.GetString("Name") != null)
             {
-                UserName = _HttpContextAccessor.HttpContext.Session.GetString("UserName").ToString();
+                Name = _HttpContextAccessor.HttpContext.Session.GetString("Name").ToString();
             }
-            return UserName;
+            return Name;
+        }
+
+        public static string? ImageUrl()
+        {
+            string? ImageUrl = null;
+
+            if(_HttpContextAccessor.HttpContext.Session.GetString("ImageUrl") != null)
+            {
+                ImageUrl = _HttpContextAccessor.HttpContext.Session.GetString("ImageUrl").ToString();
+            }
+            return ImageUrl;
         }
 
         public static int? UserID()
