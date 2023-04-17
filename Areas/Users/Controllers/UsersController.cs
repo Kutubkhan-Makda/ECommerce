@@ -18,7 +18,7 @@ namespace ECommerce.Areas.Users.Controllers
         {
             if (modelUser.ImageUrl != null)
             {
-                string FilePath = "wwwroot\\Upload\assets\avatars";
+                string FilePath = "wwwroot\\Admin\assets\avatars";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
                 if (!Directory.Exists(path))
