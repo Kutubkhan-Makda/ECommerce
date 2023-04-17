@@ -1,6 +1,8 @@
 @{
     Layout = "_LayoutAdmin";
 }
+@using System.Data
+@model DataTable
 
 <div class="col-md-12 my-4">
     <div class="row">
@@ -160,39 +162,42 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="2474">
-                <label class="custom-control-label" for="2474"></label>
-              </div>
-            </td>
-            <td>
-              <div class="avatar avatar-md">
-                <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
-              </div>
-            </td>
-            <td>
-              <p class="mb-0 text-muted"><strong>Brown, Asher D.</strong></p>
-              <small class="mb-0 text-muted">2474</small>
-            </td>
-            <td>
-              <p class="mb-0 text-muted">Accumsan Consulting</p>
-              <small class="mb-0 text-muted">Ap #331-7123 Lobortis Avenue</small>
-            </td>
-            <td>4574</td>
-            <td class="row">
-              <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
-                <span class="fe fe-24 fe-eye"></span>
-              </button>
-              <button class="btn btn-sm" type="button">
-                <span class="fe fe-24 fe-edit-3"></span>
-              </button>
-              <button class="btn btn-sm" type="button">
-                <span class="fe fe-24 fe-trash-2"></span>
-              </button>
-            </td>
-          </tr>
+          @foreach (DataTable dtProduct in Model.Rows)
+          {
+            <tr>
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="2474">
+                  <label class="custom-control-label" for="2474"></label>
+                </div>
+              </td>
+              <td>
+                <div class="avatar avatar-md">
+                  <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                </div>
+              </td>
+              <td>
+                <p class="mb-0 text-muted"><strong>Brown, Asher D.</strong></p>
+                <small class="mb-0 text-muted">2474</small>
+              </td>
+              <td>
+                <p class="mb-0 text-muted">Accumsan Consulting</p>
+                <small class="mb-0 text-muted">Ap #331-7123 Lobortis Avenue</small>
+              </td>
+              <td>4574</td>
+              <td class="row">
+                <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
+                  <span class="fe fe-24 fe-eye"></span>
+                </button>
+                <button class="btn btn-sm" type="button">
+                  <span class="fe fe-24 fe-edit-3"></span>
+                </button>
+                <button class="btn btn-sm" type="button">
+                  <span class="fe fe-24 fe-trash-2"></span>
+                </button>
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
       <nav aria-label="Table Paging" class="mb-0 text-muted">
