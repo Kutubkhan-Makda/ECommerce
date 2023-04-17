@@ -41,8 +41,10 @@ namespace ECommerce.Areas.Users.Controllers
                     {
                         HttpContext.Session.SetInt32("UserId",Convert.ToInt32(dr["UserId"]));
                         HttpContext.Session.SetString("Email",dr["Email"].ToString());
+                        HttpContext.Session.SetString("Name",dr["Name"].ToString());
                         HttpContext.Session.SetString("Password",dr["Password"].ToString());
                         HttpContext.Session.SetString("RoleType",dr["RoleType"].ToString());
+                        HttpContext.Session.SetString("ImageUrl",dr["ImageUrl"].ToString());
                         break;
                     }
                 }

@@ -98,7 +98,8 @@ SELECT
 		[dbo].[Users].[Name],
 		[dbo].[Users].[Email],
 		[dbo].[Users].[Password],
-		[dbo].[Role].[RoleType]
+		[dbo].[Role].[RoleType],
+		[dbo].[Users].[ImageUrl]
 
 FROM	[dbo].[Users]
 INNER JOIN [dbo].[Role]

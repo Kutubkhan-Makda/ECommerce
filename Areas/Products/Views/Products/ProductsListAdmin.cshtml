@@ -119,6 +119,29 @@
           </div>
         </div>
       </div>
+      <div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <button aria-label="" type="button" class="close px-2" style="font-size: 40px;" data-dismiss="modal" aria-hidden="true">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 1100px !important;margin-right: 200px;" role="document">
+          <div class="modal-content">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="..." class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- table -->
       <table class="table table-borderless table-hover">
         <thead>
@@ -159,11 +182,14 @@
             </td>
             <td>4574</td>
             <td class="row">
-              <button class="btn btn-sm" type="button">
-                <span class="fe fe-24 fe-trash-2"></span>
+              <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
+                <span class="fe fe-24 fe-eye"></span>
               </button>
               <button class="btn btn-sm" type="button">
-                <span class="fe fe-24 fe-eye"></span>
+                <span class="fe fe-24 fe-edit-3"></span>
+              </button>
+              <button class="btn btn-sm" type="button">
+                <span class="fe fe-24 fe-trash-2"></span>
               </button>
             </td>
           </tr>
