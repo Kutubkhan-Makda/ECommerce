@@ -13,6 +13,7 @@ namespace ECommerce.Areas.Products.Models
         public Decimal Discount { get; set; }
         public int Quantity { get; set; }
         public DateTime ExpDate { get; set; }
+        public IFormFile File { get; set; }
         public String ImageUrl { get; set; }
     }
 }

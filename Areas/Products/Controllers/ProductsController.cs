@@ -10,19 +10,19 @@ namespace ECommerce.Areas.Products.Controllers
     //[CheckAdminAccess]
     public class ProductsController : Controller
     {
-        ProductsDAL ProductsDAL = new ProductsDAL();
+        ProductsDAL productsDAL = new ProductsDAL();
         CategoryDAL categoryDAL = new CategoryDAL();
         ManufacturerDAL manufacturerDAL = new ManufacturerDAL();
         // GET: ProductsController
         public ActionResult Index()
         {
-            DataTable dtProduct = ProductsDAL.PR_Product_SelectAll();
+            DataTable dtProduct = productsDAL.PR_Product_SelectAll();
             return View("ProductsList",dtProduct);
         }
 
         public ActionResult Admin()
         {
-            DataTable dtProduct = ProductsDAL.PR_Product_SelectAll();
+            DataTable dtProduct = productsDAL.PR_Product_SelectAll();
             return View("ProductsListAdmin",dtProduct);
         }
 
@@ -54,7 +54,7 @@ namespace ECommerce.Areas.Products.Controllers
 
             if (ProductId != null)
             {
-                DataTable dt = ProductsDAL.PR_Product_SelectbyPK(ProductId);
+                DataTable dt = productsDAL.PR_Product_SelectbyPK(ProductId);
                 if(dt.Rows.Count > 0)
                 {
                     Areas.Products.Models.Products productsModel = new Areas.Products.Models.Products();
@@ -76,58 +76,46 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsAddEdit");
         }
 
-        // GET: ProductsController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Save(Areas.Products.Models.Products modelProducts)
         {
-            return View();
-        }
-
-        // GET: ProductsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ProductsController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            if (modelProducts.ImageUrl != null)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                string FilePath = "wwwroot\\Admin\assets\aproduct";
+                string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
-        // GET: ProductsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
 
-        // POST: ProductsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
+                string fileNameWithPath = Path.Combine(path, modelProducts.File.FileName);
+                modelProducts.ImageUrl = "" + FilePath.Replace("wwwroot\\", "/") + "/" + modelProducts.File.FileName;
+
+                using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+
+                {
+                    modelProducts.File.CopyTo(stream);
+                }
+
             }
-            catch
+             
+            if(Convert.ToBoolean(productsDAL.PR_Product_Save(modelProducts.ProductId,modelProducts.CategoryId,modelProducts.Name,modelProducts.ManufacturerId,modelProducts.Description,modelProducts.Price,modelProducts.Discount,modelProducts.Quantity,modelProducts.ImageUrl)))
             {
-                return View();
+                if(modelProducts.ProductId == null)
+                {
+                    TempData["ContactInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["ContactInsertMsg"] = "Record Updated Successfully";
+                }
             }
+            
+            return RedirectToAction("Index");
         }
 
         // GET: ProductsController/Delete/5
         public ActionResult Delete(int ProductId)
         {
-            if (Convert.ToBoolean(ProductsDAL.PR_Product_Delete(ProductId)))
+            if (Convert.ToBoolean(productsDAL.PR_Product_Delete(ProductId)))
                 return RedirectToAction("Index");
             return View("Index");
         }
