@@ -864,6 +864,7 @@
     <script src='~/Admin/js/dropzone.min.js'></script>
     <script src='~/Admin/js/uppy.min.js'></script>
     <script src='~/Admin/js/quill.min.js'></script>
+    @await RenderSectionAsync("Scripts", required: false)
     <script>
       $('.select2').select2(
       {
