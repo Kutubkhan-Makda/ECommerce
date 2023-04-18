@@ -1,14 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.DAL;
+using System.Data;
 
 namespace ECommerce.Areas.Category.Controllers
 {
     public class CategoryController : Controller
     {
+        CategoryDAL categoryDAL = new CategoryDAL();
         // GET: CategoryController
-        public ActionResult Index()
+        public ActionResult Admin()
         {
-            return View();
+            DataTable dtCategory = categoryDAL.PR_Category_SelectAll();
+            return View("CategoryListAdmin",dtCategory);
         }
 
         // GET: CategoryController/Details/5
