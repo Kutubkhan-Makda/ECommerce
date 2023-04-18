@@ -249,6 +249,22 @@ FROM	[dbo].[Category]
 
 --------------------------------------------------------------------------------------------------------
 
+
+CREATE PROCEDURE [dbo].[PR_Category_SelectbyPK]
+
+@CategoryId		int
+
+AS
+SELECT 
+		[dbo].[Category].[CategoryId],
+		[dbo].[Category].[CategoryName]
+
+FROM	[dbo].[Category]
+WHERE	[dbo].[Category].CategoryId=@CategoryId
+
+
+---------------------------------------------------------------------------------------------------------
+
 ALTER PROCEDURE [dbo].[PR_Category_Insert]
 
 @CategoryName		nvarchar(50),

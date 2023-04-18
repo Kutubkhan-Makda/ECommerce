@@ -62,8 +62,8 @@
               </td>
               <td class="row">
                 <form method="post" asp-area="Category" asp-controller="Category" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtCategory["CategoryId"])">
-                  <a class="btn btn-sm" type="button" asp-area="Category" asp-controller="Category" asp-action="Add" asp-route-ProductId="@Convert.ToInt32(dtCategory["CategoryId"])">
+                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtCategory["CategoryId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Category" asp-controller="Category" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtCategory["CategoryId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="button" onclick="return DeleteConf();">

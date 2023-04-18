@@ -109,15 +109,15 @@ namespace ECommerce.Areas.Products.Controllers
                 }
             }
             
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin");
         }
 
         // GET: ProductsController/Delete/5
         public ActionResult Delete(int ProductId)
         {
             if (Convert.ToBoolean(productsDAL.PR_Product_Delete(ProductId)))
-                return RedirectToAction("Index");
-            return View("Index");
+                return RedirectToAction("Admin");
+            return View("Admin");
         }
     }
 }

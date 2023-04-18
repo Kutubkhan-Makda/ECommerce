@@ -49,7 +49,7 @@ namespace ECommerce.DAL
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Manufacturer_SelectByPK");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Category_SelectbyPK");
                 sqlDB.AddInParameter(dbCMD, "CategoryId", SqlDbType.Int, CategoryId);
 
                 DataTable dt = new DataTable();

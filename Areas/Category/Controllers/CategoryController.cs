@@ -36,25 +36,29 @@ namespace ECommerce.Areas.Category.Controllers
             }
             return View("CategoryAddEdit");
         }
-        
-        public ActionResult Delete(int id)
-        {
-            return View();
+
+        public IActionResult Save(Areas.Category.Models.Category categoryModel)
+        { 
+            if(Convert.ToBoolean(categoryDAL.PR_Category_Save(categoryModel.CategoryId,categoryModel.CategoryName)))
+            {
+                if(categoryModel.CategoryId == null)
+                {
+                    TempData["ContactInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["ContactInsertMsg"] = "Record Updated Successfully";
+                }
+            }
+            
+            return RedirectToAction("Admin");
         }
 
-        // POST: CategoryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int CategoryId)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (Convert.ToBoolean(categoryDAL.PR_Category_Delete(CategoryId)))
+                return RedirectToAction("Admin");
+            return View("Admin");
         }
     }
 }
