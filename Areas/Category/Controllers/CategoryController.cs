@@ -5,6 +5,8 @@ using System.Data;
 
 namespace ECommerce.Areas.Category.Controllers
 {
+    [Area("Category")]
+    [Route("Category/[Controller]/[action]")]
     public class CategoryController : Controller
     {
         CategoryDAL categoryDAL = new CategoryDAL();
