@@ -1,18 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using ECommerce.Auth;
+using ECommerce.DAL;
 
 namespace ECommerce.Areas.Manufacturer.Controllers
 {
-    [Area("Category")]
-    [Route("Category/[Controller]/[action]")]
+    [Area("Manufacturer")]
+    [Route("Manufacturer/[Controller]/[action]")]
     //[CheckAdminAccess]
     public class ManufacturerController : Controller
     {
+        ManufacturerDAL manufacturerDAL = new ManufacturerDAL();
         // GET: ManufacturerController
-        public ActionResult Index()
+        public ActionResult Admin()
         {
-            return View();
+            DataTable dtManufacturer = manufacturerDAL.PR_Manufacturer_SelectAll();
+            return View("ManufacturerListAdmin",dtManufacturer);
         }
 
         // GET: ManufacturerController/Details/5

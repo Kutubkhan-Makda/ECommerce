@@ -6,32 +6,17 @@
 *@
 @model ECommerce.Areas.Category.Models.Category
 
-<div class="page-bar">
-    <ul class="page-breadcrumb">
-        <li>
-            <a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i>&nbsp;Home</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <span>State Add/Edit</span>
-            <i class="fa fa-circle"></i>
-        </li>
-    </ul>
-</div>
-
 <div class="row margin-top-10">
     <div class="col-md-12">
         <div class="col-md-9">
-            <!-- BEGIN SAMPLE FORM PORTLET-->
-            <div class="portlet light bordered">
-                <div class="portlet-title">
+            <div class="portlet light bordered card shadow mb-4">
+                <div class="portlet-title card-header">
                     <div class="caption">
-                        <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject font-dark sbold uppercase">State Add/Edit</span>
+                        <span class="card-title h2">Category ADD/EDIT</span>
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    <h4 class="font-green-sharp">@TempData["StateInsertMsg"]</h4>
+                    <h4 class="font-green-sharp">@TempData["CategoryInsertMsg"]</h4>
                     <form class="form-horizontal" role="form" method="post" asp-area="Category" asp-controller="Category" asp-action="Save">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @Html.HiddenFor(x=>x.CategoryId)
@@ -39,8 +24,16 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Category Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" asp-for="CategoryName" placeholder="Enter Category Name" />
+                                    <input type="text" class="form-control" asp-for="CategoryName" placeholder="Enter Product Name" />
                                     <span asp-validation-for="CategoryName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-md-offset-3 col-md-9 justify-content-center align-items-center" style="display: flex;">
+                                        <input type="submit" class="btn mb-2 btn-success" value="Save" style="margin-inline-end: 1rem;"></input>
+                                        <a type="button" asp-area="Category" asp-controller="Category" asp-action="Admin" class="btn mb-2 btn-danger">Cancel</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
