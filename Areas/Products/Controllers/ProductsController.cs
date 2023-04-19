@@ -101,11 +101,11 @@ namespace ECommerce.Areas.Products.Controllers
             {
                 if(modelProducts.ProductId == null)
                 {
-                    TempData["ContactInsertMsg"] = "Record Inserted Successfully";
+                    TempData["ProductInsertMsg"] = "Record Inserted Successfully";
                 }
                 else
                 {
-                    TempData["ContactInsertMsg"] = "Record Updated Successfully";
+                    TempData["ProductInsertMsg"] = "Record Updated Successfully";
                 }
             }
             
