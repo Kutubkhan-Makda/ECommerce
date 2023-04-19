@@ -1,0 +1,104 @@
+@{
+    Layout = "_LayoutAdmin";
+}
+@using System.Data
+@model DataTable
+
+<div class="col-md-12 my-4">
+    <div class="row">
+        <div class="form-group col-auto mr-auto">
+            <h1 class="h2 mb-1">Manufacturer</h1>
+        </div>
+        <div class="form-group col-auto">
+            <a class="btn btn-primary float-right ml-3" asp-area="Manufacturer" asp-controller="Manufacturer" asp-action="Add" type="button">Add more +</a>
+        </div>
+    </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="toolbar">
+        <form class="form">
+          <div class="form-row">
+            <div class="form-group col-auto mr-auto">
+                <button type="button" class="btn" data-toggle="modal" data-target=".modal-slide"><span class="fe fe-filter fe-16 text-muted"></span></button>
+            </div>
+            <div class="form-group col-auto">
+              <label for="search" class="sr-only">Search</label>
+              <input type="text" class="form-control" id="search1" value="" placeholder="Search">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- table -->
+      <table class="table table-borderless table-hover">
+        <thead>
+          <tr>
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="all2">
+                <label class="custom-control-label" for="all2"></label>
+              </div>
+            </td>
+            <th>Manufacturer Id</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (DataRow dtManufacturer in Model.Rows)
+          {
+            <tr>
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="2474">
+                  <label class="custom-control-label" for="2474"></label>
+                </div>
+              </td>
+              <td>
+                <p class="mb-0 text-muted"><strong>@dtManufacturer["ManufacturerId"]</strong></p>
+              </td>
+              <td>
+                <p class="mb-0 text-muted">@dtManufacturer["ManufacturerName"]</p>
+              </td>
+              <td class="row">
+                <form method="post" asp-area="Manufacturer" asp-controller="Manufacturer" asp-action="Delete">
+                  <input type="hidden" name="ManufacturerId" value="@Convert.ToInt32(dtManufacturer["ManufacturerId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Manufacturer" asp-controller="Manufacturer" asp-action="Add" asp-route-ManufacturerId="@Convert.ToInt32(dtManufacturer["ManufacturerId"])">
+                    <span class="fe fe-24 fe-edit-3"></span>
+                  </a>
+                  <button class="btn btn-sm" type="button" onclick="return DeleteConf();">
+                    <span class="fe fe-24 fe-trash-2"></span>
+                  </button>
+                </form>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      <nav aria-label="Table Paging" class="mb-0 text-muted">
+        <ul class="pagination justify-content-center mb-0">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+@section Scripts
+{
+  <script>
+    function DeleteConf()
+    {
+        if (confirm("Are you sure you want to delete")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+  </script>
+}

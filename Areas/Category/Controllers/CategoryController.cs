@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.DAL;
 using System.Data;
+using ECommerce.Auth;
 
 namespace ECommerce.Areas.Category.Controllers
 {
     [Area("Category")]
     [Route("Category/[Controller]/[action]")]
+    //[CheckAdminAccess]
     public class CategoryController : Controller
     {
         CategoryDAL categoryDAL = new CategoryDAL();

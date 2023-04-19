@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.Auth;
 
 namespace ECommerce.Areas.Manufacturer.Controllers
 {
+    [Area("Category")]
+    [Route("Category/[Controller]/[action]")]
+    //[CheckAdminAccess]
     public class ManufacturerController : Controller
     {
         // GET: ManufacturerController
