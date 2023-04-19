@@ -1,0 +1,46 @@
+@{
+    Layout = "_LayoutAdmin";
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ECommerce.Areas.Manufacturer.Models.Manufacturer
+
+<div class="row margin-top-10">
+    <div class="col-md-12">
+        <div class="col-md-9">
+            <div class="portlet light bordered card shadow mb-4">
+                <div class="portlet-title card-header">
+                    <div class="caption">
+                        <span class="card-title h2">Manufacturer ADD/EDIT</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <h4 class="font-green-sharp">@TempData["ManufacturerInsertMsg"]</h4>
+                    <form class="form-horizontal" role="form" method="post" asp-area="Manufacturer" asp-controller="Manufacturer" asp-action="Save">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @Html.HiddenFor(x=>x.ManufacturerId)
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Manufacturer Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" asp-for="ManufacturerName" placeholder="Enter Product Name" />
+                                    <span asp-validation-for="ManufacturerName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-md-offset-3 col-md-9 justify-content-center align-items-center" style="display: flex;">
+                                        <input type="submit" class="btn mb-2 btn-success" value="Save" style="margin-inline-end: 1rem;"></input>
+                                        <a type="button" asp-area="Manufacturer" asp-controller="Manufacturer" asp-action="Admin" class="btn mb-2 btn-danger">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END SAMPLE FORM PORTLET-->
+        </div>
+    </div>
+</div>

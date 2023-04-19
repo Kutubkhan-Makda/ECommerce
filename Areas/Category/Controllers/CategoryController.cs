@@ -45,11 +45,11 @@ namespace ECommerce.Areas.Category.Controllers
             {
                 if(categoryModel.CategoryId == null)
                 {
-                    TempData["ContactInsertMsg"] = "Record Inserted Successfully";
+                    TempData["CategoryInsertMsg"] = "Record Inserted Successfully";
                 }
                 else
                 {
-                    TempData["ContactInsertMsg"] = "Record Updated Successfully";
+                    TempData["CategoryInsertMsg"] = "Record Updated Successfully";
                 }
             }
             

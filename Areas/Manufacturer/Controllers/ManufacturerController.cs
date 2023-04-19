@@ -19,73 +19,48 @@ namespace ECommerce.Areas.Manufacturer.Controllers
             return View("ManufacturerListAdmin",dtManufacturer);
         }
 
-        // GET: ManufacturerController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Add(int? ManufacturerId)
         {
-            return View();
+            if (ManufacturerId != null)
+            {
+                DataTable dt = manufacturerDAL.PR_Manufacturer_SelectbyPK(ManufacturerId);
+                if(dt.Rows.Count > 0)
+                {
+                    Areas.Manufacturer.Models.Manufacturer ManufacturerModel = new Areas.Manufacturer.Models.Manufacturer();
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        ManufacturerModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
+                        ManufacturerModel.ManufacturerName = (Convert.ToString(dr["ManufacturerName"]));
+                    }
+
+                    return View("ManufacturerAddEdit", ManufacturerModel);
+                } 
+            }
+            return View("ManufacturerAddEdit");
         }
 
-        // GET: ManufacturerController/Create
-        public ActionResult Create()
-        {
-            return View();
+        public IActionResult Save(Areas.Manufacturer.Models.Manufacturer ManufacturerModel)
+        { 
+            if(Convert.ToBoolean(manufacturerDAL.PR_Manufacturer_Save(ManufacturerModel.ManufacturerId,ManufacturerModel.ManufacturerName)))
+            {
+                if(ManufacturerModel.ManufacturerId == null)
+                {
+                    TempData["ManufacturerInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["ManufacturerInsertMsg"] = "Record Updated Successfully";
+                }
+            }
+            
+            return RedirectToAction("Admin");
         }
 
-        // POST: ManufacturerController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Delete(int ManufacturerId)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ManufacturerController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ManufacturerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ManufacturerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ManufacturerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (Convert.ToBoolean(manufacturerDAL.PR_Manufacturer_Delete(ManufacturerId)))
+                return RedirectToAction("Admin");
+            return View("Admin");
         }
     }
 }
