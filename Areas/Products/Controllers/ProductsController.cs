@@ -80,7 +80,7 @@ namespace ECommerce.Areas.Products.Controllers
         {
             if (modelProducts.ImageUrl != null)
             {
-                string FilePath = "wwwroot\\Admin\assets\aproduct";
+                string FilePath = "wwwroot\\Images";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
                 if (!Directory.Exists(path))

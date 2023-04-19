@@ -21,6 +21,7 @@
                     <form class="form-horizontal" role="form" method="post" asp-area="Products" asp-controller="Products" asp-action="Save">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @Html.HiddenFor(x=>x.ProductId)
+                        @Html.HiddenFor(x=>x.ImageUrl)
                         <div class="form-body">
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Product Name</label>
@@ -78,9 +79,8 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Image</label>
                                 <div class="col-md-9">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile" style="margin-left: 15px;width: 95.5%;">Choose file...</label>
-                                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                    <input class="form-control" type="file" asp-for="File" placeholder="Upload File"/>
+                                    
                                 </div>
                             </div>
                         <div class="form-actions">
