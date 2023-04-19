@@ -32,7 +32,7 @@
                 </div>
                 <div class="portlet-body form">
                     <h4 class="font-green-sharp">@TempData["StateInsertMsg"]</h4>
-                    <form class="form-horizontal" role="form" method="post" asp-controller="Category" asp-action="Save">
+                    <form class="form-horizontal" role="form" method="post" asp-area="Category" asp-controller="Category" asp-action="Save">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @Html.HiddenFor(x=>x.CategoryId)
                         <div class="form-body">
