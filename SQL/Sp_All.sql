@@ -443,6 +443,7 @@ CREATE PROCEDURE [dbo].[PR_Manufacturer_SelectByPK]
 
 AS
 SELECT 
+		[dbo].[Manufacturer].[ManufacturerId],
 		[dbo].[Manufacturer].[ManufacturerName]
 
 FROM   [dbo].[Manufacturer]
