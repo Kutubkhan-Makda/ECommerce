@@ -8,7 +8,7 @@ namespace ECommerce.Areas
         [CheckAdminAccess]
         public IActionResult Home()
         {
-            return View("../Home/Index");
+            return View("../Home/Dashboard");
         }
 
         public IActionResult Index()
