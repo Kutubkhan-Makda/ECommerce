@@ -76,7 +76,7 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsAddEdit");
         }
 
-        public IActionResult Save(Areas.Products.Models.Products modelProducts)
+        public IActionResult Save(ECommerce.Areas.Products.Models.Products modelProducts)
         {
             if (modelProducts.ImageUrl != null)
             {
