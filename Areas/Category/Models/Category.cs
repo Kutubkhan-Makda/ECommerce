@@ -3,13 +3,13 @@
     public class Category
     {
         public int? CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public String CategoryName { get; set; }
         public DateTime CreatedON { get; set; }
     }
 
     public class CategoryDropdown
     {
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public String CategoryName { get; set; }
     }
 }

@@ -4,7 +4,7 @@ namespace ECommerce.Areas.Products.Models
 {
     public class Products
     {
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         public int CategoryId { get; set; }
         public String Name { get; set; }
         public int ManufacturerId { get; set; }
