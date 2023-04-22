@@ -90,7 +90,6 @@ namespace ECommerce.Areas.Products.Controllers
                 modelProducts.ImageUrl = "" + FilePath.Replace("wwwroot\\", "/") + "/" + modelProducts.File.FileName;
 
                 using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
-
                 {
                     modelProducts.File.CopyTo(stream);
                 }
