@@ -35,6 +35,7 @@ namespace ECommerce.DAL
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Category_DeleteByPK");
                 sqlDB.AddInParameter(dbCMD, "CategoryId", SqlDbType.Int, CategoryId);
+                
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
             }

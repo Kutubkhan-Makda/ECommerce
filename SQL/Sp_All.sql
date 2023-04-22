@@ -285,16 +285,18 @@ VALUES
 
 -------------------------------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_Category_UpdateByPK]
+ALTER PROCEDURE [dbo].[PR_Category_UpdateByPK]
 
 @CategoryId			int,
-@CategoryName		nvarchar(50)
+@CategoryName		nvarchar(50),
+@CreatedON			datetime
 
 AS
 
 UPDATE	[dbo].[Category]
 SET
-		[dbo].[Category].[CategoryName]			=	@CategoryName
+		[dbo].[Category].[CategoryName]			=	@CategoryName,
+		[dbo].[Category].[CreatedON]			=ISNULL (@CreatedON,getdate())
 
 WHERE	[dbo].[Category].CategoryId=@CategoryId
 
