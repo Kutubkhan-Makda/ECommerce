@@ -68,7 +68,9 @@ namespace ECommerce.DAL
 
         public bool? PR_Product_Save(int? ProductId,int? CategoryId,string? Name,int? ManufacturerId,string? Description,decimal? Price,decimal? Discount,int? Quantity,string? ImageUrl)
         {
-            SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD;
                 if(ProductId == null)
                 {
@@ -90,10 +92,6 @@ namespace ECommerce.DAL
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
-                
-            try
-            {
-                
             }
             catch (Exception ex)
             {
