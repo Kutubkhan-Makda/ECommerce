@@ -16,7 +16,7 @@ namespace ECommerce.Areas.Users.Controllers
 
         public ActionResult Admin()
         {
-            DataTable dtUsers = userDAL.PR_();
+            DataTable dtUsers = userDAL.PR_Users_SelectAll();
             return View("UsersListAdmin",dtUsers);
         }
 

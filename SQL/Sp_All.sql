@@ -1,3 +1,20 @@
+Create PROCEDURE [dbo].[PR_User_SelectAll]
+AS
+SELECT 
+		[dbo].[Users].[Name],
+		[dbo].[Role].[RoleType],
+		[dbo].[Users].[Email],
+		[dbo].[Users].[Address],
+		[dbo].[Users].[Password],
+		[dbo].[Users].[ImageUrl]
+
+FROM	[dbo].[Users]
+INNER JOIN [dbo].[Role]
+ON [dbo].[Role].[RoleId] = [dbo].[Users].[RoleId]
+
+
+--------------------------------------------------------------------------
+
 ALTER PROCEDURE [dbo].[PR_User_SelectbyPK]
 
 @UserId		int
