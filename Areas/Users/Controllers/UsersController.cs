@@ -14,6 +14,19 @@ namespace ECommerce.Areas.Users.Controllers
             return RedirectToAction("Home","Admin");
         }
 
+        public ActionResult Admin()
+        {
+            DataTable dtUsers = userDAL.PR_();
+            return View("UsersListAdmin",dtUsers);
+        }
+
+        public ActionResult Delete(int UserId)
+        {
+            if (Convert.ToBoolean(userDAL.PR_User_DeleteByPK(UserId)))
+                return RedirectToAction("Admin");
+            return View("Admin");
+        }
+
         public IActionResult Save(Areas.Users.Models.Users modelUser)
         {
             if (modelUser.ImageUrl != null)
@@ -28,7 +41,6 @@ namespace ECommerce.Areas.Users.Controllers
                 modelUser.ImageUrl = "" + FilePath.Replace("wwwroot\\", "/") + "/" + modelUser.File.FileName;
 
                 using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
-
                 {
                     modelUser.File.CopyTo(stream);
                 }
