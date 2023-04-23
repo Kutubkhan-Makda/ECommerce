@@ -76,9 +76,10 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsAddEdit");
         }
 
-        public IActionResult Save(ECommerce.Areas.Products.Models.Products modelProducts)
+        [HttpPost]
+        public IActionResult Save(Areas.Products.Models.Products modelProducts)
         {
-            if (modelProducts.ImageUrl != null)
+            if (modelProducts.File != null)
             {
                 string FilePath = "wwwroot\\Images";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);

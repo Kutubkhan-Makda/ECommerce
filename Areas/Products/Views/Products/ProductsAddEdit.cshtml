@@ -19,7 +19,7 @@
                 <div class="portlet-body form">
                     <h4 class="font-green-sharp">@TempData["ProductInsertMsg"]</h4>
                     <form class="form-horizontal" role="form" method="post" asp-area="Products" asp-controller="Products" asp-action="Save">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!--div asp-validation-summary="ModelOnly" class="text-danger"--><!--/div-->
                         @Html.HiddenFor(x=>x.ProductId)
                         @Html.HiddenFor(x=>x.ImageUrl)
                         <div class="form-body">
@@ -80,7 +80,6 @@
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Image</label>
                                 <div class="col-md-9">
                                     <input class="form-control" type="file" asp-for="File" placeholder="Upload File"/>
-                                    
                                 </div>
                             </div>
                         <div class="form-actions">
