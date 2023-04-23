@@ -93,7 +93,6 @@ namespace ECommerce.Areas.Products.Controllers
                 {
                     modelProducts.File.CopyTo(stream);
                 }
-
             }
              
             if(Convert.ToBoolean(productsDAL.PR_Product_Save(modelProducts.ProductId,modelProducts.CategoryId,modelProducts.Name,modelProducts.ManufacturerId,modelProducts.Description,modelProducts.Price,modelProducts.Discount,modelProducts.Quantity,modelProducts.ImageUrl)))
