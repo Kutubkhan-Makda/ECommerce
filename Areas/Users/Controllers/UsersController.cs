@@ -5,6 +5,8 @@ using System.Data;
 
 namespace ECommerce.Areas.Users.Controllers
 {
+    [Area("Users")]
+    [Route("Users/[Controller]/[action]")]
     public class UsersController : Controller
     {
         UserDAL userDAL = new UserDAL();
@@ -16,7 +18,7 @@ namespace ECommerce.Areas.Users.Controllers
 
         public ActionResult Admin()
         {
-            DataTable dtUsers = userDAL.PR_Users_SelectAll();
+            DataTable dtUsers = userDAL.PR_User_SelectAll();
             return View("UsersListAdmin",dtUsers);
         }
 

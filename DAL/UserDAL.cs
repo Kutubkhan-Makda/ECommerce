@@ -7,12 +7,12 @@ namespace ECommerce.DAL
 {
     public class UserDAL:DALConnection
     {
-        public DataTable PR_Users_SelectAll()
+        public DataTable PR_User_SelectAll()
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Users_SelectAll");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_SelectAll");
 
                 DataTable dt = new DataTable();
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))

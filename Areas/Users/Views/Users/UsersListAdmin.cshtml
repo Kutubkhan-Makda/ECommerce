@@ -39,8 +39,11 @@
                 <label class="custom-control-label" for="all2"></label>
               </div>
             </td>
-            <th>Users Id</th>
+            <th>Profile</th>
             <th>Users Name</th>
+            <th>Role Type</th>
+            <th>Email</th>
+            <th>Address</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -55,10 +58,21 @@
                 </div>
               </td>
               <td>
-                <p class="mb-0 text-muted"><strong>@dtUsers["UserId"]</strong></p>
+                <div class="avatar avatar-md">
+                  <img src=@dtUsers["ImageUrl"] alt="..." class="avatar-img rounded-circle">
+                </div>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtUsers["UsersName"]</p>
+                <p class="mb-0 text-muted">@dtUsers["Name"]</p>
+              </td>
+              <td>
+                <p class="mb-0 text-muted">@dtUsers["RoleType"]</p>
+              </td>
+              <td>
+                <p class="mb-0 text-muted">@dtUsers["Email"]</p>
+              </td>
+              <td>
+                <p class="mb-0 text-muted">@dtUsers["Address"]</p>
               </td>
               <td class="row">
                 <form method="post" asp-area="Users" asp-controller="Users" asp-action="Delete">

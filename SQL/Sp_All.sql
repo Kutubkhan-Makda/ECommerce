@@ -1,11 +1,11 @@
-Create PROCEDURE [dbo].[PR_User_SelectAll]
+Alter PROCEDURE [dbo].[PR_User_SelectAll]
 AS
 SELECT 
+		[dbo].[Users].[UserId],
 		[dbo].[Users].[Name],
 		[dbo].[Role].[RoleType],
 		[dbo].[Users].[Email],
 		[dbo].[Users].[Address],
-		[dbo].[Users].[Password],
 		[dbo].[Users].[ImageUrl]
 
 FROM	[dbo].[Users]
