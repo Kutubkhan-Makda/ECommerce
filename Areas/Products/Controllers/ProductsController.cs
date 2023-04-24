@@ -27,7 +27,7 @@ namespace ECommerce.Areas.Products.Controllers
         }
 
         public IActionResult Add(int? ProductId)
-         {
+        {
             DataTable dtDropdownCategory = categoryDAL.PR_Category_SelectAll();
 
             List<Areas.Category.Models.CategoryDropdown> listCategory = new List<Areas.Category.Models.CategoryDropdown>();
