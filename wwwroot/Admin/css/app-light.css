@@ -7685,16 +7685,20 @@ select {
     margin-left: -0.75rem; }
 
 .avatar-sm img {
-  width: 32px; }
+  width: 32px;
+  height: 32px; }
 
 .avatar-md img {
-  width: 48px; }
+  width: 48px; 
+  height: 48px;}
 
 .avatar-lg img {
-  width: 64px; }
+  width: 64px;
+  height: 64px; }
 
 .avatar-xl img {
-  width: 110px; }
+  width: 110px; 
+  height: 110px;}
 
 .squircle {
   height: 84px;
