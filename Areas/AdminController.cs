@@ -8,17 +8,17 @@ namespace ECommerce.Areas
         //[CheckAdminAccess]
         public IActionResult Home()
         {
-            return View("../Home/Dashboard");
+            return View("../Admin/Dashboard");
         }
 
         public IActionResult Index()
         {
-            return View("../Home/Login");
+            return View("../Admin/Login");
         }
 
         public IActionResult Register()
         {
-            return View("../Home/Register");
+            return View("../Admin/Register");
         }
     }
 }
