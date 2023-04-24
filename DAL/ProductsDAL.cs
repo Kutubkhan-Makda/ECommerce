@@ -68,9 +68,7 @@ namespace ECommerce.DAL
 
         public bool? PR_Product_Save(int? ProductId,int? CategoryId,string? Name,int? ManufacturerId,string? Description,decimal? Price,decimal? Discount,int? Quantity,string? ImageUrl)
         {
-            try
-            {
-                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+            SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD;
                 if(ProductId == null)
                 {
@@ -88,10 +86,13 @@ namespace ECommerce.DAL
                 sqlDB.AddInParameter(dbCMD, "@Price",SqlDbType.Decimal, Price);
                 sqlDB.AddInParameter(dbCMD, "@Discount",SqlDbType.Decimal, Discount);
                 sqlDB.AddInParameter(dbCMD, "@Quantity",SqlDbType.Int, Quantity);
-                sqlDB.AddInParameter(dbCMD, "@ImageUrl",SqlDbType.VarChar, ImageUrl);
+                sqlDB.AddInParameter(dbCMD, "@ImageUrl",SqlDbType.NVarChar, ImageUrl);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
+            try
+            {
+                
             }
             catch (Exception ex)
             {

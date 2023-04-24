@@ -44,7 +44,7 @@ ALTER PROCEDURE [dbo].[PR_User_Insert]
 @Password		varchar(10),
 @Address		varchar(200),
 @CreatedON		Datetime,
-@ImageUrl		varchar(200)
+@ImageUrl		nvarchar(200)
 
 AS
 
@@ -76,7 +76,7 @@ ALTER PROCEDURE [dbo].[PR_User_UpdateByPK]
 @Email			varchar(50),
 @Password		varchar(10),
 @Address		varchar(200),
-@ImageUrl		varchar(200)
+@ImageUrl		nvarchar(200)
 
 AS
 
@@ -174,7 +174,7 @@ WHERE	[dbo].[Products].ProductId=@ProductId
 
 ----------------------------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_Product_Insert]
+ALTER PROCEDURE [dbo].[PR_Product_Insert]
 
 @CategoryId			int,
 @Name				varchar(100),
@@ -183,7 +183,7 @@ CREATE PROCEDURE [dbo].[PR_Product_Insert]
 @Price				decimal(10, 2),
 @Discount			decimal(10, 2),
 @Quantity			int,
-@ImageUrl			varchar(200)
+@ImageUrl			nvarchar(200)
 
 AS
 
@@ -213,7 +213,7 @@ VALUES
 
 -----------------------------------------------------------------------------------
 
-CREATE PROCEDURE [dbo].[PR_Product_UpdateByPK]
+ALTER PROCEDURE [dbo].[PR_Product_UpdateByPK]
 
 @ProductId			int,
 @CategoryId			int,
@@ -223,7 +223,7 @@ CREATE PROCEDURE [dbo].[PR_Product_UpdateByPK]
 @Price				decimal(10, 2),
 @Discount			decimal(10, 2),
 @Quantity			int,
-@ImageUrl			varchar(200)
+@ImageUrl			nvarchar(200)
 
 AS
 

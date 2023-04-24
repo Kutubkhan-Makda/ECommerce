@@ -86,7 +86,7 @@ namespace ECommerce.DAL
                 sqlDB.AddInParameter(dbCMD, "@Email", SqlDbType.VarChar, Email);
                 sqlDB.AddInParameter(dbCMD, "@Password", SqlDbType.VarChar, Password);
                 sqlDB.AddInParameter(dbCMD, "@Address", SqlDbType.VarChar, Address);
-                sqlDB.AddInParameter(dbCMD, "@ImageUrl", SqlDbType.VarChar, ImageUrl);
+                sqlDB.AddInParameter(dbCMD, "@ImageUrl", SqlDbType.NVarChar, ImageUrl);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);

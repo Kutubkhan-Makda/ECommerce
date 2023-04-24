@@ -81,7 +81,7 @@ namespace ECommerce.Areas.Products.Controllers
         {
             if (modelProducts.File != null)
             {
-                string FilePath = "wwwroot\\Images";
+                string FilePath = "wwwroot\\Upload";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
                 if (!Directory.Exists(path))
@@ -91,9 +91,11 @@ namespace ECommerce.Areas.Products.Controllers
                 modelProducts.ImageUrl = "" + FilePath.Replace("wwwroot\\", "/") + "/" + modelProducts.File.FileName;
 
                 using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+
                 {
                     modelProducts.File.CopyTo(stream);
                 }
+
             }
              
             if(Convert.ToBoolean(productsDAL.PR_Product_Save(modelProducts.ProductId,modelProducts.CategoryId,modelProducts.Name,modelProducts.ManufacturerId,modelProducts.Description,modelProducts.Price,modelProducts.Discount,modelProducts.Quantity,modelProducts.ImageUrl)))
