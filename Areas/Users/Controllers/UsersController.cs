@@ -22,6 +22,12 @@ namespace ECommerce.Areas.Users.Controllers
             return View("UsersListAdmin",dtUsers);
         }
 
+        public ActionResult Admin1()
+        {
+            DataTable dtUsers = userDAL.PR_User_SelectAll();
+            return View("UsersList",dtUsers);
+        }
+
         public ActionResult Delete(int UserId)
         {
             if (Convert.ToBoolean(userDAL.PR_User_DeleteByPK(UserId)))
