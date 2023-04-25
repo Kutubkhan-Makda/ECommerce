@@ -20,7 +20,7 @@ namespace ECommerce.Areas
         {
             return View("../Admin/Register");
         }
-
+        
         public IActionResult Calendar()
         {
             return View("../Admin/Calendar");
