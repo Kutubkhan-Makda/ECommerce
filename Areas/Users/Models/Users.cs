@@ -8,6 +8,8 @@
         public String Name { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
+        public int CountryID { get; set; }
+        public String CountryName { get; set; }
         public String Address { get; set; }
         public IFormFile File { get; set; }
         public String ImageUrl { get; set; }
