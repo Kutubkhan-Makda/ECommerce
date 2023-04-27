@@ -14,7 +14,7 @@
                 </div>
                 <div class="portlet-body form">
                     <h4 class="font-green-sharp">@TempData["ProductInsertMsg"]</h4>
-                    <form class="form-horizontal" role="form" method="post" asp-area="Products" asp-controller="Products" asp-action="Save">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" asp-area="Products" asp-controller="Products" asp-action="Save">
                         <!--div asp-validation-summary="ModelOnly" class="text-danger"--><!--/div-->
                         @Html.HiddenFor(x=>x.ProductId)
                         @Html.HiddenFor(x=>x.ImageUrl)
