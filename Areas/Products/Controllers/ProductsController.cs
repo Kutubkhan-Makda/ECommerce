@@ -81,7 +81,7 @@ namespace ECommerce.Areas.Products.Controllers
         {
             if (modelProducts.File != null)
             {
-                string FilePath = "wwwroot\\Upload";
+                string FilePath = "wwwroot\\Images";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
                 if (!Directory.Exists(path))
