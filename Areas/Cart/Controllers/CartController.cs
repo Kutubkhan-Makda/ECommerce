@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Areas.Cart.Controllers
 {
-    [Area("Product")]
-    [Route("Products/[Controller]/[action]")]
+    [Area("Cart")]
+    [Route("Cart/[Controller]/[action]")]
     public class CartController : Controller
     {
         // GET: CartController
