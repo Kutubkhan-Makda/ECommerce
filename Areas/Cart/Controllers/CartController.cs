@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Areas.Cart.Controllers
 {
+    [Area("Product")]
+    [Route("Products/[Controller]/[action]")]
     public class CartController : Controller
     {
         // GET: CartController
         public ActionResult Index()
         {
-            return View();
+            return View("Cart");
         }
 
         // GET: CartController/Details/5
