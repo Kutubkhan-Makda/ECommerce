@@ -15,7 +15,7 @@ namespace ECommerce.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("../Users/Home");
         }
 
         public IActionResult Privacy()
