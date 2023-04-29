@@ -36,6 +36,7 @@ namespace ECommerce.DAL
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_Insert");
+                sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserID());
                 sqlDB.AddInParameter(dbCMD, "@ProductId",SqlDbType.Int, ProductId);
                 sqlDB.AddInParameter(dbCMD, "@Quantity",SqlDbType.Int, Quantity);
                 sqlDB.AddInParameter(dbCMD, "@TotalPrice",SqlDbType.Decimal, TotalPrice);
