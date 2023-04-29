@@ -173,5 +173,11 @@ namespace ECommerce.Areas.Users.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index","Admin");
         }
+
+        public IActionResult LogoutUser()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Home");
+        }
     }
 }
