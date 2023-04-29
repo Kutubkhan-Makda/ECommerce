@@ -30,6 +30,24 @@ namespace ECommerce.DAL
             }
         }
 
+        public bool? PR_Cart_Delete(int? CartId)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_DeleteByPK");
+                sqlDB.AddInParameter(dbCMD, "CartId", SqlDbType.Int, CartId);
+                sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
+                
+                int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                return (vReturnValue == -1 ? false : true);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public bool? PR_Cart_InsertItem(int? ProductId,int? Quantity,decimal? TotalPrice)
         {
             SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);

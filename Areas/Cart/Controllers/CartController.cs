@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.DAL;
 using ECommerce.Auth;
+using System.Data;
 
 namespace ECommerce.Areas.Cart.Controllers
 {
@@ -14,7 +15,8 @@ namespace ECommerce.Areas.Cart.Controllers
         // GET: CartController
         public ActionResult Index()
         {
-            return View("Cart");
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
+            return View("Cart",dtCart);
         }
 
         // GET: CartController/Details/5
@@ -69,24 +71,11 @@ namespace ECommerce.Areas.Cart.Controllers
         }
 
         // GET: CartController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int CartId)
         {
-            return View();
-        }
-
-        // POST: CartController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (Convert.ToBoolean(cartDAL.PR_Cart_Delete(CartId)))
+                return RedirectToAction("Index");
+            return View("Index");
         }
     }
 }

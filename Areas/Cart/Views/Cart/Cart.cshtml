@@ -1,6 +1,8 @@
 @{
 	Layout = "_layout";
 }
+@using System.Data
+@model DataTable
 
 <!-- breadcrumb -->
 <div class="container">
@@ -29,49 +31,39 @@
 								<th class="column-3">Price</th>
 								<th class="column-4">Quantity</th>
 								<th class="column-5">Total</th>
+								<th class="column-6">Remove</th>
+								<th></th>
 							</tr>
-							<tr class="table_row">
-								<td class="column-1">
-									<div class="how-itemcart1">
-										<img src="~/Users/images/item-cart-04.jpg" alt="IMG">
-									</div>
-								</td>
-								<td class="column-2">Fresh Strawberries</td>
-								<td class="column-3">$ 36.00</td>
-								<td class="column-4">
-									<div class="wrap-num-product flex-w m-l-auto m-r-0">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-minus"></i>
+							@foreach (DataRow dtCart in Model.Rows)
+							{
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src=@dtCart["ImageUrl"] alt="IMG">
 										</div>
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-plus"></i>
+									</td>
+									<td class="column-2">@dtCart["Name"]</td>
+									<td class="column-3">$ @dtCart["Price"]</td>
+									<td class="column-4">
+										<div class="wrap-num-product flex-w m-l-auto m-r-0">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
 										</div>
-									</div>
-								</td>
-								<td class="column-5">$ 36.00</td>
-							</tr>
-							<tr class="table_row">
-								<td class="column-1">
-									<div class="how-itemcart1">
-										<img src="~/Users/images/item-cart-05.jpg" alt="IMG">
-									</div>
-								</td>
-								<td class="column-2">Lightweight Jacket</td>
-								<td class="column-3">$ 16.00</td>
-								<td class="column-4">
-									<div class="wrap-num-product flex-w m-l-auto m-r-0">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-minus"></i>
-										</div>
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-plus"></i>
-										</div>
-									</div>
-								</td>
-								<td class="column-5">$ 16.00</td>
-							</tr>
+									</td>
+									<td class="column-5">$ 36.00</td>
+									<td class="column-6">
+										<form method="post" asp-area="Cart" asp-controller="Cart" asp-action="Delete">
+											<input type="hidden" name="CartId" value="@dtCart["CartId"]">
+											<button type="submit" onclick="return DeleteConf();"><i class="zmdi zmdi-delete"></i></button>
+										</form>
+									</td>
+								</tr>
+							}
 						</table>
 					</div>
 					<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
@@ -88,6 +80,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
 				<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
 					<h4 class="mtext-109 cl2 p-b-30">
@@ -164,3 +157,19 @@
 		</div>
 	</div>
 </form>
+
+
+@section Scripts
+{
+  <script>
+    function DeleteConf()
+    {
+        if (confirm("Are you sure you want to delete")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+  </script>
+}
