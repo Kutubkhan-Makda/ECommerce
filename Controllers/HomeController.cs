@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.Auth;
 
 namespace ECommerce.Controllers
 {
-    //[]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -19,6 +19,7 @@ namespace ECommerce.Controllers
             return View("../Users/LoginRegister");
         }
 
+        [CheckUsersAccess]
         public IActionResult Index()
         {
             return View("../Users/Home");
