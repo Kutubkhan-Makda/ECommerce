@@ -13,6 +13,11 @@ namespace ECommerce.Controllers
             _logger = logger;
         }
 
+        public IActionResult Login()
+        {
+            return View("../Users/LoginRegister");
+        }
+
         public IActionResult Index()
         {
             return View("../Users/Home");
