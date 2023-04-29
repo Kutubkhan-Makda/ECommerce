@@ -8,12 +8,12 @@ namespace ECommerce.DAL
 {
     public class CartDAL:DALConnection
     {
-        public DataTable PR_Cart_SelectAll()
+        public DataTable PR_Cart_SelectbyUser()
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_SelectAll");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_SelectbyUser");
                 sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserID());
 
                 DataTable dt = new DataTable();
