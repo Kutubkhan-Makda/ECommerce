@@ -33,15 +33,15 @@ namespace ECommerce.Auth
             return ImageUrl;
         }
 
-        public static int? UserID()
+        public static int? UserId()
         {
-            int? UserID = null;
+            int? UserId = null;
 
-            if(_HttpContextAccessor.HttpContext.Session.GetString("UserID") != null)
+            if(_HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
             {
-                UserID = Convert.ToInt32(_HttpContextAccessor.HttpContext.Session.GetInt32("UserID"));
+                UserId = Convert.ToInt32(_HttpContextAccessor.HttpContext.Session.GetInt32("UserId"));
             }
-            return UserID;
+            return UserId;
         }
     }
 }

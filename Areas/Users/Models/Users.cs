@@ -2,7 +2,7 @@
 {
     public class Users
     {
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int RoleId { get; set; }
         public String RoleType { get; set; }
         public String Name { get; set; }

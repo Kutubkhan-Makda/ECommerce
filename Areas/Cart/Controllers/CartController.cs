@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.DAL;
+using ECommerce.Auth;
 
 namespace ECommerce.Areas.Cart.Controllers
 {
     [Area("Cart")]
     [Route("Cart/[Controller]/[action]")]
+    [CheckUsersAccess]
     public class CartController : Controller
     {
         CartDAL cartDAL = new CartDAL();
