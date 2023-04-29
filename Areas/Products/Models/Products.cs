@@ -11,6 +11,7 @@ namespace ECommerce.Areas.Products.Models
         public String Description { get; set; }
         public Decimal Price { get; set; }
         public Decimal Discount { get; set; }
+        public Decimal TotalPrice { get; set; }
         public int Quantity { get; set; }
         public DateTime ExpDate { get; set; }
         public IFormFile File { get; set; }
