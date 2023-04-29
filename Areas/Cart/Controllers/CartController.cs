@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.DAL;
 
 namespace ECommerce.Areas.Cart.Controllers
 {
@@ -7,6 +8,7 @@ namespace ECommerce.Areas.Cart.Controllers
     [Route("Cart/[Controller]/[action]")]
     public class CartController : Controller
     {
+        CartDAL cartDAL = new CartDAL();
         // GET: CartController
         public ActionResult Index()
         {
@@ -47,18 +49,21 @@ namespace ECommerce.Areas.Cart.Controllers
         }
 
         // POST: CartController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+        public IActionResult Insert(Areas.Cart.Models.Cart cartModel)
+        { 
+            if(Convert.ToBoolean(cartDAL.PR_Cart_InsertItem(cartModel.ProductId,cartModel.Quantity,cartModel.TotalPrice)))
             {
-                return RedirectToAction(nameof(Index));
+                if(cartModel.CartId == null)
+                {
+                    TempData["CategoryInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["CategoryInsertMsg"] = "Record Updated Successfully";
+                }
             }
-            catch
-            {
-                return View();
-            }
+            
+            return RedirectToAction("Index");
         }
 
         // GET: CartController/Delete/5
