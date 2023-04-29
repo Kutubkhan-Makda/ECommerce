@@ -8,7 +8,7 @@ namespace ECommerce.Areas.Category.Controllers
 {
     [Area("Category")]
     [Route("Category/[Controller]/[action]")]
-    //[CheckAdminAccess]
+    [CheckAdminAccess]
     public class CategoryController : Controller
     {
         CategoryDAL categoryDAL = new CategoryDAL();

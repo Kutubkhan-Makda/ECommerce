@@ -8,7 +8,7 @@ namespace ECommerce.Areas.Manufacturer.Controllers
 {
     [Area("Manufacturer")]
     [Route("Manufacturer/[Controller]/[action]")]
-    //[CheckAdminAccess]
+    [CheckAdminAccess]
     public class ManufacturerController : Controller
     {
         ManufacturerDAL manufacturerDAL = new ManufacturerDAL();
