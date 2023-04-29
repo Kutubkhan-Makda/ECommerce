@@ -16,7 +16,7 @@ namespace ECommerce.Areas.Users.Controllers
             return RedirectToAction("Home","Admin");
         }
 
-        public ActionResult User()
+        public ActionResult Users()
         {
             return RedirectToAction("Index","Home");
         }
@@ -138,7 +138,7 @@ namespace ECommerce.Areas.Users.Controllers
             if(error != null)
             {
                 TempData["Error"] = error;
-                return RedirectToAction("Index");
+                return RedirectToAction("Users");
             }
             else{
                 DataTable dt = userDAL.PR_User_SelectByIDPass(modelUser.Email,modelUser.Password);
@@ -158,14 +158,14 @@ namespace ECommerce.Areas.Users.Controllers
                 else
                 {
                     TempData["Error"] = "User Name and Password is Incorect";
-                    return RedirectToAction("User");
+                    return RedirectToAction("Users");
                 }
                 if(HttpContext.Session.GetString("Email") != null && HttpContext.Session.GetString("Password") != null)
                 {
                     return RedirectToAction("Index","Home");
                 }
             }
-            return RedirectToAction("User");
+            return RedirectToAction("Users");
         }
 
         public IActionResult Logout()
