@@ -55,7 +55,7 @@ namespace ECommerce.Areas.Cart.Controllers
         // POST: CartController/Edit/5
         public IActionResult Insert(Areas.Cart.Models.Cart cartModel)
         { 
-            if(Convert.ToBoolean(cartDAL.PR_Cart_InsertItem(cartModel.ProductId,cartModel.Quantity,cartModel.TotalPrice)))
+            if(Convert.ToBoolean(cartDAL.PR_Cart_InsertItem(cartModel.ProductId,cartModel.Quantity,cartModel.Price)))
             {
                 if(cartModel.CartId == null)
                 {
