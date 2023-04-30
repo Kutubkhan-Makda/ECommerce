@@ -26,19 +26,6 @@ namespace ECommerce.Areas.Cart.Controllers
             return View("CartAdmin",dtCart);
         }
 
-        // GET: CartController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: CartController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CartController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
