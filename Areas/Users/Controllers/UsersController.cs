@@ -22,7 +22,7 @@ namespace ECommerce.Areas.Users.Controllers
             return RedirectToAction("Index","Home");
         }
 
-        //[CheckAdminAccess]
+        [CheckAdminAccess]
         public ActionResult Admin()
         {
             DataTable dtUsers = userDAL.PR_User_SelectAll();
@@ -42,6 +42,7 @@ namespace ECommerce.Areas.Users.Controllers
             return View("UsersProfile",dtUsers); 
         }
 
+        [CheckAdminAccess]
         public ActionResult Delete(int UserId)
         {
             if (Convert.ToBoolean(userDAL.PR_User_DeleteByPK(UserId)))
