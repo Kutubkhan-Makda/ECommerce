@@ -226,7 +226,7 @@
                                     @dtProduct["Name"]
                                 </a>
                                 <span class="stext-105 cl3">
-                                    ₹@dtProduct["Price"]
+                                    ₹ @dtProduct["Price"]
                                 </span>
                                 <form method="post" asp-area="Cart" asp-controller="Cart" asp-action="Insert">
                                     <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
