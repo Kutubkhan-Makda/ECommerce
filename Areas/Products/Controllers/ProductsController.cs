@@ -7,7 +7,6 @@ namespace ECommerce.Areas.Products.Controllers
 {
     [Area("Products")]
     [Route("Products/[Controller]/[action]")]
-    //[CheckAdminAccess]
     public class ProductsController : Controller
     {
         ProductsDAL productsDAL = new ProductsDAL();
@@ -20,12 +19,14 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsList",dtProduct);
         }
 
+        [CheckAdminAccess]
         public ActionResult Admin()
         {
             DataTable dtProduct = productsDAL.PR_Product_SelectAll();
             return View("ProductsListAdmin",dtProduct);
         }
 
+        [CheckAdminAccess]
         public IActionResult Add(int? ProductId)
         {
             DataTable dtDropdownCategory = categoryDAL.PR_Category_SelectAll();
@@ -76,6 +77,7 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsAddEdit");
         }
 
+        [CheckAdminAccess]
         [HttpPost]
         public IActionResult Save(Areas.Products.Models.Products modelProducts)
         {
@@ -114,6 +116,7 @@ namespace ECommerce.Areas.Products.Controllers
         }
 
         // GET: ProductsController/Delete/5
+        [CheckAdminAccess]
         public ActionResult Delete(int ProductId)
         {
             if (Convert.ToBoolean(productsDAL.PR_Product_Delete(ProductId)))
