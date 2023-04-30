@@ -1,6 +1,9 @@
 ﻿@using ECommerce.Auth;
 @using System.Data
 @model DataTable
+@{
+	decimal Total = 0;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,6 +247,7 @@
 				<ul class="header-cart-wrapitem w-full">
 					@foreach (DataRow dtCart in Model.Rows)
 					{
+						Total += (int)@dtCart["Quantity"] * (decimal)@dtCart["Price"];
 						<li class="header-cart-item flex-w flex-t m-b-12">
 							<div class="header-cart-item-img">
 								<img src=@dtCart["ImageUrl"] alt="IMG">
@@ -257,13 +261,6 @@
 								<span class="header-cart-item-info">
 									@dtCart["Quantity"] x @dtCart["Price"]
 								</span>
-
-								<script>
-									let total = 0;
-									total = total + (@dtCart["Quantity"] * @dtCart["Price"]);
-									let Total = document.getElementById("total");
-									Total.innerHTML(total);
-								</script>
 							</div>
 						</li>
 					}
@@ -271,7 +268,7 @@
 				
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: <span id="total"></span>
+						Total: @Total
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">

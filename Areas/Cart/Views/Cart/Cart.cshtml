@@ -3,6 +3,9 @@
 }
 @using System.Data
 @model DataTable
+@{
+	decimal Total = 0;
+}
 
 <!-- breadcrumb -->
 <div class="container">
@@ -36,6 +39,7 @@
 							</tr>
 							@foreach (DataRow dtCart in Model.Rows)
 							{
+								Total += (int)@dtCart["Quantity"] * (decimal)@dtCart["Price"];
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
@@ -94,7 +98,7 @@
 						</div>
 						<div class="size-209">
 							<span class="mtext-110 cl2">
-								₹79.65
+								₹@Total
 							</span>
 						</div>
 					</div>
@@ -145,7 +149,7 @@
 						</div>
 						<div class="size-209 p-t-1">
 							<span class="mtext-110 cl2">
-								₹79.65
+								₹@Total
 							</span>
 						</div>
 					</div>
