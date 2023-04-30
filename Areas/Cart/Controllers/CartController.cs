@@ -15,14 +15,14 @@ namespace ECommerce.Areas.Cart.Controllers
         [CheckUsersAccess]
         public ActionResult Index()
         {
-            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(@CV.UserId());
             return View("Cart",dtCart);
         }
 
         [CheckAdminAccess]
-        public ActionResult Admin()
+        public ActionResult Admin(int UserId)
         {
-            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(UserId);
             return View("CartAdmin",dtCart);
         }
 

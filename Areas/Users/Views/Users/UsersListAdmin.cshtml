@@ -41,10 +41,22 @@
                         <span class="text-muted sr-only">Action</span>
                         </button>
                         <div class="dropdown-menu m-2">
-                        <a class="dropdown-item" href="#"><i class="fe fe-user fe-12 mr-4"></i>Profile</a>
-                        <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
-                        <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
-                        <a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-4"></i>Delete</a>
+                            <form method="post" asp-area="Users" asp-controller="Users" asp-action="">
+                                <input type="hidden" name="UserId" value="@Convert.ToInt32(dtUsers["UserId"])">
+                                <button class="dropdown-item" type="submit"><i class="fe fe-user fe-12 mr-4"></i>Profile</button>
+                            </form>
+                            <form method="post" asp-area="Cart" asp-controller="Cart" asp-action="Admin">
+                                <input type="hidden" name="UserId" value="@Convert.ToInt32(dtUsers["UserId"])">
+                                <button class="dropdown-item" type="submit"><i class="fe fe-shopping-cart fe-12 mr-4"></i>Cart</button>
+                            </form>
+                            <form method="post" asp-area="" asp-controller="" asp-action="">
+                                <input type="hidden" name="UserId" value="@Convert.ToInt32(dtUsers["UserId"])">
+                                <button class="dropdown-item" href="#"><i class="fe fe-shopping-bag fe-12 mr-4"></i>Orders</button>
+                            </form>
+                            <form method="post" asp-area="Users" asp-controller="Users" asp-action="Delete">
+                                <input type="hidden" name="UserId" value="@Convert.ToInt32(dtUsers["UserId"])">
+                                <a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-4"></i>Delete</a>
+                            </form>
                         </div>
                     </div>
                     </div>
