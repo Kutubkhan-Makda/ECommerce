@@ -19,6 +19,12 @@ namespace ECommerce.Areas.Cart.Controllers
             return View("Cart",dtCart);
         }
 
+        public ActionResult Admin()
+        {
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
+            return View("Cart",dtCart);
+        }
+
         // GET: CartController/Details/5
         public ActionResult Details(int id)
         {
