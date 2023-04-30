@@ -3,14 +3,14 @@
 }
 @using System.Data
 @model DataTable
-@{
-	decimal Total = 0;
-}
 
 <div class="col-md-12 my-4">
     <div class="row">
         <div class="form-group col-auto mr-auto">
-            <h1 class="h2 mb-1">Cart</h1>
+            <h1 class="h2 mb-1">Users</h1>
+        </div>
+        <div class="form-group col-auto">
+            <a class="btn btn-primary float-right ml-3" asp-area="Users" asp-controller="Users" asp-action="Add" type="button">Add more +</a>
         </div>
     </div>
   <div class="card shadow">
@@ -39,17 +39,17 @@
                 <label class="custom-control-label" for="all2"></label>
               </div>
             </td>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Product Price</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
+            <th>Profile</th>
+            <th>Users Name</th>
+            <th>Role Type</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          @foreach (DataRow dtCart in Model.Rows)
+          @foreach (DataRow dtUsers in Model.Rows)
           {
-            Total += (int)@dtCart["Quantity"] * (decimal)@dtCart["Price"];
             <tr>
               <td>
                 <div class="custom-control custom-checkbox">
@@ -59,37 +59,36 @@
               </td>
               <td>
                 <div class="avatar avatar-md">
-                  <img src=@dtCart["ImageUrl"] alt="..." class="avatar-img rounded-circle">
+                  <img src=@dtUsers["ImageUrl"] alt="..." class="avatar-img rounded-circle" style="object-fit: contain !important;">
                 </div>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCart["Name"]</p>
+                <p class="mb-0 text-muted">@dtUsers["Name"]</p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCart["Price"]</p>
+                <p class="mb-0 text-muted">@dtUsers["RoleType"]</p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCart["Quantity"]</p>
+                <p class="mb-0 text-muted">@dtUsers["Email"]</p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCart["TotalPrice"]</p>
+                <p class="mb-0 text-muted">@dtUsers["Address"]</p>
+              </td>
+              <td class="row">
+                <form method="post" asp-area="Users" asp-controller="Users" asp-action="Delete">
+                  <input type="hidden" name="UserId" value="@Convert.ToInt32(dtUsers["UserId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Users" asp-controller="Users" asp-action="Add" asp-route-UserId="@Convert.ToInt32(dtUsers["UserId"])">
+                    <span class="fe fe-24 fe-edit-3"></span>
+                  </a>
+                  <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
+                    <span class="fe fe-24 fe-trash-2"></span>
+                  </button>
+                </form>
               </td>
             </tr>
           }
         </tbody>
       </table>
-      <div class="toolbar">
-        <form class="form">
-          <div class="form-row" style="margin-inline: 3rem;">
-            <div class="form-group col-auto mr-auto" style="margin-left: 48rem;">
-                <h2 class="h4 mb-1">Total Price :</h2>
-            </div>
-            <div class="form-group col-auto">
-                <h2 class="h4 mb-1">@Total</h2>
-            </div>
-          </div>
-        </form>
-      </div>
       <nav aria-label="Table Paging" class="mb-0 text-muted">
         <ul class="pagination justify-content-center mb-0">
           <li class="page-item"><a class="page-link" href="#">Previous</a></li>
