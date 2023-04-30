@@ -4,115 +4,53 @@
 @using System.Data
 @model DataTable
 
-<div class="col-md-12 my-4">
-    <div class="row">
-        <div class="form-group col-auto mr-auto">
-            <h1 class="h2 mb-1">Users</h1>
-        </div>
-        <div class="form-group col-auto">
-            <a class="btn btn-primary float-right ml-3" asp-area="Users" asp-controller="Users" asp-action="Add" type="button">Add more +</a>
-        </div>
-    </div>
-  <div class="card shadow">
-    <div class="card-body">
-      <div class="toolbar">
-        <form class="form">
-          <div class="form-row">
-            <div class="form-group col-auto mr-auto">
-                <button type="button" class="btn" data-toggle="modal" data-target=".modal-slide"><span class="fe fe-filter fe-16 text-muted"></span></button>
-            </div>
-            <div class="form-group col-auto">
-              <label for="search" class="sr-only">Search</label>
-              <input type="text" class="form-control" id="search1" value="" placeholder="Search">
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <!-- table -->
-      <table class="table table-borderless table-hover">
-        <thead>
-          <tr>
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="all2">
-                <label class="custom-control-label" for="all2"></label>
-              </div>
-            </td>
-            <th>Profile</th>
-            <th>Users Name</th>
-            <th>Role Type</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach (DataRow dtUsers in Model.Rows)
-          {
-            <tr>
-              <td>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="2474">
-                  <label class="custom-control-label" for="2474"></label>
-                </div>
-              </td>
-              <td>
-                <div class="avatar avatar-md">
-                  <img src=@dtUsers["ImageUrl"] alt="..." class="avatar-img rounded-circle" style="object-fit: contain !important;">
-                </div>
-              </td>
-              <td>
-                <p class="mb-0 text-muted">@dtUsers["Name"]</p>
-              </td>
-              <td>
-                <p class="mb-0 text-muted">@dtUsers["RoleType"]</p>
-              </td>
-              <td>
-                <p class="mb-0 text-muted">@dtUsers["Email"]</p>
-              </td>
-              <td>
-                <p class="mb-0 text-muted">@dtUsers["Address"]</p>
-              </td>
-              <td class="row">
-                <form method="post" asp-area="Users" asp-controller="Users" asp-action="Delete">
-                  <input type="hidden" name="UserId" value="@Convert.ToInt32(dtUsers["UserId"])">
-                  <a class="btn btn-sm" type="button" asp-area="Users" asp-controller="Users" asp-action="Add" asp-route-UserId="@Convert.ToInt32(dtUsers["UserId"])">
-                    <span class="fe fe-24 fe-edit-3"></span>
-                  </a>
-                  <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
-                    <span class="fe fe-24 fe-trash-2"></span>
-                  </button>
-                </form>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-      <nav aria-label="Table Paging" class="mb-0 text-muted">
-        <ul class="pagination justify-content-center mb-0">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
-    </div>
+<div class="row align-items-center my-4">
+  <div class="col">
+    <h2 class="h3 mb-0 page-title">Contacts</h2>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-primary"><span class="fe fe-filter fe-12 mr-2"></span>Create</button>
   </div>
 </div>
 
-@section Scripts
-{
-  <script>
-    function DeleteConf()
+<div class="row">
+    @foreach (DataRow dtUsers in Model.Rows)
     {
-        if (confirm("Are you sure you want to delete")) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        <div class="col-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                    <img src=@dtUsers["ImageUrl"] alt="..." class="avatar-img rounded-circle">
+                    </a>
+                </div>
+                <div class="card-text my-2">
+                    <strong class="card-title my-0">@dtUsers["Name"]</strong>
+                    <p class="small text-muted mb-0">Accumsan Consulting</p>
+                    <small class="small"><span class="badge badge-light text-muted">@dtUsers["CountryName"]</span></small>
+                </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                        <small><span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                    </div>
+                    <div class="col-auto">
+                    <div class="file-action">
+                        <button type="button" class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu m-2">
+                        <a class="dropdown-item" href="#"><i class="fe fe-user fe-12 mr-4"></i>Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
+                        <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
+                        <a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-4"></i>Delete</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div> <!-- /.card-footer -->
+            </div>
+        </div>
     }
-  </script>
-}
+</div>

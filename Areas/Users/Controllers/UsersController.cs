@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.DAL;
 using System.Data;
+using ECommerce.Auth;
 
 namespace ECommerce.Areas.Users.Controllers
 {
@@ -21,6 +22,7 @@ namespace ECommerce.Areas.Users.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        //[CheckAdminAccess]
         public ActionResult Admin()
         {
             DataTable dtUsers = userDAL.PR_User_SelectAll();
@@ -30,7 +32,7 @@ namespace ECommerce.Areas.Users.Controllers
         public ActionResult Admin1()
         {
             DataTable dtUsers = userDAL.PR_User_SelectAll();
-            return View("UsersList",dtUsers);
+            return View("UsersListAdmin1",dtUsers);
         }
 
         public ActionResult Delete(int UserId)
