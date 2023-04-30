@@ -66,7 +66,7 @@ namespace ECommerce.DAL
             }
         }
 
-        public bool? PR_User_Save(int? UserId, string? Name, string? Email, string? Password, string? Address, string? ImageUrl)
+        public bool? PR_User_Save(int? UserId, string? UserName, string? Email, string? Password, string? Address, string? ImageUrl)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace ECommerce.DAL
                     dbCMD = sqlDB.GetStoredProcCommand("PR_User_UpdateByPK");
                     sqlDB.AddInParameter(dbCMD, "@UserId", SqlDbType.Int, UserId);
                 }
-                sqlDB.AddInParameter(dbCMD, "@Name", SqlDbType.VarChar, Name);
+                sqlDB.AddInParameter(dbCMD, "@UserName", SqlDbType.VarChar, UserName);
                 sqlDB.AddInParameter(dbCMD, "@Email", SqlDbType.VarChar, Email);
                 sqlDB.AddInParameter(dbCMD, "@Password", SqlDbType.VarChar, Password);
                 sqlDB.AddInParameter(dbCMD, "@Address", SqlDbType.VarChar, Address);

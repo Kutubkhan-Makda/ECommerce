@@ -5,7 +5,7 @@
         public int? UserId { get; set; }
         public int RoleId { get; set; }
         public String RoleType { get; set; }
-        public String Name { get; set; }
+        public String UserName { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
         public int CountryID { get; set; }

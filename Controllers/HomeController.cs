@@ -25,7 +25,7 @@ namespace ECommerce.Controllers
         [CheckUsersAccess]
         public IActionResult Index()
         {
-            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(@CV.UserId());
             return View("../Users/Home",dtCart);
         }
 

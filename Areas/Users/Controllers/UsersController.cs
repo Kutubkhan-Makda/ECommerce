@@ -62,7 +62,7 @@ namespace ECommerce.Areas.Users.Controllers
 
             }
              
-            if(Convert.ToBoolean(userDAL.PR_User_Save(modelUser.UserId,modelUser.Name,modelUser.Email,modelUser.Password,modelUser.Address,modelUser.ImageUrl)))
+            if(Convert.ToBoolean(userDAL.PR_User_Save(modelUser.UserId,modelUser.UserName,modelUser.Email,modelUser.Password,modelUser.Address,modelUser.ImageUrl)))
             {
                 if(modelUser.UserId == null)
                 {
@@ -104,7 +104,7 @@ namespace ECommerce.Areas.Users.Controllers
                     {
                         HttpContext.Session.SetInt32("UserId",Convert.ToInt32(dr["UserId"]));
                         HttpContext.Session.SetString("Email",dr["Email"].ToString());
-                        HttpContext.Session.SetString("Name",dr["Name"].ToString());
+                        HttpContext.Session.SetString("UserName",dr["UserName"].ToString());
                         HttpContext.Session.SetString("Password",dr["Password"].ToString());
                         HttpContext.Session.SetString("RoleType",dr["RoleType"].ToString());
                         HttpContext.Session.SetString("ImageUrl",dr["ImageUrl"].ToString());
@@ -150,7 +150,7 @@ namespace ECommerce.Areas.Users.Controllers
                     {
                         HttpContext.Session.SetInt32("UserId",Convert.ToInt32(dr["UserId"]));
                         HttpContext.Session.SetString("Email",dr["Email"].ToString());
-                        HttpContext.Session.SetString("Name",dr["Name"].ToString());
+                        HttpContext.Session.SetString("UserName",dr["UserName"].ToString());
                         HttpContext.Session.SetString("Password",dr["Password"].ToString());
                         HttpContext.Session.SetString("RoleType",dr["RoleType"].ToString());
                         HttpContext.Session.SetString("ImageUrl",dr["ImageUrl"].ToString());

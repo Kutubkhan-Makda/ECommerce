@@ -1,0 +1,14 @@
+@{
+    Layout = "_LayoutAdmin";
+}
+@using System.Data
+@model DataTable
+@{
+	decimal Total = 0;
+}
+
+<div>Cart</div>
+@foreach (DataRow dtCart in Model.Rows)
+{
+    <div>@dtCart["UserName"]</div> 
+}
