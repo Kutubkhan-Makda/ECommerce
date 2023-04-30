@@ -5,7 +5,7 @@
         public int? CartId { get; set; }
         public int UserId { get; set; }
         public int ProductId { get; set; }
-        public int Price { get; set; }
+        public Decimal Price { get; set; }
         public String Name { get; set; }
         public String ImageUrl { get; set; }
         public int Quantity { get; set; }
