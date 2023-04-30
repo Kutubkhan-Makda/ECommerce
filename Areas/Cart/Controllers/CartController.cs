@@ -23,7 +23,7 @@ namespace ECommerce.Areas.Cart.Controllers
         public ActionResult Admin()
         {
             DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
-            return View("Cart",dtCart);
+            return View("CartAdmin",dtCart);
         }
 
         // GET: CartController/Details/5
