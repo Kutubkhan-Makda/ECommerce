@@ -29,6 +29,11 @@ namespace ECommerce.Controllers
             return View("../Users/Home",dtCart);
         }
 
+        public IActionResult About()
+        {
+            return View("../Users/About");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
