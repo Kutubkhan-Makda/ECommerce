@@ -30,27 +30,27 @@ namespace ECommerce.DAL
             }
         }
 
-        public DataTable PR_Cart_SelectAll()
-        {
-            try
-            {
-                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_SelectAll");
-                //sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
-
-                DataTable dt = new DataTable();
-                using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
-                {
-                    dt.Load(dr);
-                }
-                return dt;
-
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
+        //public DataTable PR_Cart_SelectAll()
+        //{
+        //    try
+        //    {
+        //        SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+        //        DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_SelectAll");
+        //        //sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
+//
+        //        DataTable dt = new DataTable();
+        //        using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
+        //        {
+        //            dt.Load(dr);
+        //        }
+        //        return dt;
+//
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
 
         public bool? PR_Cart_Delete(int? CartId)
         {

@@ -8,17 +8,18 @@ namespace ECommerce.Areas.Cart.Controllers
 {
     [Area("Cart")]
     [Route("Cart/[Controller]/[action]")]
-    [CheckUsersAccess]
     public class CartController : Controller
     {
         CartDAL cartDAL = new CartDAL();
         // GET: CartController
+        [CheckUsersAccess]
         public ActionResult Index()
         {
             DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
             return View("Cart",dtCart);
         }
 
+        [CheckAdminAccess]
         public ActionResult Admin()
         {
             DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
@@ -59,6 +60,7 @@ namespace ECommerce.Areas.Cart.Controllers
         }
 
         // POST: CartController/Edit/5
+        [CheckUsersAccess]
         public IActionResult Insert(Areas.Cart.Models.Cart cartModel)
         { 
             if(Convert.ToBoolean(cartDAL.PR_Cart_InsertItem(cartModel.ProductId,cartModel.Quantity,cartModel.Price)))
@@ -77,6 +79,7 @@ namespace ECommerce.Areas.Cart.Controllers
         }
 
         // GET: CartController/Delete/5
+        [CheckUsersAccess]
         public ActionResult Delete(int CartId)
         {
             if (Convert.ToBoolean(cartDAL.PR_Cart_Delete(CartId)))
