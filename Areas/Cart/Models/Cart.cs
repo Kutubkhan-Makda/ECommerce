@@ -4,6 +4,7 @@
     {
         public int? CartId { get; set; }
         public int UserId { get; set; }
+        public String UserName { get; set; }
         public int ProductId { get; set; }
         public Decimal Price { get; set; }
         public String Name { get; set; }

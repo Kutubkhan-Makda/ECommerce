@@ -5,12 +5,17 @@
 @model DataTable
 @{
 	decimal Total = 0;
+  string Name = "";
+}
+@foreach (DataRow dtCart in Model.Rows)
+{
+  Name = (string)@dtCart["UserName"];
 }
 
 <div class="col-md-12 my-4">
     <div class="row">
         <div class="form-group col-auto mr-auto">
-            <h1 class="h2 mb-1">Cart</h1>
+            <h1 class="h2 mb-1">@Name Cart</h1>
         </div>
     </div>
   <div class="card shadow">
@@ -49,6 +54,7 @@
         <tbody>
           @foreach (DataRow dtCart in Model.Rows)
           {
+            Name = (string)@dtCart["UserName"];
             Total += (int)@dtCart["Quantity"] * (decimal)@dtCart["Price"];
             <tr>
               <td>
