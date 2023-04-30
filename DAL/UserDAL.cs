@@ -28,7 +28,7 @@ namespace ECommerce.DAL
             }
         }
 
-        public DataTable PR_User_SelectbyPK(int UserId)
+        public DataTable PR_User_SelectbyPK(int? UserId)
         {
             try
             {

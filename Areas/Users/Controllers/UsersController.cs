@@ -29,10 +29,17 @@ namespace ECommerce.Areas.Users.Controllers
             return View("UsersListAdmin",dtUsers);
         }
 
-        public ActionResult Admin1()
+        [CheckUsersAccess]
+        public ActionResult Profile()
         {
-            DataTable dtUsers = userDAL.PR_User_SelectAll();
-            return View("UsersListAdmin1",dtUsers);
+            DataTable dtUsers = userDAL.PR_User_SelectbyPK(@CV.UserId());
+            return View("UsersProfile",dtUsers); 
+        }
+
+        public ActionResult ProfileAdmin(int UserId)
+        {
+            DataTable dtUsers = userDAL.PR_User_SelectbyPK(UserId);
+            return View("UsersProfile",dtUsers); 
         }
 
         public ActionResult Delete(int UserId)
