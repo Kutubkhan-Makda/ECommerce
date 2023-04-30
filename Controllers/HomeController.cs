@@ -22,7 +22,7 @@ namespace ECommerce.Controllers
             return View("../Users/LoginRegister");
         }
 
-        [CheckUsersAccess]
+        //[CheckUsersAccess]
         public IActionResult Index()
         {
             DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(@CV.UserId());

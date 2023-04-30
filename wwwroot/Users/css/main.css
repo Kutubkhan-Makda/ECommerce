@@ -367,7 +367,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu > li > a {
   font-family: Poppins-Medium;
-  font-size: 14px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
@@ -386,9 +385,9 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   position: absolute;
   top:0;
   left:100%;
-  min-width: 178px;
+  min-width: 140px;
   max-width: 225px;
-  background-color: #fff;
+  background-color: #ffffffc3;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -422,7 +421,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .sub-menu a {
   font-family: Poppins-Regular;
-  font-size: 14px;
   line-height: 1.5;
   color: #555;
 

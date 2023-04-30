@@ -93,27 +93,31 @@
 						</li>
 
 						<li>
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 						</li>
 
 						<li>
-							<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+							<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 								<i class="zmdi zmdi-favorite-outline"></i>
 							</a>
 						</li>
 
-						<li class="active-menu main-menu menu-desktop">
-							<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
-								<i class="zmdi zmdi-account"></i>
-							</a>
-							<ul class="sub-menu">
-								<li><img src="" alt=""></li>
-								<li><a href=""><i class="zmdi zmdi-account"></i> Profile</a></li>
-								<li><i class="zmdi zmdi-power"></i> Log Out</li>
+						<div class="menu-desktop">
+							<ul class="main-menu">
+								<li>
+									<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+										<i class="zmdi zmdi-account"></i>
+									</a>
+									<ul class="sub-menu">
+										<li><a href=""><img src=@CV.ImageUrl() alt="profile" style="width: 100px;height: 100px;border-radius: 50%;"></a></li>
+										<li><a asp-area="Users" asp-controller="Users" asp-action="Profile"><i class="zmdi zmdi-account"></i> Profile</a></li>
+										<li><a asp-area="Users" asp-controller="Users" asp-action="LogoutUser"><i class="zmdi zmdi-power"></i> Log Out</a></li>
+									</ul>
+								</li>
 							</ul>
-						</li>
+						</div>
 					</div>
 				</nav>
 			</div>	
