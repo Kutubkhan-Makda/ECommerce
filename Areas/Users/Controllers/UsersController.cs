@@ -36,10 +36,11 @@ namespace ECommerce.Areas.Users.Controllers
             return View("UsersProfile",dtUsers); 
         }
 
+        [CheckAdminAccess]
         public ActionResult ProfileAdmin(int UserId)
         {
             DataTable dtUsers = userDAL.PR_User_SelectbyPK(UserId);
-            return View("UsersProfile",dtUsers); 
+            return View("AdminProfile",dtUsers); 
         }
 
         [CheckAdminAccess]
@@ -50,6 +51,7 @@ namespace ECommerce.Areas.Users.Controllers
             return View("Admin");
         }
 
+        [CheckAdminAccess]
         public IActionResult Save(Areas.Users.Models.Users modelUser)
         {
             if (modelUser.File != null)
