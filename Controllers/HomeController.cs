@@ -34,6 +34,16 @@ namespace ECommerce.Controllers
             return View("../Users/About");
         }
 
+        public IActionResult Blog()
+        {
+            return View("../Users/Blog");
+        }
+
+        public IActionResult BlogDetail()
+        {
+            return View("../Users/BlogDetail");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
