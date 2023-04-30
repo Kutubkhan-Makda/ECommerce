@@ -2,11 +2,14 @@
 using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
 using ECommerce.Auth;
+using ECommerce.DAL;
+using System.Data;
 
 namespace ECommerce.Controllers
 {
     public class HomeController : Controller
     {
+        CartDAL cartDAL = new CartDAL();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -22,7 +25,8 @@ namespace ECommerce.Controllers
         [CheckUsersAccess]
         public IActionResult Index()
         {
-            return View("../Users/Home");
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser();
+            return View("../Users/Home",dtCart);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
