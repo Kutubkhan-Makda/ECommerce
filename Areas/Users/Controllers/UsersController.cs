@@ -42,9 +42,9 @@ namespace ECommerce.Areas.Users.Controllers
 
         public IActionResult Save(Areas.Users.Models.Users modelUser)
         {
-            if (modelUser.ImageUrl != null)
+            if (modelUser.File != null)
             {
-                string FilePath = "wwwroot\\Admin\assets\avatars";
+                string FilePath = "wwwroot\\UsersImages";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
                 if (!Directory.Exists(path))
