@@ -13,6 +13,6 @@
         //public Orders order {get;set;}
         //public List<OrderItems> listOrderItems {get;set;}
         //public OrderItems orderItem {get;set;}
-
+        public int? ProductT { get; set; }
     }
 }
