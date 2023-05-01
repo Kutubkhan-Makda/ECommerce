@@ -1,14 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using ECommerce.Areas.Products.Models;
+using ECommerce.Auth;
 
 namespace ECommerce.Areas.Sales.Controllers
 {
     public class SalesController : Controller
     {
-        // GET: SalesController
-        public ActionResult Index()
+        [CheckAdminAccess]
+        public ActionResult Admin()
         {
-            return View();
+            DataTable dtProduct = productsDAL.PR_Product_SelectAll();
+            return View("ProductsListAdmin",dtProduct);
         }
 
         // GET: SalesController/Details/5
