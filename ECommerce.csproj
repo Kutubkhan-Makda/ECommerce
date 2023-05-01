@@ -29,6 +29,9 @@
     <Folder Include="Areas\Products\Data\" />
     <Folder Include="Areas\Products\Models\" />
     <Folder Include="Areas\Products\Views\" />
+    <Folder Include="Areas\Sales\Data\" />
+    <Folder Include="Areas\Sales\Models\" />
+    <Folder Include="Areas\Sales\Views\" />
     <Folder Include="Areas\Users\Controllers\" />
     <Folder Include="Areas\Users\Data\" />
     <Folder Include="Areas\Users\Models\" />
@@ -37,7 +40,7 @@
 
   <ItemGroup>
     <PackageReference Include="EnterpriseLibrary.Data.NetCore" Version="6.3.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
   </ItemGroup>
 
 </Project>
