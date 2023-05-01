@@ -23,7 +23,7 @@ namespace ECommerce.Areas.Sales.Controllers
         [HttpPost]
         public IActionResult Save(Areas.Sales.Models.Sales modelSales)
         { 
-            if(Convert.ToBoolean(salesDAL.PR_Sales_Insert()))
+            if(Convert.ToBoolean(salesDAL.PR_Sales_Insert(modelSales.ProductId,modelSales.Discount)))
             {
                 if(modelSales.SalesId == null)
                 {

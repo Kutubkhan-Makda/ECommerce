@@ -28,13 +28,12 @@ namespace ECommerce.DAL
             }
         }
 
-        public bool? PR_Sales_Insert(int? SalesId,int? ProductId,decimal? Discount)
+        public bool? PR_Sales_Insert(int? ProductId,decimal? Discount)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_Insert");
-                sqlDB.AddInParameter(dbCMD, "SalesId", SqlDbType.Int, SalesId);
                 sqlDB.AddInParameter(dbCMD, "@ProductId",SqlDbType.Int, ProductId);
                 sqlDB.AddInParameter(dbCMD, "@Discount",SqlDbType.Int, Discount);
 
