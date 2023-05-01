@@ -21,11 +21,11 @@ namespace ECommerce.Areas.Sales.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save(Areas.Products.Models.Products modelProducts)
+        public IActionResult Save(Areas.Sales.Models.Sales modelSales)
         { 
-            if(Convert.ToBoolean(salesDAL.PR_()))
+            if(Convert.ToBoolean(salesDAL.PR_Sales_Insert()))
             {
-                if(modelProducts.ProductId == null)
+                if(modelSales.SalesId == null)
                 {
                     TempData["ProductInsertMsg"] = "Record Inserted Successfully";
                 }

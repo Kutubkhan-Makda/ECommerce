@@ -28,6 +28,25 @@ namespace ECommerce.DAL
             }
         }
 
+        public bool? PR_Sales_Insert(int? SalesId,int? ProductId,decimal? Discount)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_Insert");
+                sqlDB.AddInParameter(dbCMD, "SalesId", SqlDbType.Int, SalesId);
+                sqlDB.AddInParameter(dbCMD, "@ProductId",SqlDbType.Int, ProductId);
+                sqlDB.AddInParameter(dbCMD, "@Discount",SqlDbType.Int, Discount);
+
+                int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                return (vReturnValue == -1 ? false : true);
+            }
+            catch (Exception ex)
+            {
+                return null;    
+            }
+        }
+
         public bool? PR_Sales_Delete(int? SalesId)
         {
             try
