@@ -12,7 +12,7 @@ namespace ECommerce.DAL
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_SelectbyUser");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Sales_SelectAll");
 
                 DataTable dt = new DataTable();
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
@@ -33,7 +33,7 @@ namespace ECommerce.DAL
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Product_DeleteByPK");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Sales_DeleteByPK");
                 sqlDB.AddInParameter(dbCMD, "SalesId", SqlDbType.Int, SalesId);
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
