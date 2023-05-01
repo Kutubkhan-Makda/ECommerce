@@ -20,31 +20,22 @@ namespace ECommerce.Areas.Sales.Controllers
             return View("SalesListAdmin",dtSales);
         }
 
-        // GET: SalesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: SalesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SalesController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+        public IActionResult Save(Areas.Products.Models.Products modelProducts)
+        { 
+            if(Convert.ToBoolean(salesDAL.PR_()))
             {
-                return RedirectToAction(nameof(Index));
+                if(modelProducts.ProductId == null)
+                {
+                    TempData["ProductInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["ProductInsertMsg"] = "Record Updated Successfully";
+                }
             }
-            catch
-            {
-                return View();
-            }
+            
+            return RedirectToAction("Admin");
         }
 
         // GET: SalesController/Edit/5
