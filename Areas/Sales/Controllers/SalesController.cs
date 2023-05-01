@@ -7,13 +7,13 @@ using ECommerce.DAL;
 
 namespace ECommerce.Areas.Sales.Controllers
 {
+    [CheckAdminAccess]
     [Area("Sales")]
     [Route("Sales/[Controller]/[action]")]
     public class SalesController : Controller
     {
         SalesDAL salesDAL = new SalesDAL();
 
-        [CheckAdminAccess]
         public ActionResult Admin()
         {
             DataTable dtSales = salesDAL.PR_Sales_SelectAll();
@@ -68,25 +68,11 @@ namespace ECommerce.Areas.Sales.Controllers
             }
         }
 
-        // GET: SalesController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int SalesId)
         {
-            return View();
-        }
-
-        // POST: SalesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (Convert.ToBoolean(salesDAL.PR_Sales_Delete(SalesId)))
+                return RedirectToAction("Admin");
+            return View("Admin");
         }
     }
 }
