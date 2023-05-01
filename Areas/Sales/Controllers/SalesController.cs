@@ -38,27 +38,6 @@ namespace ECommerce.Areas.Sales.Controllers
             return RedirectToAction("Admin");
         }
 
-        // GET: SalesController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: SalesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         public ActionResult Delete(int SalesId)
         {
             if (Convert.ToBoolean(salesDAL.PR_Sales_Delete(SalesId)))
