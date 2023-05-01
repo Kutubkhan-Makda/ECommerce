@@ -33,7 +33,7 @@ namespace ECommerce.DAL
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_Insert");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Sales_Insert");
                 sqlDB.AddInParameter(dbCMD, "@ProductId",SqlDbType.Int, ProductId);
                 sqlDB.AddInParameter(dbCMD, "@Discount",SqlDbType.Int, Discount);
 
