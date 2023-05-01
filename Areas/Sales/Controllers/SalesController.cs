@@ -3,16 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using ECommerce.Areas.Products.Models;
 using ECommerce.Auth;
+using ECommerce.DAL;
 
 namespace ECommerce.Areas.Sales.Controllers
 {
+    [Area("Sales")]
+    [Route("Sales/[Controller]/[action]")]
     public class SalesController : Controller
     {
+        SalesDAL salesDAL = new SalesDAL();
+
         [CheckAdminAccess]
         public ActionResult Admin()
         {
-            DataTable dtProduct = productsDAL.PR_Product_SelectAll();
-            return View("ProductsListAdmin",dtProduct);
+            DataTable dtSales = salesDAL.PR_Sales_SelectAll();
+            return View("SalesListAdmin",dtSales);
         }
 
         // GET: SalesController/Details/5
