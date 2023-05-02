@@ -140,14 +140,14 @@
               </td>
               <td>@dtSales["Quantity"]</td>
               <td class="row">
-                <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtSales["ProductId"])">
+                <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Delete">
+                  <input type="hidden" name="SalesId" value="@Convert.ToInt32(dtSales["SalesId"])">
                   <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
                     <span class="fe fe-24 fe-eye"></span>
                   </button>
-                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@Convert.ToInt32(dtSales["ProductId"])">
+                  @*<a class="btn btn-sm" type="button" asp-area="Sales" asp-controller="Sales" asp-action="Add" asp-route-SalesId="@Convert.ToInt32(dtSales["SalesId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
-                  </a>
+                  </a>*@
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
                     <span class="fe fe-24 fe-trash-2"></span>
                   </button>
