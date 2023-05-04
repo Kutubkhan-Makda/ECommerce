@@ -33,14 +33,14 @@ namespace ECommerce.Areas.Users.Controllers
         public ActionResult Profile()
         {
             DataTable dtUsers = userDAL.PR_User_SelectbyPK(@CV.UserId());
-            return View("UsersProfile",dtUsers); 
+            return View("ProfileUsers",dtUsers); 
         }
 
         [CheckAdminAccess]
         public ActionResult ProfileAdmin(int UserId)
         {
             DataTable dtUsers = userDAL.PR_User_SelectbyPK(UserId);
-            return View("AdminProfile",dtUsers); 
+            return View("ProfileAdmin",dtUsers); 
         }
 
         [CheckAdminAccess]
