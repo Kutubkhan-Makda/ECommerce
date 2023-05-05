@@ -20,6 +20,11 @@ namespace ECommerce.Areas
         {
             return View("../Admin/Register");
         }
+
+        public IActionResult Notfound()
+        {
+            return View("../Admin/404");
+        }
         
         [CheckAdminAccess]
         public IActionResult Calendar()
