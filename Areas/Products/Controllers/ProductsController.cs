@@ -26,6 +26,12 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsListAdmin",dtProduct);
         }
 
+        public ActionResult Detail(int? ProductId)
+        {
+            DataTable dtProduct = productsDAL.PR_Product_SelectbyPK(ProductId);
+            return View("ProductsDetail",dtProduct);
+        }
+
         [CheckAdminAccess]
         public IActionResult Add(int? ProductId)
         {
