@@ -142,9 +142,9 @@
               <td class="row">
                 <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
                   <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
-                  <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
+                  <a class="btn btn-sm" asp-area="Products" asp-controller="Products" asp-action="Detail" asp-route-ProductId="@Convert.ToInt32(dtProduct["ProductId"])" data-toggle="modal" data-target=".modal-full">
                     <span class="fe fe-24 fe-eye"></span>
-                  </button>
+                  </a>
                   <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@Convert.ToInt32(dtProduct["ProductId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
