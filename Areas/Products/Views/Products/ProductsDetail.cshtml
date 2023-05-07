@@ -1,27 +1,32 @@
 @{
     Layout = "_LayoutAdmin";
 }
+@using System.Data
+@model DataTable
 
-<div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <button aria-label="" type="button" class="close px-2" style="font-size: 40px;" data-dismiss="modal" aria-hidden="true">
-    <span aria-hidden="true">×</span>
-  </button>
-  <div class="modal-dialog modal-dialog-centered" style="max-width: 1100px !important;margin-right: 200px;" role="document">
-    <div class="modal-content">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src=@dtProduct["ImageUrl"] class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">@dtProduct["Name"]</h5>
-              <p class="card-text">@dtProduct["Description"]</p>
-              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+@foreach (DataRow dtProduct in Model.Rows)
+{
+    <div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <button aria-label="" type="button" class="close px-2" style="font-size: 40px;" data-dismiss="modal" aria-hidden="true">
+            <span aria-hidden="true">×</span>
+        </button>
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 1100px !important;margin-right: 200px;" role="document">
+            <div class="modal-content">
+            <div class="card mb-3">
+                <div class="row g-0">
+                <div class="col-md-4">
+                    <img src=@dtProduct["ImageUrl"] class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h5 class="card-title">@dtProduct["Name"]</h5>
+                    <p class="card-text">@dtProduct["Description"]</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
+}
