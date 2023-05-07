@@ -152,35 +152,38 @@
                     <span class="fe fe-24 fe-trash-2"></span>
                   </button>
                 </form>
-                <form method="post">
+                <form asp-area="Sales" asp-controller="Sales" asp-action="Save">
                   <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
                   <button class="btn btn-sm" type="submit" data-toggle="modal" data-target="#verticalModal-sale">
                     <span class="fe fe-24 fe-truck"></span>
                   </button>
-                </form>
-                <div class="modal fade" id="verticalModal-sale" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content" style="padding: 0.5rem;">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="verticalModalTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+
+                  <div class="modal fade" id="verticalModal-sale" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content" style="padding: 0.5rem;">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="verticalModalTitle">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form method="post">
+                          
+                          <div class="form-group" style="padding: 0.5rem;">
+                            <label for="recipient-name" class="col-form-label">Discount :</label>
+                            <input type="text" class="form-control" name="Discount" id="recipient-name">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn mb-2 btn-primary">Save</button>
+                          </div>
+                        </form>
                       </div>
-                      <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Save">
-                        <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
-                        <div class="form-group" style="padding: 0.5rem;">
-                          <label for="recipient-name" class="col-form-label">Discount :</label>
-                          <input type="text" class="form-control" name="Discount" id="recipient-name">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn mb-2 btn-primary">Save</button>
-                        </div>
-                      </form>
                     </div>
                   </div>
-                </div>
+
+                </form>
+                
               </td>
             </tr>
 

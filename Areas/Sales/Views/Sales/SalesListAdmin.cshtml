@@ -114,6 +114,7 @@
             <th>Product Name</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Discount</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -139,6 +140,9 @@
                 <p class="mb-0 text-muted">@dtSales["Price"]</p>
               </td>
               <td>@dtSales["Quantity"]</td>
+              <td>
+                <p class="mb-0 text-muted">@dtSales["Discount"]</p>
+              </td>
               <td class="row">
                 <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Delete">
                   <input type="hidden" name="SalesId" value="@Convert.ToInt32(dtSales["SalesId"])">
