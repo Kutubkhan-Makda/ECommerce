@@ -166,7 +166,7 @@
               <td>@Quantity[j]</td>
               <td class="row">
                   <div style="display: none;" id="ModalId">@j</div>
-                  <button class="btn btn-sm" type="submit" onclick="return ModalDetail();" data-toggle="modal" data-target=".modal-full">
+                  <button class="btn btn-sm" type="submit" onclick="return ModalDetailP();" data-toggle="modal" data-target=".modal-full">
                     <span class="fe fe-24 fe-eye"></span>
                   </button>
                 <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
@@ -228,6 +228,15 @@
   </div>
 </div>
 
+<script type="text/javascript">
+    function ModalDetailP()
+    {
+      let K = document.getElementById("ModalId");
+      document.getElementById("ModalImgDetail").baseURI = "@ImageUrl[4]";
+      document.getElementById("ModalNameDetail").innerHTML = @Name[4];
+      return true;
+    }
+  </script>
 
 <div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <button aria-label="" type="button" class="close px-2" style="font-size: 40px;" data-dismiss="modal" aria-hidden="true">
@@ -270,15 +279,7 @@
   
 }
 
-@section Scripts
+@section Script
 {
-  <script>
-    function ModalDetail()
-    {
-      let K = document.getElementById("ModalId");
-      document.getElementById("ModalImgDetail").baseURI = "@ImageUrl[4]";
-      document.getElementById("ModalNameDetail").innerHTML = @Name[4];
-      return true;
-    }
-  </script>
+  
 }
