@@ -165,11 +165,12 @@
               </td>
               <td>@Quantity[j]</td>
               <td class="row">
-                <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@ProductId[j]">
-                  <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
+                  <div style="display: none;" id="ModalId">@j</div>
+                  <button class="btn btn-sm" type="submit" onclick="return ModalDetail();" data-toggle="modal" data-target=".modal-full">
                     <span class="fe fe-24 fe-eye"></span>
                   </button>
+                <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
+                  <input type="hidden" name="ProductId" value="@ProductId[j]">
                   <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@ProductId[j]">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
@@ -237,11 +238,11 @@
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src=@ImageUrl[i] class="img-fluid rounded-start" alt="...">
+            <img src="" id="ModalImgDetail" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">@Name[i]</h5>
+              <h5 class="card-title" id="ModalNameDetail"></h5>
               <p class="card-text">@Description[i]</p>
               <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
             </div>
@@ -265,11 +266,13 @@
             return false;
         }
     }
-  </script>
-  <script>
-    function ModalDetail(J)
+
+    function ModalDetail()
     {
-      return(k);
+      let K = document.getElementById("ModalId");
+      document.getElementById("ModalImgDetail").baseURI = "@ImageUrl[4]";
+      document.getElementById("ModalNameDetail").innerHTML = @Name[4];
+      return true;
     }
   </script>
 }
