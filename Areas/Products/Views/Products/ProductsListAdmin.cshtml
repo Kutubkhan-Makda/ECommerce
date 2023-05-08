@@ -143,7 +143,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (int j = 1; j < 1000; j++)
+          @for (int j = 1; j < i; j++)
           {
             <tr>
               <td>
@@ -158,19 +158,19 @@
                 </div>
               </td>
               <td>
-                <p class="mb-0 text-muted"><strong>@dtProduct["Name"]</strong></p>
+                <p class="mb-0 text-muted"><strong>@Name[j]</strong></p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtProduct["Price"]</p>
+                <p class="mb-0 text-muted">@Price[j]</p>
               </td>
-              <td>@dtProduct["Quantity"]</td>
+              <td>@Quantity[j]</td>
               <td class="row">
                 <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
+                  <input type="hidden" name="ProductId" value="@ProductId[j]">
                   <button class="btn btn-sm" type="button" data-toggle="modal" data-target=".modal-full">
                     <span class="fe fe-24 fe-eye"></span>
                   </button>
-                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@Convert.ToInt32(dtProduct["ProductId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@ProductId[j]">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
@@ -178,7 +178,7 @@
                   </button>
                 </form>
                 <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Save">
-                  <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
+                  <input type="hidden" name="ProductId" value="@ProductId[j]">
                   <button class="btn btn-sm" type="submit" data-toggle="modal" data-target="#verticalModal-sale">
                     <span class="fe fe-24 fe-truck"></span>
                   </button>
@@ -221,12 +221,12 @@
                   <div class="card mb-3">
                     <div class="row g-0">
                       <div class="col-md-4">
-                        <img src=@dtProduct["ImageUrl"] class="img-fluid rounded-start" alt="...">
+                        <img src=@ImageUrl[i] class="img-fluid rounded-start" alt="...">
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title">@dtProduct["Name"]</h5>
-                          <p class="card-text">@dtProduct["Description"]</p>
+                          <h5 class="card-title">@Name[i]</h5>
+                          <p class="card-text">@Description[i]</p>
                           <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                         </div>
                       </div>
