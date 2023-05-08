@@ -6,11 +6,25 @@
 
 @{
   int[] ProductId = new int[1000];
+  string[] CategoryName = new string[1000];
+  string[]  Name = new string[1000];
+  string[] ManufacturerName = new string[1000];
+  string[] Description = new string[1000];
+  decimal[] Price = new decimal[1000];
+  int[] Quantity = new int[1000];
+  string[] ImageUrl = new string[1000];
   int i = 1;
 
   @foreach (DataRow dtProduct in Model.Rows)
   {
     ProductId[i] = @Convert.ToInt32(dtProduct["ProductId"]);
+    CategoryName[i] = @Convert.ToString(dtProduct["CategoryName"]);
+    Name[i] = @Convert.ToString(dtProduct["Name"]);
+    ManufacturerName[i] = @Convert.ToString(dtProduct["ManufacturerName"]);
+    Description[i] = @Convert.ToString(dtProduct["Description"]);
+    Price[i] = @Convert.ToDecimal(dtProduct["Price"]);
+    Quantity[i] = @Convert.ToInt32(dtProduct["Quantity"]);
+    ImageUrl[i] = @Convert.ToString(dtProduct["ImageUrl"]);
     i++;
   }
 }
