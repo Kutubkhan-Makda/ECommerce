@@ -24,7 +24,7 @@
 <form class="bg0 p-t-75 p-b-85">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" id="pdfContainer">
 				<div class="m-l-25 m-r--38 m-lr-0-xl">
 					<div class="wrap-table-shopping-cart">
 						<table class="table-shopping-cart">
@@ -59,7 +59,7 @@
 											</div>
 										</div>
 									</td>
-									<td class="column-5">₹ @dtCart["TotalPrice"]</td>
+									<td class="column-5">₹ @dtCart["TotalPrice"] </td>
 									<td class="column-6">
 										<form method="post" asp-area="Cart" asp-controller="Cart" asp-action="Delete">
 											<input type="hidden" name="CartId" value="@dtCart["CartId"]">
@@ -70,18 +70,20 @@
 							}
 						</table>
 					</div>
+					<div style="display: none;">#</div>
 					<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 						<div class="flex-w flex-m m-r-20 m-tb-5">
 							<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 								
 							<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-								Apply coupon
+								Apply coupon #
 							</div>
 						</div>
 						<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-							Update Cart
+							Update Cart 
 						</div>
 					</div>
+					<div style="display: none;">#</div>
 				</div>
 			</div>
 
@@ -153,7 +155,7 @@
 							</span>
 						</div>
 					</div>
-					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="billpdfgenret">
 						Proceed to Checkout
 					</button>
 				</div>
@@ -175,5 +177,12 @@
             return false;
         }
     }
+  </script>
+  <script type="text/javascript">
+    $("#billpdfgenret").click(function(){
+      var sHtml = $("#pdfContainer").html();
+      sHtml = sHtml.replace(/</g,"StrTag").replace(/>/g,"EndTag");
+      window.open('../../Orders/Orders/BillPDF?html='+sHtml,'_blank');
+    })
   </script>
 }

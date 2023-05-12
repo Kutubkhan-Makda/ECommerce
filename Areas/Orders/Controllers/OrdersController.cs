@@ -14,12 +14,22 @@ namespace ECommerce.Areas.Orders.Controllers
             return View("BillPDF");
         }
 
+        public ActionResult Admin()
+        {
+            return View("Bill2");
+        }
+
         // GET: OrdersController/Details/5
         public ActionResult BillPDF(string html)
         {
             html = html.Replace("StrTag", "<").Replace("EndTag", ">");
 
             HtmlToPdf htmlToPDF = new HtmlToPdf();
+            htmlToPDF.Options.PdfPageSize = PdfPageSize.A4;
+            htmlToPDF.Options.MarginTop = 10;
+            htmlToPDF.Options.MarginBottom = 10;
+            htmlToPDF.Options.MarginLeft = 10;
+            htmlToPDF.Options.MarginRight = 10;
             PdfDocument pdfDocument = htmlToPDF.ConvertHtmlString(html);
             byte[] pdf = pdfDocument.Save();
             pdfDocument.Close();
