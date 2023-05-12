@@ -24,7 +24,7 @@ namespace ECommerce.Areas.Orders.Controllers
             byte[] pdf = pdfDocument.Save();
             pdfDocument.Close();
 
-            return File(pdf,"Order/Bill","Bill.pdf");
+            return File(pdf,"application/pdf","Bill.pdf");
         }
 
         // GET: OrdersController/Create
