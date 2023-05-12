@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SelectPdf;
 
 namespace ECommerce.Areas.Orders.Controllers
 {
@@ -12,9 +13,16 @@ namespace ECommerce.Areas.Orders.Controllers
         }
 
         // GET: OrdersController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult BillPDF(string html)
         {
-            return View();
+            html = html.Replace("StrTag", "<").Replace("EndTag", ">");
+
+            HtmlToPdf htmlToPDF = new HtmlToPdf();
+            PdfDocument pdfDocument = htmlToPDF.ConvertHtmlString(html);
+            byte[] pdf = pdfDocument.Save();
+            pdfDocument.Close();
+
+            return File(pdf,"Order/Bill","Bill.pdf");
         }
 
         // GET: OrdersController/Create
