@@ -9,11 +9,11 @@
         <h2 class="h5 page-title"><small class="text-muted text-uppercase">Invoice</small><br />#1806</h2>
       </div>
       <div class="col-auto">
-        <button type="button" class="btn btn-secondary">Print</button>
+        <button type="button" class="btn btn-secondary" id="billpdfgenret">Print</button>
         <button type="button" class="btn btn-primary">Pay</button>
       </div>
     </div>
-    <div class="card shadow">
+    <div class="card shadow" id="pdfContainer">
       <div class="card-body p-5">
         <div class="row mb-5">
           <div class="col-12 text-center mb-4">
@@ -41,7 +41,7 @@
               <strong>April, 20, 2020</strong>
             </p>
           </div>
-        </div> <!-- /.row -->
+        </div>
         <table class="table table-borderless table-striped">
           <thead>
             <tr>
@@ -106,11 +106,20 @@
               </p>
             </div>
           </div>
-        </div> <!-- /.row -->
-      </div> <!-- /.card-body -->
-    </div> <!-- /.card -->
-  </div> <!-- /.col-12 -->
+        </div>
+      </div>
+    </div> 
+  </div>
 </div>
 
 
-justify-content-center
+@section Scripts
+{
+  <script type="text/javascript">
+    $("#billpdfgenret").click(function(){
+      var sHtml = $("#pdfContainer").html();
+      sHtml = sHtml.replace(/</g,"StrTag").replace(/>/g,"EndTag");
+      window.open('../Orders/BillPDF?html='+sHtml,'_blank');
+    })
+  </script>
+}
