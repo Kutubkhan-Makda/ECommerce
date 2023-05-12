@@ -4,12 +4,14 @@ using SelectPdf;
 
 namespace ECommerce.Areas.Orders.Controllers
 {
+    [Area("Orders")]
+    [Route("Orders/[Controller]/[action]")]
     public class OrdersController : Controller
     {
         // GET: OrdersController
         public ActionResult Index()
         {
-            return View();
+            return View("BillPDF");
         }
 
         // GET: OrdersController/Details/5
