@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using ECommerce.DAL;
+using ECommerce.Auth;
+using System.Data;
 namespace ECommerce.Areas.OrderItems.Controllers
 {
     public class OrderItemsController : Controller
     {
+        OrdersDAL ordersDAL = new OrdersDAL();
         // GET: OrderItemsController
         public ActionResult Index()
         {
@@ -12,9 +15,21 @@ namespace ECommerce.Areas.OrderItems.Controllers
         }
 
         // GET: OrderItemsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+        public IActionResult OrdersItem_Insert(Areas.OrderItems.Models.OrderItems orderItemsModel)
+        { 
+            if(Convert.ToBoolean(ordersDAL.PR_OrdersItem_Insert(orderItemsModel.OrderId,orderItemsModel.ProductId,orderItemsModel.Quantity,orderItemsModel.Price)))
+            {
+                if(orderItemsModel.OrderItemId == null)
+                {
+                    TempData["CategoryInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["CategoryInsertMsg"] = "Record Updated Successfully";
+                }
+            }
+            
+            return RedirectToAction("OrderItemAdd");
         }
 
         // GET: OrderItemsController/Create
