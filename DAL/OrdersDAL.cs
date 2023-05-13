@@ -41,13 +41,14 @@ namespace ECommerce.DAL
                     dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_Insert");
                     sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
                     sqlDB.AddInParameter(dbCMD, "@OrderDate",SqlDbType.DateTime, DBNull.Value);
+                    sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.VarChar, @CV.Address());
                 }
                 else
                 {
                     dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_UpdateByPK");
                     sqlDB.AddInParameter(dbCMD, "@OrderId",SqlDbType.Int, OrderId);
+                    sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.VarChar, ShippingAddress);
                 }
-                sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.VarChar, @CV.Address());
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
