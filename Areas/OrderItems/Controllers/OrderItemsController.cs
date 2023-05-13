@@ -31,7 +31,7 @@ namespace ECommerce.Areas.OrderItems.Controllers
                 }
             }
             
-            return RedirectToAction("OrderItemAdd");
+            return RedirectToAction("OrderItemAdd","Orders");
         }
 
         // GET: OrderItemsController/Create
