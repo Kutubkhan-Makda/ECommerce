@@ -30,7 +30,7 @@ namespace ECommerce.DAL
         //    }
         //}
 
-        public bool? PR_Orders_Insert(int? OrderId,string? ShippingAddress,string? OrderStatus)
+        public bool? PR_Orders_Insert(int? OrderId,string? ShippingAddress)
         {
             try
             {
@@ -48,7 +48,6 @@ namespace ECommerce.DAL
                     sqlDB.AddInParameter(dbCMD, "@OrderId",SqlDbType.Int, OrderId);
                 }
                 sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.VarChar, @CV.Address());
-                sqlDB.AddInParameter(dbCMD, "@OrderStatus",SqlDbType.VarChar, OrderStatus);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
