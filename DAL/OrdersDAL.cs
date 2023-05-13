@@ -30,16 +30,17 @@ namespace ECommerce.DAL
             }
         }
 
-        public bool? PR_Orders_Insert(string? ShippingAddress,string? OrderNo,decimal? Price)
+        public bool? PR_Orders_Insert(string? ShippingAddress,string? Price)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_Insert");
                 sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
+                sqlDB.AddInParameter(dbCMD, "@OrderNo",SqlDbType.VarChar, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.Int, ShippingAddress);
-                sqlDB.AddInParameter(dbCMD, "@OrderNo",SqlDbType.VarChar, OrderNo);
-                sqlDB.AddInParameter(dbCMD, "@Price",SqlDbType.Decimal, Price);
+                sqlDB.AddInParameter(dbCMD, "@OrderDate",SqlDbType.DateTime, DBNull.Value);
+                sqlDB.AddInParameter(dbCMD, "@Price",SqlDbType.VarChar, Price);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
