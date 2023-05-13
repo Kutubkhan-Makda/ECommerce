@@ -58,5 +58,25 @@ namespace ECommerce.DAL
                 return null;    
             }
         }
+
+        public bool? PR_OrdersItem_Insert(int? OrderId,int? ProductId,int? Quantity,decimal? Price)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Cart_Insert");
+                sqlDB.AddInParameter(dbCMD, "OrderId", SqlDbType.Int, DBNull.Value);
+                sqlDB.AddInParameter(dbCMD, "@ProductId",SqlDbType.Int, ProductId);
+                sqlDB.AddInParameter(dbCMD, "@Quantity",SqlDbType.Int, Quantity);
+                sqlDB.AddInParameter(dbCMD, "@Price",SqlDbType.Decimal, Price);
+
+                int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                return (vReturnValue == -1 ? false : true);
+            }
+            catch (Exception ex)
+            {
+                return null;    
+            }
+        }
     }
 }
