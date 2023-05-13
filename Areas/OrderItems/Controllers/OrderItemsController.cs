@@ -5,6 +5,8 @@ using ECommerce.Auth;
 using System.Data;
 namespace ECommerce.Areas.OrderItems.Controllers
 {
+    [Area("OrderItems")]
+    [Route("OrderItems/[Controller]/[action]")]
     public class OrderItemsController : Controller
     {
         OrdersDAL ordersDAL = new OrdersDAL();
