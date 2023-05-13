@@ -41,7 +41,6 @@ namespace ECommerce.DAL
                     dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_Insert");
                     sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
                     sqlDB.AddInParameter(dbCMD, "@OrderDate",SqlDbType.DateTime, DBNull.Value);
-                    sqlDB.AddInParameter(dbCMD, "@OrderNo",SqlDbType.VarChar, DBNull.Value);
                 }
                 else
                 {
