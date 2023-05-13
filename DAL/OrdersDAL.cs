@@ -47,7 +47,7 @@ namespace ECommerce.DAL
                     dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_UpdateByPK");
                     sqlDB.AddInParameter(dbCMD, "@OrderId",SqlDbType.Int, OrderId);
                 }
-                sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.Int, ShippingAddress);
+                sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.VarChar, @CV.Address());
                 sqlDB.AddInParameter(dbCMD, "@OrderStatus",SqlDbType.VarChar, OrderStatus);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);

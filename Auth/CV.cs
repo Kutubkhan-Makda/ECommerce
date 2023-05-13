@@ -43,5 +43,16 @@ namespace ECommerce.Auth
             }
             return UserId;
         }
+
+        public static string? Address()
+        {
+            string? Address = null;
+
+            if(_HttpContextAccessor.HttpContext.Session.GetString("Address") != null)
+            {
+                Address = _HttpContextAccessor.HttpContext.Session.GetString("Address").ToString();
+            }
+            return Address;
+        }
     }
 }
