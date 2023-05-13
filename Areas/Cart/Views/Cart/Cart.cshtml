@@ -24,7 +24,7 @@
 <form class="bg0 p-t-75 p-b-85">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" id="pdfContainer">
+			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 				<div class="m-l-25 m-r--38 m-lr-0-xl">
 					<div class="wrap-table-shopping-cart">
 						<table class="table-shopping-cart">
@@ -155,9 +155,9 @@
 							</span>
 						</div>
 					</div>
-					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="billpdfgenret">
-						Proceed to Checkout
-					</button>
+					<a asp-area="Orders" asp-controller="Orders" asp-action="Orders_Insert" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+						Proceed to Order
+					</a>
 				</div>
 			</div>
 		</div>
@@ -177,12 +177,5 @@
             return false;
         }
     }
-  </script>
-  <script type="text/javascript">
-    $("#billpdfgenret").click(function(){
-      var sHtml = $("#pdfContainer").html();
-      sHtml = sHtml.replace(/</g,"StrTag").replace(/>/g,"EndTag");
-      window.open('../../Orders/Orders/BillPDF?html='+sHtml,'_blank');
-    })
   </script>
 }

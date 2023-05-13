@@ -32,9 +32,7 @@ namespace ECommerce.DAL
 
         public bool? PR_Orders_Insert(int? OrderId,string? ShippingAddress)
         {
-            try
-            {
-                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+            SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD; 
                 if(OrderId == null)
                 {
@@ -52,6 +50,9 @@ namespace ECommerce.DAL
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
+            try
+            {
+                
             }
             catch (Exception ex)
             {
