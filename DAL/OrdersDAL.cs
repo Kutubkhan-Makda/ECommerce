@@ -30,16 +30,25 @@ namespace ECommerce.DAL
         //    }
         //}
 
-        public bool? PR_Orders_Insert(string? ShippingAddress,string? OrderStatus)
+        public bool? PR_Orders_Insert(int? OrderId,string? ShippingAddress,string? OrderStatus)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_Insert");
-                sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
-                sqlDB.AddInParameter(dbCMD, "@OrderNo",SqlDbType.VarChar, DBNull.Value);
+                DbCommand dbCMD; 
+                if(OrderId == null)
+                {
+                    dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_Insert");
+                    sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, @CV.UserId());
+                    sqlDB.AddInParameter(dbCMD, "@OrderDate",SqlDbType.DateTime, DBNull.Value);
+                    sqlDB.AddInParameter(dbCMD, "@OrderNo",SqlDbType.VarChar, DBNull.Value);
+                }
+                else
+                {
+                    dbCMD = sqlDB.GetStoredProcCommand("PR_Orders_UpdateByPK");
+                    sqlDB.AddInParameter(dbCMD, "@OrderId",SqlDbType.Int, OrderId);
+                }
                 sqlDB.AddInParameter(dbCMD, "@ShippingAddress",SqlDbType.Int, ShippingAddress);
-                sqlDB.AddInParameter(dbCMD, "@OrderDate",SqlDbType.DateTime, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "@OrderStatus",SqlDbType.VarChar, OrderStatus);
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
