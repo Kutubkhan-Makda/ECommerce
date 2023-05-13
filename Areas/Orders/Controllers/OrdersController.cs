@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SelectPdf;
+using ECommerce.DAL;
+using ECommerce.Auth;
+using System.Data;
 
 namespace ECommerce.Areas.Orders.Controllers
 {
@@ -8,6 +11,8 @@ namespace ECommerce.Areas.Orders.Controllers
     [Route("Orders/[Controller]/[action]")]
     public class OrdersController : Controller
     {
+        OrdersDAL ordersDAL = new OrdersDAL();
+        CartDAL cartDAL = new CartDAL();
         // GET: OrdersController
         public ActionResult Index()
         {
@@ -17,6 +22,12 @@ namespace ECommerce.Areas.Orders.Controllers
         public ActionResult Admin()
         {
             return View("Bill2");
+        }
+
+        public ActionResult OrderItemAdd()
+        {
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(@CV.UserId());
+            return View("OrderItemAdd",dtCart);
         }
 
         // GET: OrdersController/Details/5
@@ -37,27 +48,22 @@ namespace ECommerce.Areas.Orders.Controllers
             return File(pdf,"application/pdf","Bill.pdf");
         }
 
-        // GET: OrdersController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: OrdersController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+        public IActionResult Orders_Insert(Areas.Orders.Models.Orders ordersModel)
+        { 
+            if(Convert.ToBoolean(ordersDAL.PR_Orders_Insert(ordersModel.OrderId,ordersModel.ShippingAddress)))
             {
-                return RedirectToAction(nameof(Index));
+                if(ordersModel.OrderId == null)
+                {
+                    TempData["CategoryInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["CategoryInsertMsg"] = "Record Updated Successfully";
+                }
             }
-            catch
-            {
-                return View();
-            }
+            
+            return RedirectToAction("OrderItemAdd");
         }
-
         // GET: OrdersController/Edit/5
         public ActionResult Edit(int id)
         {
