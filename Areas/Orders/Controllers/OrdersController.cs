@@ -12,6 +12,7 @@ namespace ECommerce.Areas.Orders.Controllers
     public class OrdersController : Controller
     {
         OrdersDAL ordersDAL = new OrdersDAL();
+        CartDAL cartDAL = new CartDAL();
         // GET: OrdersController
         public ActionResult Index()
         {
@@ -22,6 +23,13 @@ namespace ECommerce.Areas.Orders.Controllers
         {
             return View("Bill2");
         }
+
+        public ActionResult OrderItemAdd()
+        {
+            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(@CV.UserId());
+            return View("OrderItemAdd",dtCart);
+        }
+
 
         // GET: OrdersController/Details/5
         public ActionResult BillPDF(string html)

@@ -10,17 +10,10 @@ namespace ECommerce.Areas.OrderItems.Controllers
     public class OrderItemsController : Controller
     {
         OrdersDAL ordersDAL = new OrdersDAL();
-        CartDAL cartDAL = new CartDAL();
         // GET: OrderItemsController
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult OrderItemAdd()
-        {
-            DataTable dtCart = cartDAL.PR_Cart_SelectbyUser(@CV.UserId());
-            return View("OrderItemAdd",dtCart);
         }
 
         // GET: OrderItemsController/Details/5
