@@ -7,6 +7,71 @@
 	decimal Total = 0;
 }
 
+<style>
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
 <!-- breadcrumb -->
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -48,24 +113,28 @@
 									</td>
 									<td class="column-2">@dtCart["Name"]</td>
 									<td class="column-3">₹ @dtCart["Price"]</td>
-									<td class="column-4">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
+									<form id="form" method="post" asp-area="OrderItems" asp-controller="OrderItems" asp-action="OrdersItem_Insert">
+										<td class="column-4">
+											<div class="wrap-num-product flex-w m-l-auto m-r-0">
+												<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+													<i class="fs-16 zmdi zmdi-minus"></i>
+												</div>
+												<input class="mtext-104 cl3 txt-center num-product" type="number" name="Quantity" value=@dtCart["Quantity"]>
+												<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+													<i class="fs-16 zmdi zmdi-plus"></i>
+												</div>
 											</div>
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value=@dtCart["Quantity"]>
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-5">₹ @dtCart["TotalPrice"] </td>
-									<td class="column-6">
-										<form method="post" asp-area="Cart" asp-controller="Cart" asp-action="Delete">
-											<input type="hidden" name="CartId" value="@dtCart["CartId"]">
-											<button type="submit" onclick="return DeleteConf();"><i class="zmdi zmdi-delete"></i></button>
-										</form>
-									</td>
+										</td>
+										<td class="column-5">₹ @dtCart["TotalPrice"] </td>
+										<td class="column-6">	
+											<input type="hidden" name="ProductId" value="@Convert.ToInt32(dtCart["ProductId"])">
+											<input type="hidden" name="Price" value="@Convert.ToDecimal(dtCart["Price"])">
+											<label class="switch">
+												<input type="checkbox" class="checkbox_s">
+												<span class="slider round"></span>
+											</label>
+										</td>
+									</form>
 								</tr>
 							}
 						</table>
@@ -178,4 +247,11 @@
         }
     }
   </script>
+  <script type="text/javascript">  
+        $(function(){
+         $('.checkbox_s').on('change',function(){
+            $('#form').submit();
+            });
+        });
+    </script>
 }
