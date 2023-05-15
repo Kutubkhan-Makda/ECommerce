@@ -113,7 +113,7 @@ input:checked + .slider:before {
 									</td>
 									<td class="column-2">@dtCart["Name"]</td>
 									<td class="column-3">₹ @dtCart["Price"]</td>
-									<form id="form" method="post" asp-area="OrderItems" asp-controller="OrderItems" asp-action="OrdersItem_Insert">
+									<form id="form" method="post">
 										<td class="column-4">
 											<div class="wrap-num-product flex-w m-l-auto m-r-0">
 												<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -236,22 +236,37 @@ input:checked + .slider:before {
 
 @section Scripts
 {
-  <script>
-    function DeleteConf()
-    {
-        if (confirm("Are you sure you want to delete")) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-  </script>
-  <script type="text/javascript">  
-        $(function(){
-         $('.checkbox_s').on('change',function(){
-            $('#form').submit();
-            });
-        });
-    </script>
+	<script>
+		function DeleteConf()
+		{
+			if (confirm("Are you sure you want to delete")) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	</script>
+	@*<script type="text/javascript">  
+		$(function(){
+		$('.checkbox_s').on('change',function(){
+			$('#form').submit();
+			});
+		});
+    </script>*@
+	<script>  
+		$(document).ready(function () {  
+			$('.checkbox_s').on('change',function (e) {  
+				var valdata = $("#form").serialize();
+				$.ajax({  
+					url: "@Url.Action("OrdersItem_Insert","OrderItems")",  
+					type: "POST",  
+					dataType: 'json',  
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',  
+					data: valdata  
+				});  
+			});  
+		});  
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 }
