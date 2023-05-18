@@ -120,5 +120,25 @@ namespace ECommerce.DAL
             }
 
         }
+
+        public bool? PR_User_Register(string? UserName, string? Email, string? Password)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_Register");
+                sqlDB.AddInParameter(dbCMD, "@UserName", SqlDbType.VarChar, UserName);
+                sqlDB.AddInParameter(dbCMD, "@Email", SqlDbType.VarChar, Email);
+                sqlDB.AddInParameter(dbCMD, "@Password", SqlDbType.VarChar, Password);
+                sqlDB.AddInParameter(dbCMD, "@CreatedON", SqlDbType.Date, DBNull.Value);
+
+                int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                return (vReturnValue == -1 ? false : true);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

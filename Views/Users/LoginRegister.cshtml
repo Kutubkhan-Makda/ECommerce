@@ -16,11 +16,11 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form method="post" asp-area="Users" asp-controller="Users" asp-action="Register">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="email" placeholder="Email" required="">
-					<input type="password" placeholder="Password" required="">
+					<input type="text" asp-for="UserName" placeholder="User name" required="">
+					<input type="email" asp-for="Email" placeholder="Email" required="">
+					<input type="password" asp-for="Password" placeholder="Password" required="">
 					<button>Sign up</button>
 				</form>
 			</div>
