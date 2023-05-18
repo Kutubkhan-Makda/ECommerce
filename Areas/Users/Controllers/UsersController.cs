@@ -87,6 +87,41 @@ namespace ECommerce.Areas.Users.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Register(Areas.Users.Models.Users modelUser)
+        {
+            if (modelUser.File != null)
+            {
+                string FilePath = "wwwroot\\UsersImages";
+                string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                string fileNameWithPath = Path.Combine(path, modelUser.File.FileName);
+                modelUser.ImageUrl = "" + FilePath.Replace("wwwroot\\", "/") + "/" + modelUser.File.FileName;
+
+                using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                {
+                    modelUser.File.CopyTo(stream);
+                }
+
+            }
+             
+            if(Convert.ToBoolean(userDAL.PR_User_Save(modelUser.UserId,modelUser.UserName,modelUser.Email,modelUser.Password,modelUser.Address,modelUser.ImageUrl)))
+            {
+                if(modelUser.UserId == null)
+                {
+                    TempData["ContactInsertMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["ContactInsertMsg"] = "Record Updated Successfully";
+                }
+            }
+            
+            return RedirectToAction("Users");
+        }
+
         [HttpPost]
         public IActionResult Login(Areas.Users.Models.Users modelUser)
         {
