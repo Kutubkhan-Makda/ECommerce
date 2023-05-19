@@ -51,6 +51,56 @@ namespace ECommerce.Areas.Users.Controllers
             return View("Admin");
         }
 
+        public IActionResult Add(int? UserId)
+        {
+            //DataTable dtDropdownCategory = categoryDAL.PR_Category_SelectAll();
+//
+            //List<Areas.Category.Models.CategoryDropdown> listCategory = new List<Areas.Category.Models.CategoryDropdown>();
+            //foreach (DataRow dr in dtDropdownCategory.Rows)
+            //{
+            //    Areas.Category.Models.CategoryDropdown vl = new Areas.Category.Models.CategoryDropdown();
+            //    vl.CategoryId = (Convert.ToInt32(dr["CategoryId"]));
+            //    vl.CategoryName = (Convert.ToString(dr["CategoryName"]));
+            //    listCategory.Add(vl);
+            //}
+            //ViewBag.CategoryList = listCategory;
+//
+            //DataTable dtDropdownManufacturer = manufacturerDAL.PR_Manufacturer_SelectAll();
+//
+            //List<Areas.Manufacturer.Models.ManufacturerDropdown> listManufacturer = new List<Areas.Manufacturer.Models.ManufacturerDropdown>();
+            //foreach (DataRow dr in dtDropdownManufacturer.Rows)
+            //{
+            //    Areas.Manufacturer.Models.ManufacturerDropdown vl = new Areas.Manufacturer.Models.ManufacturerDropdown();
+            //    vl.ManufacturerId= (Convert.ToInt32(dr["ManufacturerId"]));
+            //    vl.ManufacturerName = (Convert.ToString(dr["ManufacturerName"]));
+            //    listManufacturer.Add(vl);
+            //}
+            //ViewBag.ManufacturerList = listManufacturer;
+
+            if (UserId != null)
+            {
+                DataTable dt = userDAL.PR_User_SelectbyPK(UserId);
+                if(dt.Rows.Count > 0)
+                {
+                    Areas.Users.Models.Users usersModel = new Areas.Users.Models.Users();
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        usersModel.UserId = (Convert.ToInt32(dr["UserId"]));
+                        usersModel.UserName = (Convert.ToString(CV.UserName));
+                        usersModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
+                        usersModel.Description = (Convert.ToString(dr["Description"]));
+                        usersModel.Price = (Convert.ToDecimal(dr["Price"]));
+                        usersModel.Discount = (Convert.ToDecimal(dr["Discount"]));
+                        usersModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
+                        usersModel.ImageUrl = (Convert.ToString(dr["ImageUrl"]));
+                    }
+
+                    return View("ProductsAddEdit", usersModel);
+                } 
+            }
+            return View("ProductsAddEdit");
+        }
+
         public IActionResult Update(Areas.Users.Models.Users modelUser)
         {
             if (modelUser.File != null)
