@@ -51,8 +51,7 @@ namespace ECommerce.Areas.Users.Controllers
             return View("Admin");
         }
 
-        [CheckAdminAccess]
-        public IActionResult Save(Areas.Users.Models.Users modelUser)
+        public IActionResult Update(Areas.Users.Models.Users modelUser)
         {
             if (modelUser.File != null)
             {
@@ -72,7 +71,7 @@ namespace ECommerce.Areas.Users.Controllers
 
             }
              
-            if(Convert.ToBoolean(userDAL.PR_User_Save(modelUser.UserId,modelUser.UserName,modelUser.Email,modelUser.Password,modelUser.Address,modelUser.ImageUrl)))
+            if(Convert.ToBoolean(userDAL.PR_User_Update(modelUser.UserId,modelUser.UserName,modelUser.Email,modelUser.Password,modelUser.Address,modelUser.ImageUrl)))
             {
                 if(modelUser.UserId == null)
                 {
