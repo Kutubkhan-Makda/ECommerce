@@ -76,5 +76,27 @@ namespace ECommerce.Auth
             }
             return CountryID;
         }
+
+        public static string? Email()
+        {
+            string? Email = null;
+
+            if(_HttpContextAccessor.HttpContext.Session.GetString("Email") != null)
+            {
+                Email = _HttpContextAccessor.HttpContext.Session.GetString("Email").ToString();
+            }
+            return Email;
+        }
+
+        public static string? RoleType()
+        {
+            string? RoleType = null;
+
+            if(_HttpContextAccessor.HttpContext.Session.GetString("RoleType") != null)
+            {
+                RoleType = _HttpContextAccessor.HttpContext.Session.GetString("RoleType").ToString();
+            }
+            return RoleType;
+        }
     }
 }

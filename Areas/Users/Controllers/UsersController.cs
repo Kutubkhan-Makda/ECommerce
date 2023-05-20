@@ -85,20 +85,20 @@ namespace ECommerce.Areas.Users.Controllers
                     Areas.Users.Models.Users usersModel = new Areas.Users.Models.Users();
                     foreach (DataRow dr in dt.Rows)
                     {
-                        usersModel.UserId = (Convert.ToInt32(dr["UserId"]));
+                        usersModel.UserId = (Convert.ToInt32(CV.UserId));
                         usersModel.UserName = (Convert.ToString(CV.UserName));
                         usersModel.Password = (Convert.ToString(CV.Password));
-                        usersModel.CountryID = (Convert.ToString(CV.));
-                        usersModel.Price = (Convert.ToDecimal(dr["Price"]));
-                        usersModel.Discount = (Convert.ToDecimal(dr["Discount"]));
-                        usersModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
-                        usersModel.ImageUrl = (Convert.ToString(dr["ImageUrl"]));
+                        usersModel.CountryID = (Convert.ToInt32(CV.CountryID));
+                        usersModel.Email = (Convert.ToString(CV.Email));
+                        usersModel.RoleType = (Convert.ToString(CV.RoleType));
+                        usersModel.Address = (Convert.ToString(CV.Address));
+                        usersModel.ImageUrl = (Convert.ToString(CV.ImageUrl));
                     }
 
-                    return View("ProductsAddEdit", usersModel);
+                    return View("", usersModel);
                 } 
             }
-            return View("ProductsAddEdit");
+            return View("");
         }
 
         public IActionResult Update(Areas.Users.Models.Users modelUser)
