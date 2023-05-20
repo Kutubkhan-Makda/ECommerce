@@ -88,7 +88,7 @@ namespace ECommerce.Areas.Users.Controllers
                         usersModel.UserId = (Convert.ToInt32(dr["UserId"]));
                         usersModel.UserName = (Convert.ToString(CV.UserName));
                         usersModel.Password = (Convert.ToString(CV.Password));
-                        usersModel.CountryID = (Convert.ToString(dr["Description"]));
+                        usersModel.CountryID = (Convert.ToString(CV.));
                         usersModel.Price = (Convert.ToDecimal(dr["Price"]));
                         usersModel.Discount = (Convert.ToDecimal(dr["Discount"]));
                         usersModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
