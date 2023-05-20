@@ -66,15 +66,15 @@ namespace ECommerce.Auth
             return Password;
         }
 
-        public static int? CountryId()
+        public static int? CountryID()
         {
-            int? UserId = null;
+            int? CountryID = null;
 
-            if(_HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
+            if(_HttpContextAccessor.HttpContext.Session.GetString("CountryID") != null)
             {
-                UserId = Convert.ToInt32(_HttpContextAccessor.HttpContext.Session.GetInt32("UserId"));
+                CountryID = Convert.ToInt32(_HttpContextAccessor.HttpContext.Session.GetInt32("CountryID"));
             }
-            return UserId;
+            return CountryID;
         }
     }
 }
