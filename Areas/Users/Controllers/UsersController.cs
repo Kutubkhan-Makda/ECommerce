@@ -53,7 +53,7 @@ namespace ECommerce.Areas.Users.Controllers
 
         public IActionResult Add(int? UserId)
         {
-            //DataTable dtDropdownCategory = categoryDAL.PR_Category_SelectAll();
+            //DataTable dtDropdownCountry = categoryDAL.PR_Category_SelectAll();
 //
             //List<Areas.Category.Models.CategoryDropdown> listCategory = new List<Areas.Category.Models.CategoryDropdown>();
             //foreach (DataRow dr in dtDropdownCategory.Rows)
