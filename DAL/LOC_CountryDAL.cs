@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.DAL
 {
-    public class DALLOC_Country:DALConnection
+    public class LOC_CountryDAL : DALConnection
     {
 
     }
