@@ -13,6 +13,10 @@
     <Folder Include="Areas\Category\Data\" />
     <Folder Include="Areas\Category\Models\" />
     <Folder Include="Areas\Category\Views\" />
+    <Folder Include="Areas\LOC_City\Controllers\" />
+    <Folder Include="Areas\LOC_City\Data\" />
+    <Folder Include="Areas\LOC_City\Models\" />
+    <Folder Include="Areas\LOC_City\Views\" />
     <Folder Include="Areas\LOC_Country\Controllers\" />
     <Folder Include="Areas\LOC_Country\Data\" />
     <Folder Include="Areas\LOC_Country\Models\" />
