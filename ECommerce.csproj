@@ -17,6 +17,10 @@
     <Folder Include="Areas\LOC_Country\Data\" />
     <Folder Include="Areas\LOC_Country\Models\" />
     <Folder Include="Areas\LOC_Country\Views\" />
+    <Folder Include="Areas\LOC_State\Controllers\" />
+    <Folder Include="Areas\LOC_State\Data\" />
+    <Folder Include="Areas\LOC_State\Models\" />
+    <Folder Include="Areas\LOC_State\Views\" />
     <Folder Include="Areas\Manufacturer\Controllers\" />
     <Folder Include="Areas\Manufacturer\Data\" />
     <Folder Include="Areas\Manufacturer\Models\" />
