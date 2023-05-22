@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.DAL
 {
-    public class DALLOC_State:
+    public class DALLOC_State:DALConnection
     {
     }
 }
