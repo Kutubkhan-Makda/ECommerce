@@ -15,10 +15,4 @@
         public String ImageUrl { get; set; }
         public DateTime CreatedON { get; set; }
     }
-
-    public class CountryDropdown
-    {
-        public int? CountryID { get; set; }
-        public int CountryName { get; set; }
-    }
 }
