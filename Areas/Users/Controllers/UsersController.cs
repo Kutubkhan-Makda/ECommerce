@@ -88,7 +88,7 @@ namespace ECommerce.Areas.Users.Controllers
                         usersModel.UserId = (Convert.ToInt32(CV.UserId));
                         usersModel.UserName = (Convert.ToString(CV.UserName));
                         usersModel.Password = (Convert.ToString(CV.Password));
-                        usersModel.CountryID = (Convert.ToInt32(CV.CountryID));
+                        usersModel.CountryId = (Convert.ToInt32(CV.CountryId));
                         usersModel.Email = (Convert.ToString(CV.Email));
                         usersModel.RoleType = (Convert.ToString(CV.RoleType));
                         usersModel.Address = (Convert.ToString(CV.Address));
