@@ -27,5 +27,22 @@ namespace ECommerce.DAL
             }
 
         }
+
+        public bool? PR_LOC_State_Delete(int? StateID)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_State_DeleteByPK");
+                sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, StateID);
+                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, @CV.UserID());
+                int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                return (vReturnValue == -1 ? false : true);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
