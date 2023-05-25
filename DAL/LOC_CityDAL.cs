@@ -28,14 +28,13 @@ namespace ECommerce.DAL
 
         }
 
-        public bool? PR_LOC_City_Delete(int? CityID)
+        public bool? PR_LOC_City_Delete(int? CityId)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_City_DeleteByPK");
-                sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, CityID);
-                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, @CV.UserID());
+                sqlDB.AddInParameter(dbCMD, "CityId", SqlDbType.Int, CityId);
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
             }
