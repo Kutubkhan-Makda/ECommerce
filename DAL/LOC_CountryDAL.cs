@@ -27,5 +27,21 @@ namespace ECommerce.DAL
             }
 
         }
+
+        public bool? PR_LOC_Country_Delete(int? CountryID)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_Country_DeleteByPK");
+                sqlDB.AddInParameter(dbCMD, "CountryID", SqlDbType.Int, CountryID);
+                int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
+                return (vReturnValue == -1 ? false : true);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
