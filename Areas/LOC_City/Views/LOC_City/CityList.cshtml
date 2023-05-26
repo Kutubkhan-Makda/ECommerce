@@ -1,3 +1,223 @@
 @{
     Layout = "_LayoutAdmin";
 }
+@using System.Data
+@model DataTable
+
+
+<div class="col-md-12 my-4">
+    <div class="row">
+        <div class="form-group col-auto mr-auto">
+            <h1 class="h2 mb-1 text-uppercase">Products</h1>
+        </div>
+        <div class="form-group col-auto">
+            <a class="btn btn-primary float-right ml-3" asp-area="Products" asp-controller="Products" asp-action="Add" type="button">Add more +</a>
+        </div>
+    </div>
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="toolbar">
+        <form class="form">
+          <div class="form-row">
+            <div class="form-group col-auto mr-auto">
+                <button type="button" class="btn" data-toggle="modal" data-target=".modal-slide"><span class="fe fe-filter fe-16 text-muted"></span></button>
+            </div>
+            <div class="form-group col-auto">
+              <label for="search" class="sr-only">Search</label>
+              <input type="text" class="form-control" id="search1" value="" placeholder="Search">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal fade modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="defaultModalLabel">Filters</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="fe fe-x fe-12"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="p-2">
+                <div class="form-group my-4">
+                  <p class="mb-2"><strong>Regions</strong></p>
+                  <label for="multi-select2" class="sr-only"></label>
+                  <select class="form-control select2-multi" id="multi-select2">
+                    <optgroup label="Category">
+                      @foreach (DataRow CategoryList in Model.Rows)
+                      {
+                        <option value="">@CategoryList["CategoryName"]</option>
+                      }
+                    </optgroup>
+                  </select>
+                </div> <!-- form-group -->
+                <div class="form-group my-4">
+                  <p class="mb-2">
+                    <strong>Payment</strong>
+                  </p>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Paypal</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2">Credit Card</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1-1" checked>
+                    <label class="custom-control-label" for="customCheck1">Wire Transfer</label>
+                  </div>
+                </div> <!-- form-group -->
+                <div class="form-group my-4">
+                  <p class="mb-2">
+                    <strong>Types</strong>
+                  </p>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">End users</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="customRadio2">Whole Sales</label>
+                  </div>
+                </div> <!-- form-group -->
+                <div class="form-group my-4">
+                  <p class="mb-2">
+                    <strong>Completed</strong>
+                  </p>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Include</label>
+                  </div>
+                </div> <!-- form-group -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn mb-2 btn-primary btn-block">Apply</button>
+              <button type="button" class="btn mb-2 btn-secondary btn-block">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- table -->
+      <table class="table table-borderless table-hover">
+        <thead>
+          <tr>
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="all2">
+                <label class="custom-control-label" for="all2"></label>
+              </div>
+            </td>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (DataRow dtCity in Model.Rows)
+          {
+            <tr>
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="2474">
+                  <label class="custom-control-label" for="2474"></label>
+                </div>
+              </td>
+              <td>
+                <div class="avatar avatar-md">
+                  <img src=@ImageUrl[j] alt="..." class="avatar-img rounded-circle">
+                </div>
+              </td>
+              <td>
+                <p class="mb-0 text-muted"><strong>@Name[j]</strong></p>
+              </td>
+              <td>
+                <p class="mb-0 text-muted">@Price[j]</p>
+              </td>
+              <td>@Quantity[j]</td>
+              <td class="row">
+                <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
+                  <input type="hidden" name="ProductId" value="@ProductId[j]">
+                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@ProductId[j]">
+                    <span class="fe fe-24 fe-edit-3"></span>
+                  </a>
+                  <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
+                    <span class="fe fe-24 fe-trash-2"></span>
+                  </button>
+                </form>
+                <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Save">
+                  <input type="hidden" name="ProductId" value="@ProductId[j]">
+                  <button class="btn btn-sm" type="submit" data-toggle="modal" data-target="#verticalModal-sale">
+                    <span class="fe fe-24 fe-truck"></span>
+                  </button>
+
+                  <div class="modal fade" id="verticalModal-sale" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content" style="padding: 0.5rem;">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="verticalModalTitle">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form>
+                          
+                          <div class="form-group" style="padding: 0.5rem;">
+                            <label for="recipient-name" class="col-form-label">Discount :</label>
+                            <input type="text" class="form-control" name="Discount" id="recipient-name">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn mb-2 btn-primary">Save</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+                
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      <nav aria-label="Table Paging" class="mb-0 text-muted">
+        <ul class="pagination justify-content-center mb-0">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts
+{
+  <script>
+    function DeleteConf()
+    {
+        if (confirm("Are you sure you want to delete")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+  </script>
+  <script type="text/javascript">
+    $("#modelbtn").click(function(){
+      let K = $("#ModalId").val();
+      alert(K);
+    })
+  </script>
+}
