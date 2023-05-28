@@ -2,6 +2,10 @@
 {
     public class LOC_City
     {
-        public int CityID { get; set; }
+        public int? CityID { get; set; }
+        public string CityName { get; set; }
+        public string CityCode { get; set; }
+        public int StateId { get; set; }
+        public int CountryId { get; set; }
     }
 }
