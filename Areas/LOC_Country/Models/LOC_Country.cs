@@ -2,6 +2,7 @@
 {
     public class LOC_Country
     {
+        public int CountryId { get; set; }
 
     }
 }
