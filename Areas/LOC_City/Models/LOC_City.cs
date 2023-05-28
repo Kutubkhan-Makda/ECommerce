@@ -2,5 +2,6 @@
 {
     public class LOC_City
     {
+        public int CityID { get; set; }
     }
 }
