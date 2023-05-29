@@ -131,21 +131,15 @@
                 <p class="mb-0 text-muted">@dtCountry["CountryId"]</p>
               </td>
               <td>
-                <p class="mb-0 text-muted"><strong>@dtCity["CityName"]</strong></p>
+                <p class="mb-0 text-muted"><strong>@dtCountry["CountryName"]</strong></p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCity["CityCode"]</p>
-              </td>
-              <td>
-                <p class="mb-0 text-muted">@dtCity["StateName"]</p>
-              </td>
-              <td>
-                <p class="mb-0 text-muted">@dtCity["CountryName"]</p>
+                <p class="mb-0 text-muted">@dtCountry["CountryCode"]</p>
               </td>
               <td class="row">
                 <form method="post" asp-area="Category" asp-controller="Category" asp-action="Delete">
-                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtCity["CityId"])">
-                  <a class="btn btn-sm" type="button" asp-area="Category" asp-controller="Category" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtCity["CityId"])">
+                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtCountry["CountryId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Category" asp-controller="Category" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtCountry["CountryId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
