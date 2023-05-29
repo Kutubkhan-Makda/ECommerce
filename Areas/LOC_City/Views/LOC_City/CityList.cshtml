@@ -112,8 +112,8 @@
               </div>
             </td>
             <th>City Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>State Name</th>
+            <th>Country Name</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -131,12 +131,12 @@
                 <p class="mb-0 text-muted"><strong>@CityName</strong></p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@Price[j]</p>
+                <p class="mb-0 text-muted">@StateName</p>
               </td>
-              <td>@Quantity[j]</td>
+              <td>@CountyName</td>
               <td class="row">
                 <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@ProductId[j]">
+                  <input type="hidden" name="ProductId" value="@CityId">
                   <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@ProductId[j]">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
@@ -145,7 +145,7 @@
                   </button>
                 </form>
                 <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Save">
-                  <input type="hidden" name="ProductId" value="@ProductId[j]">
+                  <input type="hidden" name="ProductId" value="@CityId">
                   <button class="btn btn-sm" type="submit" data-toggle="modal" data-target="#verticalModal-sale">
                     <span class="fe fe-24 fe-truck"></span>
                   </button>
