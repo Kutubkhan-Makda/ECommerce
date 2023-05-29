@@ -128,54 +128,22 @@
                 </div>
               </td>
               <td>
-                <p class="mb-0 text-muted"><strong>@CityName</strong></p>
+                <p class="mb-0 text-muted"><strong>@dtCity["CityName"]</strong></p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@StateName</p>
+                <p class="mb-0 text-muted">@dtCity["StateName"]</p>
               </td>
-              <td>@CountyName</td>
+              <td>@dtCity["CountryName"]</td>
               <td class="row">
-                <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@CityId">
-                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@ProductId[j]">
+                <form method="post" asp-area="Category" asp-controller="Category" asp-action="Delete">
+                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtCity["CityId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Category" asp-controller="Category" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtCity["CityId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
                     <span class="fe fe-24 fe-trash-2"></span>
                   </button>
                 </form>
-                <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Save">
-                  <input type="hidden" name="ProductId" value="@CityId">
-                  <button class="btn btn-sm" type="submit" data-toggle="modal" data-target="#verticalModal-sale">
-                    <span class="fe fe-24 fe-truck"></span>
-                  </button>
-
-                  <div class="modal fade" id="verticalModal-sale" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content" style="padding: 0.5rem;">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="verticalModalTitle">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form>
-                          
-                          <div class="form-group" style="padding: 0.5rem;">
-                            <label for="recipient-name" class="col-form-label">Discount :</label>
-                            <input type="text" class="form-control" name="Discount" id="recipient-name">
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn mb-2 btn-primary">Save</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-
-                </form>
-                
               </td>
             </tr>
           }
