@@ -6,7 +6,7 @@ namespace ECommerce.Areas.LOC_City.Controllers
     public class LOC_CityController : Controller
     {
         // GET: LOC_CityController
-        public ActionResult Index()
+        public ActionResult Admin()
         {
             return View();
         }
