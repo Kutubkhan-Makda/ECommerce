@@ -112,6 +112,7 @@
               </div>
             </td>
             <th>City Name</th>
+            <th>City Code</th>
             <th>State Name</th>
             <th>Country Name</th>
             <th>Action</th>
@@ -131,9 +132,14 @@
                 <p class="mb-0 text-muted"><strong>@dtCity["CityName"]</strong></p>
               </td>
               <td>
+                <p class="mb-0 text-muted">@dtCity["CityCode"]</p>
+              </td>
+              <td>
                 <p class="mb-0 text-muted">@dtCity["StateName"]</p>
               </td>
-              <td>@dtCity["CountryName"]</td>
+              <td>
+                <p class="mb-0 text-muted">@dtCity["CountryName"]</p>
+              </td>
               <td class="row">
                 <form method="post" asp-area="Category" asp-controller="Category" asp-action="Delete">
                   <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtCity["CityId"])">
