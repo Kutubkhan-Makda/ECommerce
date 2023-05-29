@@ -1,14 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ECommerce.DAL;
+using System.Data;
+using ECommerce.Auth;
 
 namespace ECommerce.Areas.LOC_City.Controllers
 {
+    [Area("City")]
+    [Route("City/[Controller]/[action]")]
+    [CheckAdminAccess]
     public class LOC_CityController : Controller
     {
+        LOC_CityDAL lOC_CityDAL = new LOC_CityDAL();
         // GET: LOC_CityController
         public ActionResult Admin()
         {
-            return View();
+            DataTable dtCity = lOC_CityDAL.PR_LOC_City_SelectAll();
+            return View("CityList",dtCity);
         }
 
         // GET: LOC_CityController/Details/5
