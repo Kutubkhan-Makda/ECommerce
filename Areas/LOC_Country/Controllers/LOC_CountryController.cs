@@ -11,6 +11,7 @@ namespace ECommerce.Areas.LOC_Country.Controllers
     [CheckAdminAccess]
     public class LOC_CountryController : Controller
     {
+        LOC_CountryDAL countryDAL = new LOC_CountryDAL();
         // GET: LOC_CountryController
         public ActionResult Admin()
         {

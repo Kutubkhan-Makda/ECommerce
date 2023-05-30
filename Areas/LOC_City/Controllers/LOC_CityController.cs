@@ -11,7 +11,7 @@ namespace ECommerce.Areas.LOC_City.Controllers
     [CheckAdminAccess]
     public class LOC_CityController : Controller
     {
-        LOC_CityDAL lOC_CityDAL = new LOC_CityDAL();
+        LOC_CityDAL cityDAL = new LOC_CityDAL();
         // GET: LOC_CityController
         public ActionResult Admin()
         {
