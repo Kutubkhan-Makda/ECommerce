@@ -15,7 +15,7 @@ namespace ECommerce.Areas.LOC_Country.Controllers
         // GET: LOC_CountryController
         public ActionResult Admin()
         {
-            DataTable dtCity = lOC_CityDAL.PR_LOC_City_SelectAll();
+            DataTable dtCity = countryDAL.PR_LOC_Country_SelectAll();
             return View("CityList",dtCity);
         }
 
