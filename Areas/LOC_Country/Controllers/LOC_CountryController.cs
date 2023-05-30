@@ -6,8 +6,8 @@ using ECommerce.Auth;
 
 namespace ECommerce.Areas.LOC_Country.Controllers
 {
-    [Area("LOC_City")]
-    [Route("LOC_City/[Controller]/[action]")]
+    [Area("LOC_Country")]
+    [Route("LOC_Country/[Controller]/[action]")]
     [CheckAdminAccess]
     public class LOC_CountryController : Controller
     {
