@@ -12,7 +12,7 @@ namespace ECommerce.Areas.LOC_Country.Controllers
     public class LOC_CountryController : Controller
     {
         // GET: LOC_CountryController
-        public ActionResult Index()
+        public ActionResult Admin()
         {
             DataTable dtCity = lOC_CityDAL.PR_LOC_City_SelectAll();
             return View("CityList",dtCity);
