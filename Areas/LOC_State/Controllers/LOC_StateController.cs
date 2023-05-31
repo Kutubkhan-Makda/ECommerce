@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Areas.LOC_State.Controllers
 {
+    [Area("LOC_Country")]
+    [Route("LOC_Country/[Controller]/[action]")]
+    [CheckAdminAccess]
     public class LOC_StateController : Controller
     {
         // GET: LOC_StateController
