@@ -11,6 +11,7 @@ namespace ECommerce.Areas.LOC_State.Controllers
     [CheckAdminAccess]
     public class LOC_StateController : Controller
     {
+        LOC_StateDAL stateDAL = new LOC_StateDAL();
         // GET: LOC_StateController
         public ActionResult Admin()
         {
