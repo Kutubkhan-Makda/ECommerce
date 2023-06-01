@@ -15,7 +15,7 @@ namespace ECommerce.Areas.LOC_State.Controllers
         // GET: LOC_StateController
         public ActionResult Admin()
         {
-            DataTable dtCountry = stateDAL.PR_LOC_Country_SelectAll();
+            DataTable dtCountry = stateDAL.PR_LOC_State_SelectAll();
             return View("CountryList",dtCountry);
         }
 
