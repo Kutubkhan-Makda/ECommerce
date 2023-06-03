@@ -19,7 +19,6 @@ namespace ECommerce.Areas.LOC_State.Controllers
             return View("CountryList",dtCountry);
         }
 
-        // GET: LOC_StateController/Details/5
         public ActionResult Details(int id)
         {
             return View();
