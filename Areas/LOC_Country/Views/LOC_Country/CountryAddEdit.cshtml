@@ -12,27 +12,27 @@
             <div class="portlet light bordered card shadow mb-4">
                 <div class="portlet-title card-header">
                     <div class="caption">
-                        <span class="card-title h2">Category ADD/EDIT</span>
+                        <span class="card-title h2">Country ADD/EDIT</span>
                     </div>
                 </div>
                 <div class="portlet-body form">
                     <h4 class="font-green-sharp">@TempData["CategoryInsertMsg"]</h4>
-                    <form class="form-horizontal" role="form" method="post" asp-area="Category" asp-controller="Category" asp-action="Save">
+                    <form class="form-horizontal" role="form" method="post" asp-area="Country" asp-controller="Category" asp-action="Save">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        @Html.HiddenFor(x=>x.CategoryId)
+                        @Html.HiddenFor(x=>x.CountryId)
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Category Name</label>
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Country Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" asp-for="CategoryName" placeholder="Enter Product Name" />
-                                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                                    <input type="text" class="form-control" asp-for="CountryName" placeholder="Enter Product Name" />
+                                    <span asp-validation-for="CountryName" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-actions">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-md-offset-3 col-md-9 justify-content-center align-items-center" style="display: flex;">
                                         <input type="submit" class="btn mb-2 btn-success" value="Save" style="margin-inline-end: 1rem;"></input>
-                                        <a type="button" asp-area="Category" asp-controller="Category" asp-action="Admin" class="btn mb-2 btn-danger">Cancel</a>
+                                        <a type="button" asp-area="Country" asp-controller="Country" asp-action="Admin" class="btn mb-2 btn-danger">Cancel</a>
                                     </div>
                                 </div>
                             </div>
