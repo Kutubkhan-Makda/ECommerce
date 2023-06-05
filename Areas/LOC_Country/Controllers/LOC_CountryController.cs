@@ -68,24 +68,11 @@ namespace ECommerce.Areas.LOC_Country.Controllers
         }
 
         // GET: LOC_CountryController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int CategoryId)
         {
-            return View();
-        }
-
-        // POST: LOC_CountryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (Convert.ToBoolean(categoryDAL.PR_Category_Delete(CategoryId)))
+                return RedirectToAction("Admin");
+            return View("Admin");
         }
     }
 }
