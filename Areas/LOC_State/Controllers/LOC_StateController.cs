@@ -67,9 +67,9 @@ namespace ECommerce.Areas.LOC_State.Controllers
         }
 
         // GET: LOC_StateController/Delete/5
-        public ActionResult Delete(int CategoryId)
+        public ActionResult Delete(int StateId)
         {
-            if (Convert.ToBoolean(categoryDAL.PR_Category_Delete(CategoryId)))
+            if (Convert.ToBoolean(stateDAL.PR_LOC_State_Delete(StateId)))
                 return RedirectToAction("Admin");
             return View("Admin");
         }
