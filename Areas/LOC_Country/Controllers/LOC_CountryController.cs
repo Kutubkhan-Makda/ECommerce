@@ -68,9 +68,9 @@ namespace ECommerce.Areas.LOC_Country.Controllers
         }
 
         // GET: LOC_CountryController/Delete/5
-        public ActionResult Delete(int CategoryId)
+        public ActionResult Delete(int CountryId)
         {
-            if (Convert.ToBoolean(countryDAL.PR_Category_Delete(CategoryId)))
+            if (Convert.ToBoolean(countryDAL.PR_LOC_Country_Delete(CountryId)))
                 return RedirectToAction("Admin");
             return View("Admin");
         }
