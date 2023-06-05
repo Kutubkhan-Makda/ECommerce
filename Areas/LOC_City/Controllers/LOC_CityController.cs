@@ -68,9 +68,9 @@ namespace ECommerce.Areas.LOC_City.Controllers
         }
 
         // GET: LOC_CityController/Delete/5
-        public ActionResult Delete(int CategoryId)
+        public ActionResult Delete(int CityId)
         {
-            if (Convert.ToBoolean(categoryDAL.PR_Category_Delete(CategoryId)))
+            if (Convert.ToBoolean(cityDAL.PR_LOC_City_Delete(CityId)))
                 return RedirectToAction("Admin");
             return View("Admin");
         }
