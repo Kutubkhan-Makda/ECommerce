@@ -8,7 +8,7 @@ namespace ECommerce.Areas.LOC_City.Controllers
 {
     [Area("LOC_City")]
     [Route("LOC_City/[Controller]/[action]")]
-    [CheckAdminAccess]
+    //[CheckAdminAccess]
     public class LOC_CityController : Controller
     {
         LOC_CityDAL cityDAL = new LOC_CityDAL();
