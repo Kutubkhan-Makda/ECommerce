@@ -118,7 +118,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach (DataRow dtCity in Model.Rows)
+          @foreach (DataRow dtState in Model.Rows)
           {
             <tr>
               <td>
@@ -128,18 +128,18 @@
                 </div>
               </td>
               <td>
-                <p class="mb-0 text-muted"><strong>@dtCity["CityName"]</strong></p>
+                <p class="mb-0 text-muted"><strong>@dtState["StateName"]</strong></p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCity["CityCode"]</p>
+                <p class="mb-0 text-muted">@dtState["StateCode"]</p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@dtCity["CountryName"]</p>
+                <p class="mb-0 text-muted">@dtState["CountryName"]</p>
               </td>
               <td class="row">
-                <form method="post" asp-area="Category" asp-controller="Category" asp-action="Delete">
-                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtCity["CityId"])">
-                  <a class="btn btn-sm" type="button" asp-area="Category" asp-controller="Category" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtCity["CityId"])">
+                <form method="post" asp-area="LOC_State" asp-controller="LOC_State" asp-action="Delete">
+                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtState["StateId"])">
+                  <a class="btn btn-sm" type="button" asp-area="LOC_State" asp-controller="LOC_State" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtState["StateId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
