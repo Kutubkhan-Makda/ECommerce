@@ -8,10 +8,10 @@
 <div class="col-md-12 my-4">
     <div class="row">
         <div class="form-group col-auto mr-auto">
-            <h1 class="h2 mb-1 text-uppercase">City</h1>
+            <h1 class="h2 mb-1 text-uppercase">State</h1>
         </div>
         <div class="form-group col-auto">
-            <a class="btn btn-primary float-right ml-3" asp-area="LOC_City" asp-controller="LOC_City" asp-action="Add" type="button">Add more +</a>
+            <a class="btn btn-primary float-right ml-3" asp-area="LOC_State" asp-controller="LOC_State" asp-action="Add" type="button">Add more +</a>
         </div>
     </div>
   <div class="card shadow">
@@ -45,7 +45,7 @@
                   <label for="multi-select2" class="sr-only"></label>
                   <select class="form-control select2-multi" id="multi-select2">
                     <optgroup label="Category">
-                      @foreach (DataRow CategoryList in Model.Rows)
+                      @foreach (DataRow CountryList in Model.Rows)
                       {
                         <option value=""></option>
                       }
@@ -111,9 +111,8 @@
                 <label class="custom-control-label" for="all2"></label>
               </div>
             </td>
-            <th>City Name</th>
-            <th>City Code</th>
             <th>State Name</th>
+            <th>State Code</th>
             <th>Country Name</th>
             <th>Action</th>
           </tr>
