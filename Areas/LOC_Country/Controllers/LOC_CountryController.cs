@@ -19,52 +19,47 @@ namespace ECommerce.Areas.LOC_Country.Controllers
             return View("CountryList",dtCountry);
         }
 
-        // GET: LOC_CountryController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: LOC_CountryController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: LOC_CountryController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Add(int? CountryID)
         {
-            try
+            LOC_DAL dalLOC = new LOC_DAL();
+            if (CountryID != null)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                DataTable dt = dalLOC.PR_LOC_Country_SelectByPK(CountryID);
 
-        // GET: LOC_CountryController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+                LOC_CountryModel modelLOC_Country = new LOC_CountryModel();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    modelLOC_Country.CountryID = (Convert.ToInt32(dr["CountryID"]));
+                    modelLOC_Country.CountryName = (Convert.ToString (dr["CountryName"]));
+                    modelLOC_Country.CountryCode = (Convert.ToString (dr["CountryCode"]));
+                    modelLOC_Country.CreationDate = (Convert.ToDateTime(dr["CreationDate"]));
+                    modelLOC_Country.ModificationDate = (Convert.ToDateTime(dr["ModificationDate"]));
+                }
+                return View("LOC_CountryAddEdit", modelLOC_Country);
+            }
+            return View("LOC_CountryAddEdit");
         }
-
-        // POST: LOC_CountryController/Edit/5
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Save(LOC_CountryModel modelLoc_Country)
         {
-            try
+            LOC_DAL dalLOC = new LOC_DAL();
+             
+            if(Convert.ToBoolean(dalLOC.PR_LOC_Save_Country(modelLoc_Country.CountryID,modelLoc_Country.CountryName,modelLoc_Country.CountryCode)))
             {
-                return RedirectToAction(nameof(Index));
+                if(modelLoc_Country.CountryID == null)
+                {
+                    TempData["CountryInsetMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["CountryInsetMsg"] = "Record Updated Successfully";
+                }
             }
-            catch
-            {
-                return View();
-            }
+            
+            return RedirectToAction("Index");
         }
 
         // GET: LOC_CountryController/Delete/5
