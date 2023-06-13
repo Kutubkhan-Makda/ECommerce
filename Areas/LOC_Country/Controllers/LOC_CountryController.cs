@@ -21,12 +21,11 @@ namespace ECommerce.Areas.LOC_Country.Controllers
 
         // POST: LOC_CountryController/Create
         [HttpPost]
-        public IActionResult Add(int? CountryID)
+        public IActionResult Add(int? CountryId)
         {
-            LOC_DAL dalLOC = new LOC_DAL();
-            if (CountryID != null)
+            if (CountryId != null)
             {
-                DataTable dt = dalLOC.PR_LOC_Country_SelectByPK(CountryID);
+                DataTable dt = countryDAL.(CountryId);
 
                 LOC_CountryModel modelLOC_Country = new LOC_CountryModel();
                 foreach (DataRow dr in dt.Rows)
@@ -41,7 +40,7 @@ namespace ECommerce.Areas.LOC_Country.Controllers
             }
             return View("LOC_CountryAddEdit");
         }
-        
+
         [HttpPost]
         public IActionResult Save(LOC_CountryModel modelLoc_Country)
         {
