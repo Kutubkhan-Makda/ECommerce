@@ -40,22 +40,22 @@ namespace ECommerce.Areas.LOC_Country.Controllers
         }
 
         [HttpPost]
-        // public IActionResult Save(Areas.LOC_Country.Models.LOC_Country  modelLOC_Country)
-        // {    
-        //     if(Convert.ToBoolean(countryDAL.PR_LOC_Save_Country(modelLOC_Country.CountryId,modelLOC_Country.CountryName,modelLOC_Country.CountryCode)))
-        //     {
-        //         if(modelLOC_Country.CountryId == null)
-        //         {
-        //             TempData["CountryInsetMsg"] = "Record Inserted Successfully";
-        //         }
-        //         else
-        //         {
-        //             TempData["CountryInsetMsg"] = "Record Updated Successfully";
-        //         }
-        //     }
+        public IActionResult Save(Areas.LOC_Country.Models.LOC_Country  modelLOC_Country)
+        {    
+            if(Convert.ToBoolean(countryDAL.PR_LOC_Save_Country(modelLOC_Country.CountryId,modelLOC_Country.CountryName,modelLOC_Country.CountryCode)))
+            {
+                if(modelLOC_Country.CountryId == null)
+                {
+                    TempData["CountryInsetMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["CountryInsetMsg"] = "Record Updated Successfully";
+                }
+            }
             
-        //     return RedirectToAction("Index");
-        // }
+            return RedirectToAction("Index");
+        }
 
         // GET: LOC_CountryController/Delete/5
         public ActionResult Delete(int CountryId)

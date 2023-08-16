@@ -50,20 +50,20 @@ namespace ECommerce.DAL
             }
         }
 
-        public bool? PR_LOC_Save_Country(int? CountryID,string? CountryName,string? CountryCode)
+        public bool? PR_LOC_Save_Country(int? CountryId,string? CountryName,string? CountryCode)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD;
-                if(CountryID == null)
+                if(CountryId == null)
                 {
                     dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_Country_Insert");
                 }
                 else
                 {
                     dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_Country_UpdateByPK");
-                    sqlDB.AddInParameter(dbCMD, "@CountryID",SqlDbType.Int, CountryID);
+                    sqlDB.AddInParameter(dbCMD, "@CountryID",SqlDbType.Int, CountryId);
                 }
                 sqlDB.AddInParameter(dbCMD, "@CountryName",SqlDbType.VarChar, CountryName);
                 sqlDB.AddInParameter(dbCMD, "@CountryCode",SqlDbType.VarChar, CountryCode);
