@@ -14,7 +14,7 @@
                 </div>
                 <div class="portlet-body form">
                     <h4 class="font-green-sharp">@TempData["CountryInsetMsg"]</h4>
-                    <form class="form-horizontal" role="form" method="post" asp-area="lOC_Country" asp-controller="lOC_Country" asp-action="Save">
+                    <form class="form-horizontal" role="form" method="post" asp-area="LOC_Country" asp-controller="LOC_Country" asp-action="Save">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @Html.HiddenFor(x=>x.CountryId)
                         <div class="form-body">
@@ -36,7 +36,7 @@
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-md-offset-3 col-md-9 justify-content-center align-items-center" style="display: flex;">
                                         <input type="submit" class="btn mb-2 btn-success" value="Save" style="margin-inline-end: 1rem;"></input>
-                                        <a type="button" asp-area="lOC_Country" asp-controller="lOC_Country" asp-action="Admin" class="btn mb-2 btn-danger">Cancel</a>
+                                        <a type="button" asp-area="LOC_Country" asp-controller="LOC_Country" asp-action="Admin" class="btn mb-2 btn-danger">Cancel</a>
                                     </div>
                                 </div>
                             </div>
