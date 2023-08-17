@@ -58,7 +58,6 @@ namespace ECommerce.DAL
                 if(StateId == null)
                 {
                     dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_State_Insert");
-                    sqlDB.AddInParameter(dbCMD, "@CreationDate",SqlDbType.Date, DBNull.Value);
                 }
                 else
                 {
@@ -68,9 +67,7 @@ namespace ECommerce.DAL
                 sqlDB.AddInParameter(dbCMD, "@StateName",SqlDbType.VarChar, StateName);
                 sqlDB.AddInParameter(dbCMD, "@StateCode",SqlDbType.VarChar, StateCode);
                 sqlDB.AddInParameter(dbCMD, "@CountryId",SqlDbType.Int, CountryId);
-                sqlDB.AddInParameter(dbCMD, "@ModificationDate",SqlDbType.Date, DBNull.Value);
                 
-
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
             }
