@@ -57,38 +57,21 @@ namespace ECommerce.Areas.LOC_State.Controllers
 
         // POST: LOC_StateController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Save(Areas.LOC_State.Models.LOC_State modelLoc_State)
         {
-            try
+            if(Convert.ToBoolean(stateDAL.PR_LOC_Save_State(modelLoc_State.StateId,modelLoc_State.CountryId,modelLoc_State.StateName,modelLoc_State.StateCode)))
             {
-                return RedirectToAction(nameof(Index));
+                if(modelLoc_State.StateId == null)
+                {
+                    TempData["StateInsetMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["StateInsetMsg"] = "Record Updated Successfully";
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: LOC_StateController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: LOC_StateController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            
+            return RedirectToAction("Index");
         }
 
         // GET: LOC_StateController/Delete/5
