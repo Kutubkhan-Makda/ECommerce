@@ -34,9 +34,9 @@ namespace ECommerce.Areas.LOC_Country.Controllers
                     modelLOC_Country.CountryName = (Convert.ToString (dr["CountryName"]));
                     modelLOC_Country.CountryCode = (Convert.ToString (dr["CountryCode"]));
                 }
-                return View("LOC_CountryAddEdit", modelLOC_Country);
+                return View("CountryAddEdit", modelLOC_Country);
             }
-            return View("LOC_CountryAddEdit");
+            return View("CountryAddEdit");
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace ECommerce.Areas.LOC_Country.Controllers
                 }
             }
             
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin");
         }
 
         // GET: LOC_CountryController/Delete/5
