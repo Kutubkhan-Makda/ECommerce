@@ -12,6 +12,8 @@ namespace ECommerce.Areas.LOC_City.Controllers
     public class LOC_CityController : Controller
     {
         LOC_CityDAL cityDAL = new LOC_CityDAL();
+
+        LOC_CountryDAL countryDAL = new LOC_CountryDAL();
         // GET: LOC_CityController
         public ActionResult Admin()
         {
@@ -21,18 +23,17 @@ namespace ECommerce.Areas.LOC_City.Controllers
 
         public IActionResult Add(int? CityID)
         {
-            LOC_DAL dalLOC = new LOC_DAL();
-            DataTable dtDropdownCountry = dalLOC.PR_LOC_Country_SelectByDropdownList();
+            DataTable dtCountry = CountryDAL.PR_LOC_Country_SelectAll();
             
-            List<Areas.Models.LOC_CountryDropDownModel> listCountry = new List<Areas.Models.LOC_CountryDropDownModel>();
-            foreach (DataRow dr in dtDropdownCountry.Rows)
+            List<Areas.LOC_Country.Models.LOC_Country> countryDropdownlist = new List<Areas.LOC_Country.Models.LOC_Country>();
+            foreach(DataRow dr in dtCountry.Rows)
             {
-                Areas.Models.LOC_CountryDropDownModel modelLOC_CountryDropDown = new Areas.Models.LOC_CountryDropDownModel();
-                modelLOC_CountryDropDown.CountryID = (Convert.ToInt32(dr["CountryID"]));
+                Areas.LOC_Country.Models.LOC_Country modelLOC_CountryDropDown = new Areas.LOC_Country.Models.LOC_Country();
+                modelLOC_CountryDropDown.CountryId = (Convert.ToInt32(dr["CountryId"]));
                 modelLOC_CountryDropDown.CountryName = (Convert.ToString(dr["CountryName"]));
-                listCountry.Add(modelLOC_CountryDropDown);
+                countryDropdownlist.Add(modelLOC_CountryDropDown);
             }
-            ViewBag.CountryList = listCountry;
+            ViewBag.CountryList = countryDropdownlist;
             
             List<Areas.Models.LOC_StateDropDownModel> listState = new List<Areas.Models.LOC_StateDropDownModel>();
             ViewBag.StateList = listState;
