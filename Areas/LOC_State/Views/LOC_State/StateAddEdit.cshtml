@@ -22,10 +22,12 @@
                         @Html.HiddenFor(x=>x.StateId)
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><span class="text-danger">*</span>State Name</label>
+                                <label class="col-md-3 control-label"><span class="text-danger">*</span>Category Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" asp-for="StateName" placeholder="Enter Product Name" />
-                                    <span asp-validation-for="StateName" class="text-danger"></span>
+                                    <select class="form-control" asp-for="CountryId" asp-items="@(new SelectList(ViewBag.CountryList,"CountryId","CountryName"))">
+                                        <option value="">Select Country</option>
+                                    </select>
+                                    <span asp-validation-for="CountryId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
