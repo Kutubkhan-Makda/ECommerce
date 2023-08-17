@@ -23,10 +23,10 @@ namespace ECommerce.Areas.LOC_State.Controllers
 
         public IActionResult Add(int? StateId)
         {
-            DataTable dtCountry = CountryDAL.PR_LOC_Country_SelectAll();
+            DataTable dtDropdownCountry = CountryDAL.PR_LOC_Country_SelectAll();
             
             List<Areas.LOC_Country.Models.LOC_Country> countryDropdownlist = new List<Areas.LOC_Country.Models.LOC_Country>();
-            foreach(DataRow dr in dtCountry.Rows)
+            foreach(DataRow dr in dtDropdownCountry.Rows)
             {
                 Areas.LOC_Country.Models.LOC_Country modelLOC_CountryDropDown = new Areas.LOC_Country.Models.LOC_Country();
                 modelLOC_CountryDropDown.CountryId = (Convert.ToInt32(dr["CountryId"]));
