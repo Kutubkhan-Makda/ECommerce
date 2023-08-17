@@ -20,21 +20,22 @@ namespace ECommerce.Areas.LOC_Country.Controllers
         }
 
         // POST: LOC_CountryController/Create
-        [HttpPost]
         public IActionResult Add(int? CountryId)
         {
             if (CountryId != null)
             {
-                DataTable dt = countryDAL.PR_LOC_Country_SelectByPK(CountryId);
-
-                Areas.LOC_Country.Models.LOC_Country modelLOC_Country = new Areas.LOC_Country.Models.LOC_Country();
-                foreach (DataRow dr in dt.Rows)
+                DataTable dtCountry = countryDAL.PR_LOC_Country_SelectByPK(CountryId);
+                if(dtCountry.Rows.Count > 0)
                 {
-                    modelLOC_Country.CountryId = (Convert.ToInt32(dr["CountryId"]));
-                    modelLOC_Country.CountryName = (Convert.ToString (dr["CountryName"]));
-                    modelLOC_Country.CountryCode = (Convert.ToString (dr["CountryCode"]));
+                    Areas.LOC_Country.Models.LOC_Country modelLOC_Country = new Areas.LOC_Country.Models.LOC_Country();
+                    foreach (DataRow dr in dtCountry.Rows)
+                    {
+                        modelLOC_Country.CountryId = (Convert.ToInt32(dr["CountryId"]));
+                        modelLOC_Country.CountryName = (Convert.ToString (dr["CountryName"]));
+                        modelLOC_Country.CountryCode = (Convert.ToString (dr["CountryCode"]));
+                    }
+                    return View("CountryAddEdit", modelLOC_Country);
                 }
-                return View("CountryAddEdit", modelLOC_Country);
             }
             return View("CountryAddEdit");
         }

@@ -49,10 +49,10 @@ namespace ECommerce.Areas.LOC_State.Controllers
                         modelLOC_State.CountryId = (Convert.ToInt32(dr["CountryId"]));
                     }
 
-                    return View("LOC_StateAddEdit", modelLOC_State);
+                    return View("StateAddEdit", modelLOC_State);
                 } 
             }
-            return View("LOC_StateAddEdit");
+            return View("StateAddEdit");
         }
 
         // POST: LOC_StateController/Create
