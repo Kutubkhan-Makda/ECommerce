@@ -34,9 +34,18 @@ namespace ECommerce.Areas.LOC_City.Controllers
                 countryDropdownlist.Add(modelLOC_CountryDropDown);
             }
             ViewBag.CountryList = countryDropdownlist;
-            
-            List<Areas.Models.LOC_StateDropDownModel> listState = new List<Areas.Models.LOC_StateDropDownModel>();
-            ViewBag.StateList = listState;
+
+            DataTable dtDropdownState = dalLOC.PR_LOC_State_SelectByDropdownList(modelLOC_City.CountryID);
+
+            List<Areas.Models.LOC_StateDropDownModel> listState1 = new List<Areas.Models.LOC_StateDropDownModel>();
+            foreach (DataRow dr in dtDropdownState.Rows)
+            {
+                Areas.Models.LOC_StateDropDownModel vl = new Areas.Models.LOC_StateDropDownModel();
+                vl.StateID = (Convert.ToInt32(dr["StateID"]));
+                vl.StateName = (Convert.ToString(dr["StateName"]));
+                listState1.Add(vl);
+            }
+            ViewBag.StateList = listState1;
 
             if (CityID != null)
             {
@@ -55,29 +64,6 @@ namespace ECommerce.Areas.LOC_City.Controllers
                         modelLOC_City.StateID = (Convert.ToInt32(dr["StateID"]));
                         modelLOC_City.CountryID = (Convert.ToInt32(dr["CountryID"]));
                     }
-
-                    //String connectionstr = this.Configuration.GetConnectionString("SQL_AddressBook");
-                    //SqlConnection conn1 = new SqlConnection(connectionstr);
-                    //conn1.Open();
-                    //SqlCommand cmd1 = conn1.CreateCommand();
-                    //cmd1.CommandType = CommandType.StoredProcedure;
-                    //cmd1.CommandText = "PR_LOC_State_SelectForDropDownByCountryID";
-                    //cmd1.Parameters.AddWithValue("@CountryID", modelLOC_City.CountryID);
-                    //DataTable dt1 = new DataTable();
-                    //SqlDataReader objSDR1 = cmd1.ExecuteReader();
-                    //dt1.Load(objSDR1);
-
-                    DataTable dtDropdownState = dalLOC.PR_LOC_State_SelectByDropdownList(modelLOC_City.CountryID);
-
-                    List<Areas.Models.LOC_StateDropDownModel> listState1 = new List<Areas.Models.LOC_StateDropDownModel>();
-                    foreach (DataRow dr in dtDropdownState.Rows)
-                    {
-                        Areas.Models.LOC_StateDropDownModel vl = new Areas.Models.LOC_StateDropDownModel();
-                        vl.StateID = (Convert.ToInt32(dr["StateID"]));
-                        vl.StateName = (Convert.ToString(dr["StateName"]));
-                        listState1.Add(vl);
-                    }
-                    ViewBag.StateList = listState1;
 
                     return View("LOC_CityAddEdit", modelLOC_City);
                 }
