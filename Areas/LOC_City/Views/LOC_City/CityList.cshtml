@@ -143,7 +143,7 @@
               <td class="row">
                 <form method="post" asp-area="LOC_City" asp-controller="LOC_City" asp-action="Delete">
                   <input type="hidden" name="CityId" value="@Convert.ToInt32(dtCity["CityId"])">
-                  <a class="btn btn-sm" type="button" asp-area="LOC_City" asp-controller="LOC_City" asp-action="Add" asp-route-CategoryId="@Convert.ToInt32(dtCity["CityId"])">
+                  <a class="btn btn-sm" type="button" asp-area="LOC_City" asp-controller="LOC_City" asp-action="Add" asp-route-CityId="@Convert.ToInt32(dtCity["CityId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">

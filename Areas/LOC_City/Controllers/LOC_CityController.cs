@@ -68,10 +68,10 @@ namespace ECommerce.Areas.LOC_City.Controllers
                     }
                     ViewBag.StateList = listState;
 
-                    return View("LOC_CityAddEdit", modelLOC_City);
+                    return View("CityAddEdit", modelLOC_City);
                 }
             }
-            return View("LOC_CityAddEdit");
+            return View("CityAddEdit");
         }
 
         // POST: LOC_CityController/Create
