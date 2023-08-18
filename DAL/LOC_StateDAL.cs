@@ -77,13 +77,13 @@ namespace ECommerce.DAL
             }
         }
 
-        public DataTable PR_LOC_State_SelectByDropdownList(int? CountryID)
+        public DataTable PR_LOC_State_SelectByDropdownList(int? CountryId)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_State_SelectForDropDownByCountryID");
-                sqlDB.AddInParameter(dbCMD, "CountryID", SqlDbType.Int, CountryID);
+                sqlDB.AddInParameter(dbCMD, "CountryId", SqlDbType.Int, CountryId);
 
                 DataTable dt = new DataTable();
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))

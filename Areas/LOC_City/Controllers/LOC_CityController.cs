@@ -62,9 +62,9 @@ namespace ECommerce.Areas.LOC_City.Controllers
                     foreach (DataRow dr in dtDropdownState.Rows)
                     {
                         Areas.LOC_State.Models.LOC_State modelLOC_StateDropDown = new Areas.LOC_State.Models.LOC_State();
-                        modelLOC_StateDropDow.StateId = (Convert.ToInt32(dr["StateId"]));
-                        modelLOC_StateDropDow.StateName = (Convert.ToString(dr["StateName"]));
-                        listState.Add(modelLOC_StateDropDow);
+                        modelLOC_StateDropDown.StateId = (Convert.ToInt32(dr["StateId"]));
+                        modelLOC_StateDropDown.StateName = (Convert.ToString(dr["StateName"]));
+                        listState.Add(modelLOC_StateDropDown);
                     }
                     ViewBag.StateList = listState;
 
