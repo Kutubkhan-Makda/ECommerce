@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><span class="text-danger">*</span>Country Name</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" asp-for="CountryId" asp-items="@(new SelectList(ViewBag.CountryList,"CountryId","CountryName"))">
+                                    <select class="form-control" asp-for="CountryId" asp-items="@(new SelectList(ViewBag.CountryList,"CountryId","CountryName"))" onchange="fnOnStateChange();">
                                         <option value="">Select Country</option>
                                     </select>
                                     <span asp-validation-for="CountryId" class="text-danger"></span>
@@ -69,3 +69,40 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+    {
+    <script>
+        function fnOnStateChange() {
+            var CountryId = $("#CountryId").val();
+
+            if (CountryId !== "") {
+                $("#StateId").empty();
+                $("#StateId").append($("<option></option>").val("").html("Select State"));
+                $.ajax(
+                    {
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "@Url.Action("DropDownByCountry","LOC_City")" + "?&CountryId=" + CountryId,
+                        data: {},
+                        dataType: "json",
+                        success: function (Result) {
+                            $.each(Result,
+                                function (key, value) {
+                                    $("#StateId").append($("<option></option>").val(value.stateId).html(value.stateName));
+                                }
+                            );
+                        },
+                        error: function (r) {
+                            alert("Error While Loading DropDown");
+                        }
+                    }
+                );
+            }
+            else {
+                $("#StateId").empty();
+                $("#StateId").append($("<option></option>").val("").html("Select State"));
+            }
+        }
+    </script>
+}

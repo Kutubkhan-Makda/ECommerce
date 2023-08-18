@@ -74,40 +74,21 @@ namespace ECommerce.Areas.LOC_City.Controllers
             return View("CityAddEdit");
         }
 
-        // POST: LOC_CityController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        public ActionResult DropDownByCountry(int CountryId)
+        {  
+            DataTable dtDropdownState = stateDAL.PR_LOC_State_SelectByDropdownList(CountryId);
 
-        // GET: LOC_CityController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: LOC_CityController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+            List<Areas.LOC_State.Models.LOC_State> listState = new List<Areas.LOC_State.Models.LOC_State>();
+            foreach (DataRow dr in dtDropdownState.Rows)
             {
-                return RedirectToAction(nameof(Index));
+                Areas.LOC_State.Models.LOC_State modelLOC_StateDropDown = new Areas.LOC_State.Models.LOC_State();
+                modelLOC_StateDropDown.StateId = (Convert.ToInt32(dr["StateId"]));
+                modelLOC_StateDropDown.StateName = (Convert.ToString(dr["StateName"]));
+                listState.Add(modelLOC_StateDropDown);
             }
-            catch
-            {
-                return View();
-            }
+           
+            var vmodel = listState;
+            return Json(vmodel);
         }
 
         // GET: LOC_CityController/Delete/5
