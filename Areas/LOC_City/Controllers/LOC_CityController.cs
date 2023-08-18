@@ -37,7 +37,8 @@ namespace ECommerce.Areas.LOC_City.Controllers
             }
             ViewBag.CountryList = countryDropdownlist;
 
-            
+            List<Areas.LOC_State.Models.LOC_State> stateDropdownlist = new List<Areas.LOC_State.Models.LOC_State>();
+            ViewBag.StateList = stateDropdownlist;
 
             if (CityID != null)
             {
@@ -45,19 +46,17 @@ namespace ECommerce.Areas.LOC_City.Controllers
 
                 if (dt.Rows.Count > 0)
                 {
-                    LOC_CityModel modelLOC_City = new LOC_CityModel();
+                    Areas.LOC_City.Models.LOC_City modelLOC_City = new Areas.LOC_City.Models.LOC_City();
                     foreach (DataRow dr in dt.Rows)
                     {
                         modelLOC_City.CityId = (Convert.ToInt32(dr["CityId"]));
                         modelLOC_City.CityName = (Convert.ToString(dr["CityName"]));
                         modelLOC_City.CityCode = (Convert.ToString(dr["CityCode"]));
-                        modelLOC_City.CreationDate = (Convert.ToDateTime(dr["CreationDate"]));
-                        modelLOC_City.ModificationDate = (Convert.ToDateTime(dr["ModificationDate"]));
-                        modelLOC_City.StateID = (Convert.ToInt32(dr["StateID"]));
-                        modelLOC_City.CountryID = (Convert.ToInt32(dr["CountryID"]));
+                        modelLOC_City.StateId = (Convert.ToInt32(dr["StateID"]));
+                        modelLOC_City.CountryId = (Convert.ToInt32(dr["CountryID"]));
                     }
 
-                    DataTable dtDropdownState = stateDAL.PR_LOC_State_SelectAll(modelLOC_City.CountryId);
+                    DataTable dtDropdownState = stateDAL.PR_LOC_State_SelectByDropdownList(modelLOC_City.CountryId);
 
                     List<Areas.LOC_State.Models.LOC_State> listState = new List<Areas.LOC_State.Models.LOC_State>();
                     foreach (DataRow dr in dtDropdownState.Rows)
