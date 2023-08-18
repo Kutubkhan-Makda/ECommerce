@@ -138,7 +138,7 @@
               </td>
               <td class="row">
                 <form method="post" asp-area="LOC_State" asp-controller="LOC_State" asp-action="Delete">
-                  <input type="hidden" name="CategoryId" value="@Convert.ToInt32(dtState["StateId"])">
+                  <input type="hidden" name="StateId" value="@Convert.ToInt32(dtState["StateId"])">
                   <a class="btn btn-sm" type="button" asp-area="LOC_State" asp-controller="LOC_State" asp-action="Add" asp-route-StateId="@Convert.ToInt32(dtState["StateId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>

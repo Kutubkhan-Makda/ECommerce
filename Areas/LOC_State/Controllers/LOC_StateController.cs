@@ -71,7 +71,7 @@ namespace ECommerce.Areas.LOC_State.Controllers
                 }
             }
             
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin");
         }
 
         // GET: LOC_StateController/Delete/5
