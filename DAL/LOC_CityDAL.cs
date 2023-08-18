@@ -27,6 +27,28 @@ namespace ECommerce.DAL
             }
         }
 
+        public DataTable PR_LOC_City_SelectByPK(int? CityID)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(SQL_Connection);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_City_SelectByPK");
+                sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, CityID);
+
+                DataTable dt = new DataTable();
+                using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dt.Load(dr);
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public bool? PR_LOC_Save_City(int? CityID,int? StateID,int? CountryID,string? CityName,string? CityCode)
         {
             try
@@ -36,7 +58,6 @@ namespace ECommerce.DAL
                 if(CityID == null)
                 {
                     dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_City_Insert");
-                    sqlDB.AddInParameter(dbCMD, "@CreationDate",SqlDbType.Date, DBNull.Value);
                 }
                 else
                 {
@@ -47,8 +68,6 @@ namespace ECommerce.DAL
                 sqlDB.AddInParameter(dbCMD, "@CityCode",SqlDbType.VarChar, CityCode);
                 sqlDB.AddInParameter(dbCMD, "@CountryID",SqlDbType.Int, CountryID);
                 sqlDB.AddInParameter(dbCMD, "@StateID",SqlDbType.Int, StateID);
-                sqlDB.AddInParameter(dbCMD, "@ModificationDate",SqlDbType.Date, DBNull.Value);
-                
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
