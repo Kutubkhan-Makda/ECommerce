@@ -75,11 +75,11 @@ namespace ECommerce.Areas.LOC_City.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save(LOC_CityModel modelLoc_City)
+        public IActionResult Save(Areas.LOC_City.Models.LOC_City modelLOC_City)
         {    
-            if(Convert.ToBoolean(dalLOC.PR_LOC_Save_City(modelLoc_City.CityID,modelLoc_City.StateID,modelLoc_City.CountryID,modelLoc_City.CityName,modelLoc_City.CityCode)))
+            if(Convert.ToBoolean(cityDAL.PR_LOC_Save_City(modelLOC_City.CityId,modelLOC_City.StateId,modelLOC_City.CountryId,modelLOC_City.CityName,modelLOC_City.CityCode)))
             {
-                if(modelLoc_City.CityID == null)
+                if(modelLOC_City.CityId == null)
                 {
                     TempData["CityInsetMsg"] = "Record Inserted Successfully";
                 }
