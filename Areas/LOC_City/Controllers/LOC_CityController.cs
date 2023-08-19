@@ -74,6 +74,24 @@ namespace ECommerce.Areas.LOC_City.Controllers
             return View("CityAddEdit");
         }
 
+        [HttpPost]
+        public IActionResult Save(LOC_CityModel modelLoc_City)
+        {    
+            if(Convert.ToBoolean(dalLOC.PR_LOC_Save_City(modelLoc_City.CityID,modelLoc_City.StateID,modelLoc_City.CountryID,modelLoc_City.CityName,modelLoc_City.CityCode)))
+            {
+                if(modelLoc_City.CityID == null)
+                {
+                    TempData["CityInsetMsg"] = "Record Inserted Successfully";
+                }
+                else
+                {
+                    TempData["CityInsetMsg"] = "Record Updated Successfully";
+                }
+            }
+            
+            return RedirectToAction("Index");
+        }
+
         public ActionResult DropDownByCountry(int CountryId)
         {  
             DataTable dtDropdownState = stateDAL.PR_LOC_State_SelectByDropdownList(CountryId);
