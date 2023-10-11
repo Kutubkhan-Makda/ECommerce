@@ -4,31 +4,6 @@
 @using System.Data
 @model DataTable
 
-@{
-  int[] ProductId = new int[1000];
-  string[] CategoryName = new string[1000];
-  string[]  Name = new string[1000];
-  string[] ManufacturerName = new string[1000];
-  string[] Description = new string[1000];
-  decimal[] Price = new decimal[1000];
-  int[] Quantity = new int[1000];
-  string[] ImageUrl = new string[1000];
-  int i = 1;
-
-  @foreach (DataRow dtProduct in Model.Rows)
-  {
-    ProductId[i] = @Convert.ToInt32(dtProduct["ProductId"]);
-    CategoryName[i] = @Convert.ToString(dtProduct["CategoryName"]);
-    Name[i] = @Convert.ToString(dtProduct["Name"]);
-    ManufacturerName[i] = @Convert.ToString(dtProduct["ManufacturerName"]);
-    Description[i] = @Convert.ToString(dtProduct["Description"]);
-    Price[i] = @Convert.ToDecimal(dtProduct["Price"]);
-    Quantity[i] = @Convert.ToInt32(dtProduct["Quantity"]);
-    ImageUrl[i] = @Convert.ToString(dtProduct["ImageUrl"]);
-    i++;
-  }
-}
-
 <div class="col-md-12 my-4">
     <div class="row">
         <div class="form-group col-auto mr-auto">
@@ -143,7 +118,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (int j = 1; j < i; j++)
+          @foreach (DataRow dtProduct in Model.Rows)
           {
             <tr>
               <td>
@@ -154,24 +129,24 @@
               </td>
               <td>
                 <div class="avatar avatar-md">
-                  <img src=@ImageUrl[j] alt="..." class="avatar-img rounded-circle">
+                  <img src=@dtProduct["ImageUrl"] alt="..." class="avatar-img rounded-circle">
                 </div>
               </td>
               <td>
-                <p class="mb-0 text-muted"><strong>@Name[j]</strong></p>
+                <p class="mb-0 text-muted"><strong>@dtProduct["Name"]</strong></p>
               </td>
               <td>
-                <p class="mb-0 text-muted">@Price[j]</p>
+                <p class="mb-0 text-muted">@dtProduct["Price"]</p>
               </td>
-              <td>@Quantity[j]</td>
+              <td>@dtProduct["Quantity"]</td>
               <td class="row">
-                  <span id="ModalId">@j</span>
+                  <span id="ModalId">@dtProduct["ProductId"]</span>
                   <button class="btn btn-sm" type="button" id="modelbtn" data-toggle="modal" data-target=".modal-full">
                     <span class="fe fe-24 fe-eye"></span>
                   </button>
                 <form method="post" asp-area="Products" asp-controller="Products" asp-action="Delete">
-                  <input type="hidden" name="ProductId" value="@ProductId[j]">
-                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@ProductId[j]">
+                  <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
+                  <a class="btn btn-sm" type="button" asp-area="Products" asp-controller="Products" asp-action="Add" asp-route-ProductId="@Convert.ToInt32(dtProduct["ProductId"])">
                     <span class="fe fe-24 fe-edit-3"></span>
                   </a>
                   <button class="btn btn-sm" type="submit" onclick="return DeleteConf();">
@@ -179,7 +154,7 @@
                   </button>
                 </form>
                 <form method="post" asp-area="Sales" asp-controller="Sales" asp-action="Save">
-                  <input type="hidden" name="ProductId" value="@ProductId[j]">
+                  <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
                   <button class="btn btn-sm" type="submit" data-toggle="modal" data-target="#verticalModal-sale">
                     <span class="fe fe-24 fe-truck"></span>
                   </button>
@@ -243,7 +218,7 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title" id="ModalNameDetail"></h5>
-              <p class="card-text">@Description[4]</p>
+              <p class="card-text"></p>
               <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
             </div>
           </div>
