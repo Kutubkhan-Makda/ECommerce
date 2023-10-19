@@ -26,10 +26,32 @@ namespace ECommerce.Areas.Products.Controllers
             return View("ProductsListAdmin",dtProduct);
         }
 
-        public ActionResult Detail(int? ProductId)
+        public IActionResult Detail(int? ProductId)
         {
-            DataTable dtProduct = productsDAL.PR_Product_SelectbyPK(ProductId);
-            return View("ProductsDetail",dtProduct);
+            // DataTable dtProduct = productsDAL.PR_Product_SelectbyPK(ProductId);
+            // return View("ProductsDetail",dtProduct);
+            if (ProductId != null)
+            {
+                DataTable dt = productsDAL.PR_Product_SelectbyPK(ProductId);
+                if(dt.Rows.Count > 0)
+                {
+                    Areas.Products.Models.Products productsModel = new Areas.Products.Models.Products();
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        productsModel.CategoryId = (Convert.ToInt32(dr["CategoryId"]));
+                        productsModel.Name = (Convert.ToString(dr["Name"]));
+                        productsModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
+                        productsModel.Description = (Convert.ToString(dr["Description"]));
+                        productsModel.Price = (Convert.ToDecimal(dr["Price"]));
+                        productsModel.Discount = (Convert.ToDecimal(dr["Discount"]));
+                        productsModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
+                        productsModel.ImageUrl = (Convert.ToString(dr["ImageUrl"]));
+                    }
+
+                    return View("ProductsDetail", productsModel);
+                } 
+            }
+            return View("ProductsDetail");
         }
 
         [CheckAdminAccess]

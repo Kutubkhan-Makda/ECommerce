@@ -222,7 +222,7 @@
                         </div>
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a asp-area="Products" asp-controller="Products" asp-action="Detail" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a asp-area="Products" asp-controller="Products" asp-action="Detail" asp-route-ProductId="@Convert.ToInt32(dtProduct["ProductId"])" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     <input type="hidden" name="ProductId" value="@Convert.ToInt32(dtProduct["ProductId"])">
                                     @dtProduct["Name"]
                                 </a>
