@@ -28,30 +28,28 @@ namespace ECommerce.Areas.Products.Controllers
 
         public IActionResult Detail(int? ProductId)
         {
-            // DataTable dtProduct = productsDAL.PR_Product_SelectbyPK(ProductId);
-            // return View("ProductsDetail",dtProduct);
             if (ProductId != null)
             {
                 DataTable dt = productsDAL.PR_Product_SelectbyPK(ProductId);
                 if(dt.Rows.Count > 0)
                 {
-                    Areas.Products.Models.Products productsModel = new Areas.Products.Models.Products();
+                    Areas.Products.Models.Products productModel = new Areas.Products.Models.Products();
                     foreach (DataRow dr in dt.Rows)
                     {
-                        productsModel.CategoryId = (Convert.ToInt32(dr["CategoryId"]));
-                        productsModel.Name = (Convert.ToString(dr["Name"]));
-                        productsModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
-                        productsModel.Description = (Convert.ToString(dr["Description"]));
-                        productsModel.Price = (Convert.ToDecimal(dr["Price"]));
-                        productsModel.Discount = (Convert.ToDecimal(dr["Discount"]));
-                        productsModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
-                        productsModel.ImageUrl = (Convert.ToString(dr["ImageUrl"]));
+                        productModel.CategoryId = (Convert.ToInt32(dr["CategoryId"]));
+                        productModel.Name = (Convert.ToString(dr["Name"]));
+                        productModel.ManufacturerId = (Convert.ToInt32(dr["ManufacturerId"]));
+                        productModel.Description = (Convert.ToString(dr["Description"]));
+                        productModel.Price = (Convert.ToDecimal(dr["Price"]));
+                        productModel.Discount = (Convert.ToDecimal(dr["Discount"]));
+                        productModel.Quantity = (Convert.ToInt32(dr["Quantity"]));
+                        productModel.ImageUrl = (Convert.ToString(dr["ImageUrl"]));
                     }
 
-                    return View("ProductsDetail", productsModel);
+                    return View("ProductDetail", productModel);
                 } 
             }
-            return View("ProductsDetail");
+            return View("ProductDetail");
         }
 
         [CheckAdminAccess]
